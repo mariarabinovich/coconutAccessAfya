@@ -1,0 +1,129 @@
+
+/*#bottom-menu{display:none;}*/
+/*z-index:footer:100*/
+
+/*COLOR LIST:
+lighter gray for text: #666*/
+
+.ui-mobile-viewport.ui-overlay-c{margin:0px; padding:0px;}
+body {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: "Open Sans, Trebuchet MS, Calibri";
+  list-style:none;
+  border:none;
+  margin:none;
+  margin:0px;
+  padding:0px;
+  text-align:center;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  outline: none;
+  background:rgba(10,10,10,.1);
+}
+
+#footer-menu{
+  padding-top:5px;
+  padding-bottom:5px;
+  font-weight:lighter;
+  position:fixed;
+  position-top:0px;
+  z-index:100;
+  background:rgba(200,10,70,1);
+  width:100%;
+  } /*this was in the html: so find it and get rid of the inline styling*/
+
+.aa-header{display:block; height:100px; length:100%; background:rgba(26,70,85,1); /*this is new and conditional*/
+  text-align:center;
+  padding-top:30px;
+  font-weight:lighter;
+  font-size:18px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+
+h1{font-weight:lighter; font-size:24px; display:block;}
+h2{font-weight:lighter; font-style:normal; font-size:20px; text-shadow:none;}
+a:link{text-decoration:none;}
+
+
+
+
+
+
+
+
+a.clientresult{display:block; margin:0 auto; clear: both; width:90%; height:50px; }
+
+.resultblocks{
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  display:inline-block;
+  width:25%;
+  height:50px;
+  float:left;
+  border: 1px solid #999;
+  text-align:left;
+  background:rgba(100,100,100,.3);
+  font-size:14px;
+}
+.resultblocks.title{font-size:14px; font-weight:bold; background:rgba(50,50,50,.6);}
+.resulttext{display: table-cell; height: 50px; padding: 0 20px; vertical-align: middle; color:#222;}
+.phonenumberresult{ }
+.lastnameresult{}
+.firstnameresult{}
+
+/*clientSearchView:*/
+#feedback{
+  color: #cc0000;
+  }
+
+.client{
+  text-transform: uppercase;
+  }
+
+/*from ResultsView.coffee put here to clean code:*/
+table.results th.header, table.results td{
+  font-size:150%;
+}
+
+/*from ScanBarcodeView:*/
+#feedback{
+  color: #cc0000;
+}
+
+.client{
+  text-transform: uppercase;
+}
+/*from ReportView:*/
+.dissaggregatedResults{
+  display: none;
+}
+
+/*from help:*/
+.helpMessage{display:block}
+
+.textArea{}
+textarea:focus, input:focus{
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
+textarea {height:100px; font-size:18px; font-weight:lighter; color:#002F58; padding:10px; margin-top:10px; margin-bottom:10px;}
+
+/*images on design form page that are icons:*/
+.designIcons{}
+
+#design-view{display:block;}
+
+/*.ui-btn-inner.ui-btn-corner-all{background:red;}
+
+label[type=checkbox]{background:red;}*/

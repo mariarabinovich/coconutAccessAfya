@@ -1,0 +1,14 @@
+{
+   "local_couchdb_admin_username" : "coco",
+   "date_format" : "YYYY-MM-DD",
+   "_rev" : "367-90ebcae1a0d0d4f3d7f94e50295db4db",
+   "synchronization_target" : "https://accessafya.couchappy.com/accessafya",
+   "datetime_format" : "YYYY-MM-DD HH:mm:ss",
+   "cloud_credentials" : "accessafya:accessafya",
+   "local_couchdb_admin_password" : "cocopuffs",
+   "cloud" : "accessafya.couchappy.com",
+   "_id" : "coconut.config",
+   "title" : "Coconut Clinic",
+   "sync_mode" : "couchdb-sync",
+   "couchapp" : {}
+}

@@ -1,0 +1,215 @@
+
+
+
+
+.formHeader{display:block; width:100%; background:rgba(10,10,10,.2); padding:50px 0;}
+
+
+/*buttons for yes/no*/
+label{display:block; clear:both; width:auto; max-width:400px;
+  text-align:left; margin:20px auto 0px auto; color:#666; font-weight:lighter;
+}
+
+/*questions specifically above the radio buttons:*/
+label[type=radio]{/*max-width:400px; min-width:300px;*/  margin-top:60px; } /*just thinking through tablet/phone sizes and readability, not sure if this css works*/
+
+
+
+/*yes/no and optional choice selector buttons:*/
+label.radio {
+  border-radius:2px;
+  display:block;
+  padding:15px 0px;
+  border: 1px solid black;
+  cursor: pointer;
+  text-decoration: none;
+  margin:10px auto 5px auto;
+  text-align:center;
+  }
+
+
+
+
+input{
+  margin-top:20px;
+  margin-bottom:50px;
+  border: solid 1px #dcdcdc;  color:#666;
+  transition: box-shadow 0.3s, border 0.3s;
+  /*height:auto; min-height:50px;*/
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  padding: 10px;
+  width:400px;
+  font-size:18px;
+}
+
+input:focus{ outline:none;
+  border: solid 2px rgba(200,0,150,.9);
+}
+
+/*this just hides the little radio circle on the button/labels:*/
+input[type=radio]{display:none;
+}
+
+/*selected state color change:*/
+input[type=radio]:checked + label.radio {
+  background: #5393c5;
+  background-image: -webkit-gradient(linear,left top,left bottom,from(#5393c5),to(#6facd5));
+  background-image: -webkit-linear-gradient(#5393c5,#6facd5);
+  background-image: -moz-linear-gradient(#5393c5,#6facd5);
+  background-image: -ms-linear-gradient(#5393c5,#6facd5);
+  background-image: -o-linear-gradient(#5393c5,#6facd5);
+  background-image: linear-gradient(#5393c5,#6facd5);
+  }
+
+
+
+
+
+input[type="autocomplete from list"], input[type="autocomplete from previous entries"], input[type="text"]{
+  text-align:left;
+}
+input[type="autocomplete from list"]{margin-bottom:0px;}
+
+input[type="text"]:focus, input[type="text"].focus, input[type="autocomplete from list"]:focus, input[type="autocomplete from list"].focus,
+input[type="autocomplete from previous entries"]:focus, input[type="autocomplete from previous entries"].focus {
+  /*border: solid 2px rgba(200,0,150,.9); box-shadow: 0 0 0px 0px #969696;*/
+}
+
+
+
+input[type=number]{ width:250px; font-size:20px; text-align:center; }
+
+
+
+
+
+
+/*come back to this: how are numbers selected on tablet?*/
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  cursor:pointer;
+  display:block;
+  width:25px;
+  height:50px;
+  color: #333;
+  text-align:center;
+  position:relative;
+  text-align:center;
+}
+input[type=number]::-webkit-inner-spin-button:before,
+input[type=number]::-webkit-inner-spin-button:after {
+  background:rgba(100,100,100,.1);
+  border:solid 1px #ccc;
+  content: "^";
+  position:absolute;
+  right: -10px;
+  font-family:monospace;
+  width:24px;
+  height:23px;
+  font-size:32px; font-weight:lighter;
+  color:#aaa;
+}
+input[type=number]::-webkit-inner-spin-button:before {
+  top:1px;
+}
+input[type=number]::-webkit-inner-spin-button:after {
+  bottom:1px;
+  -webkit-transform: rotate(180deg);
+}
+
+
+
+
+
+/*BUTTONS:*/
+input[type=submit], label[type=checkbox] {display:block; width:200px; height:70px; background:rgba(255, 80, 120,.8); color:white; border:none; cursor:pointer; text-align:center; }
+input[type=submit]>span, label[type=checkbox]>span{display:block; padding:25px 0; background:red;}
+input[type=submit]:focus, label[type=checkbox]:focus {background:rgba(255, 80, 120,1); color:#999;border:1px solid #777;
+}
+
+
+
+
+/*AUTOCOMPLETE LISTS: Make these less ridiculous, they should have real class names*/
+ul.ui-listview{background:rgba(10,10,10,.1); list-style:none; max-width:400px; display:block; margin:0 auto; padding:0px;}
+li.ui-btn{border:solid 1px #888; }
+/*li.ui-btn .ui-btn-inner.ui-btn-inner.ui-li.ui-corner-top {color:red;}*/
+/*li.ui-btn>div>div a{color:red;}*/
+.ui-btn-text a{
+  display:block; color: #666;
+  padding:15px 0 15px 0; margin:0px auto 0 auto; width:400px; }
+  span.ui-icon{display:none;}
+
+
+
+.message{
+  color: grey;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px yellow dotted;
+  background: yellow;
+  display: none;
+}
+
+
+
+
+
+/*for example the message that says Saving . .  . over the form after an answer is submitted*/
+.hoveringMessage{position:fixed; right:0px; color:white; background: rgba(50,70,200,.5);
+  padding:25px 0px; display:none; z-index:10; width:100%; }
+
+
+/*THIS IS WHERE IVE STOPPED*/
+
+
+/*THis is for the design of forms page:*/
+/*
+.mainTitle{display:block; width:100%; height:100px; background:rgba(50,50,100,.3); padding: 30px 0px 30px 0px;
+  margin-bottom:25px;}
+.mainTitle label.questionText{display:block; max-width:700px; margin:0 auto;}*/
+.designControls{display:block; background:rgba(50,50,100,.3); width:100%; height:200px;}
+
+.aQuestion{display:block; width:100%; height:auto; margin:50px 0 0 0;}
+  .questionInfo{display:block; height:30px; margin:0px auto; width:700px; text-align:left; background:rgba(50,50,100,.3);}
+    .questionType{display:inline-block; width:auto; font-size:13px; margin:10px 25px 0 10px;  }
+    .requiredOrNot{display:inline-block; width:50px; font-size:13px; color:333; text-align:left; margin:10px 0 0 0;}
+    input.requiredOrNot{width:20px; height:5px; margin-top:10px;vertical-align: top;}
+    .deleting{display:inline-block; float:right; margin:10px 10px 0 0;}
+    label.deleteButton{font-size:13px; float:left; display:inline; margin:0px; }
+    button.deleteButton{display:inline;  width:20px; height:20px; float:left;}
+      button.deleteButton img{height:10px; width:10px; margin-top:0px;}
+  label.questionText{ /*display:block;*/ margin:0 auto; max-width:700px;}
+  input.designFormTextInput{width:700px; margin-bottom:0px; margin-top:5px;}
+
+.advancedOptions{width:700px; height:auto; background:rgba(50,50,100,.3); margin:0 auto; padding:10px 0 35px 0;}
+.advanced{ font-size:13px; color:#333; }
+.advanced-hidden{display:none;}
+.advanced-visible{display:block;}
+
+label.advanced{max-width:600px; display:block; margin:0px auto 0px auto; padding:15px 0px 5px 0px;}
+textarea.advanced{height:30px; width:600px; display:block; margin:0 auto;}
+
+
+
+
+/*.questionDivider{display:inline-block; background:red; width:100%; height:100px;}*/
+
+
+
+button.designActionsButton{display:inline-block; width:150px; height:30px; border-radius:5px; background:white;
+  border:solid 1px #666; font-size:14px; margin:10px 5px;}
+button.designActionsButton.addButton{margin-bottom:50px; border-radius:2px;}
+
+/*select{font-size:20px; padding:30px; background:white; border:solid 1px #666; width:300px;}
+*/
+select:focus{outline:none;font-size:20px;}
+
+
+
+
+form#render{display:block; background:white; z-index:100; padding:50px 0 50px 0;  margin:0 auto; width:800px  ;}
+
+.instructions{width:500px; margin:15px auto;}

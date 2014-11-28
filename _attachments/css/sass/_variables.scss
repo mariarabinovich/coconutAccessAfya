@@ -1,0 +1,90 @@
+@import "compass";
+
+//COLORSCHEME:
+$extra_light_gray:#eee;
+$light_gray:#ccc;
+$gray:#aaa;
+$dark_gray:#999;
+$extra_dark_gray:#333;
+$message_yellow:yellow;
+$saving_purple: rgba(50,70,200,.5);
+$test_red:red;
+$font_weight_light: 200;
+$font_weight_medium: 400;
+$font_weight_heavy: 600;
+
+
+//BORDERS
+$standard_border_color: $dark_gray;
+$standard_border_focus_color: red;
+$standard_border: 1px solid $standard_border_color;
+
+//BACKGROUNDS OF BLOCK ELEMENTS
+$background_color_main: $extra_light_gray;
+$background_color_section: $light_gray;
+$footer_color: $gray;
+$header_color:$light_gray;
+$form_header_color: $light_gray;
+$autocomplete_background_color: $light_gray;
+$resultblocks_title_background: $gray;
+$resultblocks_background: $light_gray;
+$saving_message_background: $saving_purple;
+
+//MAIN MENU
+$menu_background_color:$light_gray;
+$menu_elements_border_right: 1px solid $gray;
+$main_menu_border_color: $standard_border_color;
+
+
+//TEXT
+$font_color_standard: #555;
+$font_color_main_menu: $extra_light_gray;
+$font_color_footer: $font_color_standard;
+
+$font_color_p: $extra_dark_gray;
+$font_color_h1: #222;
+$font_color_h2: #111;
+$font_color_h3: #000;
+$font_color_label: $dark_gray;
+$font_color_input: $dark_gray;
+$font_color_text_area: $dark_gray;
+$font_color_saving_message: white;
+
+$font_size_p: 14px;
+$font_size_h1: 22px;
+$font_size_h2: 18px;
+$font_size_h3: 16px;
+$font_size_label: 16px;
+$font_size_input: 18px;
+$font_size_main_menu:14px;
+$font_size_text_area:18px;
+
+//BUTTONS
+$button_color: $light_gray;
+$button_color_focus: $gray;
+$button_color_pressed: $gray;
+$button_width: 120px;
+$button_height:40px;
+$button_text_color: $extra_light_gray;
+$button_focus_text_color: $extra_dark_gray;
+$button_border:0px solid $extra_dark_gray;
+$button_border_focus: 1px solid $extra_dark_gray;
+$button_border_radius: 8px;
+
+
+//PADDINGS AND MARGINS AND SIZES OF ELEMENTS:
+$padding_between_label_and_input:15px;
+$input_width:80%;
+$input_max_width:500px;
+$label_width:80%;
+$label_max_width:500px;
+$autocomplete_width:80%; //CHECK THIS NOT SURE
+$autocomplete_max_width:500px;
+$number_input_width:250px;
+
+
+
+//Z-INDEXES
+$z_bottom: 0;
+$z_middle: 10;
+$z_top:100;

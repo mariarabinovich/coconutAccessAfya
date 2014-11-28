@@ -1,0 +1,593 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass"; //checkthis
+@import "compass/reset";
+//@import "compass/css3/font-face";
+//@import "compass/css3";//maybe this is enough?
+
+@import "_variables.scss";
+
+
+
+//FONTAGE:
+@include font-face("Open Sans", font-files("fonts/opensans.woff", "fonts/opensans.ttf","fonts/opensans.svg"));
+@include font-face("Trebuchet MS", font-files("fonts/trebuchet.ttf", "fonts/trebuchet.otf"));
+@include font-face("Calibri", font-files("fonts/calibri.ttf", "fonts/calibri.otf"));
+//add these one each for different weights
+%myfont{font-family:"Open Sans", "Trebuchet MS", "Calibri", sans-serif;}
+body{@extend %myfont;}
+a:link{text-decoration:none;}
+h1{
+  font-size:$font_size_h1;
+  color:$font_color_h1;
+  font-weight: $font_weight_light;
+  padding:20px 0 20px 0;
+  //text-shadow:none; display:block; font-style:normal;
+}
+h2{
+  font-size:$font_size_h2;
+  color:$font_color_h2;
+  font-weight: $font_weight_light;
+  //text-shadow:none; display:block; font-style:normal;
+}
+h3{
+  font-size:$font_size_h3;
+  color:$font_color_h3;
+  font-weight: $font_weight_light;
+  //text-shadow:none; display:block; font-style:normal;
+}
+p{
+  font-size:$font_size_p;
+  color:$font_color_p;
+  font-weight: $font_weight_light;
+  //text-shadow:none; display:block; font-style:normal;
+}
+
+body{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align:center;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  outline: none;
+  background:$background_color_main;
+
+}
+
+
+
+ul{list-style:none;}
+
+
+
+//NESTING EXAMPLE:
+// nav {
+//   a{
+//     color: $background_color_main;
+//     &:hover {
+//       color: darken($background_color_main, 10%);
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+a.clientresult{display:block; margin:0 auto; clear: both; width:90%; height:50px; }
+
+.resultblocks{
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  display:inline-block;
+  width:25%;
+  height:50px;
+  float:left;
+  border: $standard_border;
+  text-align:left;
+  background:$resultblocks_background;
+  font-size:$font_size_p;
+}
+.resultblocks.title{font-size:14px; font-weight:bold; background:$resultblocks_title_background;}
+.resulttext{display: table-cell; height: 50px; padding: 0 20px; vertical-align: middle; color:$font_color_standard;}
+.phonenumberresult{ }
+.lastnameresult{}
+.firstnameresult{}
+
+/*clientSearchView:*/
+#feedback{
+  color: $test_red;
+  }
+
+.client{
+  text-transform: uppercase;
+  }
+
+/*from ResultsView.coffee put here to clean code:*/
+table.results th.header, table.results td{
+  font-size:150%;
+}
+
+/*from ScanBarcodeView:*/
+#feedback{
+  color: $test_red;
+}
+
+.client{
+  text-transform: uppercase;
+}
+/*from ReportView:*/
+.dissaggregatedResults{
+  display: none;
+}
+
+/*from help:*/
+.helpMessage{display:block}
+
+.textArea{}
+textarea:focus, input:focus{
+  outline: none;
+  -webkit-tap-highlight-color: $standard_border_focus_color;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
+textarea {height:100px; font-size:$font_size_text_area; color:$font_color_text_area; padding:10px; margin-top:10px; margin-bottom:10px;}
+
+/*images on design form page that are icons:*/
+.designIcons{}
+
+#design-view{display:block;}
+
+/*.ui-btn-inner.ui-btn-corner-all{background:red;}
+
+label[type=checkbox]{background:red;}*/
+
+
+
+
+
+//FORMS CSS:
+.formHeader{display:block; width:100%; background:$form_header_color; padding:10px 0; border-top:$standard_border;}
+/*buttons for yes/no*/
+label{display:block; clear:both; width:$label_width; max-width:$label_max_width;
+  text-align:left; margin:20px auto 0px auto;
+  color:$font_color_label;
+} //CHECK WHAT THIS IS< NOT SURE
+/*questions specifically above the radio buttons:*/
+label[type=radio]{margin-top:60px; } /*just thinking through tablet/phone sizes and readability, not sure if this css works*/
+/*yes/no and optional choice selector buttons:*/
+label.radio {
+  border-radius:8px;
+  display:block;
+  padding:15px 0px;
+  border: 1px solid $standard_border_color;
+  cursor: pointer;
+  text-decoration: none;
+  margin:10px auto 5px auto;
+  text-align:center;
+  }
+ input{
+  margin-top:20px;
+  margin-bottom:50px;
+  border: solid 1px $standard_border_color;
+  color:$font_color_input;  //control this color
+  transition: box-shadow 0.3s, border 0.3s;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  padding: 10px;
+  width:$input_width;
+  max-width:$input_max_width;
+  font-size:$font_size_input;
+}
+input:focus{ outline:none;
+  border: solid 2px $standard_border_color;
+}
+
+/*this just hides the little radio circle on the button/labels:*/
+input[type=radio]{display:none; visibility:hidden;
+}
+
+/*selected state color change:*/
+input[type=radio]:checked + label.radio {
+  background: #5393c5;
+  background-image: -webkit-gradient(linear,left top,left bottom,from(#5393c5),to(#6facd5));
+  background-image: -webkit-linear-gradient(#5393c5,#6facd5);
+  background-image: -moz-linear-gradient(#5393c5,#6facd5);
+  background-image: -ms-linear-gradient(#5393c5,#6facd5);
+  background-image: -o-linear-gradient(#5393c5,#6facd5);
+  background-image: linear-gradient(#5393c5,#6facd5);
+  }
+
+ input[type="autocomplete from list"], input[type="autocomplete from previous entries"], input[type="text"]{
+  text-align:left;
+}
+input[type="autocomplete from list"]{margin-bottom:0px;}
+
+input[type="text"]:focus, input[type="text"].focus, input[type="autocomplete from list"]:focus, input[type="autocomplete from list"].focus,
+input[type="autocomplete from previous entries"]:focus, input[type="autocomplete from previous entries"].focus {
+  /*border: solid 2px rgba(200,0,150,.9); box-shadow: 0 0 0px 0px #969696;*/
+}
+
+input[type=number]{ width:$number_input_width; font-size:20px; text-align:center; }
+
+
+/*come back to this: how are numbers selected on tablet?*/
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  cursor:pointer;
+  display:block;
+  width:25px;
+  height:50px;
+  text-align:center;
+  position:relative;
+  text-align:center;
+}
+
+//THIS JUST CONTROLS THE NUMBER UP/DOWN BUTTONS:
+input[type=number]::-webkit-inner-spin-button:before,
+input[type=number]::-webkit-inner-spin-button:after {
+  background:$extra_light_gray;
+  border:solid 1px $standard_border_color;
+  content: "^";
+  position:absolute;
+  right: -10px;
+  font-family:monospace;
+  width:24px;
+  height:23px;
+  font-size:32px; font-weight:lighter;
+  color:$font_color_input;
+}
+input[type=number]::-webkit-inner-spin-button:before {
+  top:1px;
+}
+input[type=number]::-webkit-inner-spin-button:after {
+  bottom:1px;
+  -webkit-transform: rotate(180deg);
+}
+
+/*BUTTONS:*/
+input[type=submit], label[type=checkbox], input[type=button], button {display:block; width:$button_width;
+  height:$button_height; background:$button_color; color:$button_text_color;
+  cursor:pointer; border:$button_border; margin:10px auto; border-radius:$button_border_radius; }
+input[type=submit]>span, label[type=checkbox]>span{}
+input[type=submit]:focus, label[type=checkbox]:focus,input[type=button]:focus, button:focus  {background:$button_color_focus; color:$button_focus_text_color;border:$button_border_focus;
+}
+
+label[type=checkbox] span{
+// make these centered
+}
+
+/*AUTOCOMPLETE LISTS: Make these less ridiculous, they should have real class names*/
+ul.ui-listview{background:$autocomplete_background_color; list-style:none; width:$autocomplete_width;
+  max-width:$autocomplete_max_width; display:block; margin:0 auto; padding:0px;}
+li.ui-btn{border: $standard_border; }
+/*li.ui-btn .ui-btn-inner.ui-btn-inner.ui-li.ui-corner-top {color:red;}*/
+/*li.ui-btn>div>div a{color:red;}*/
+.ui-btn-text a{
+  display:block; color: $button_text_color;
+  padding:15px 0 15px 0; margin:0px auto 0 auto; width:$autocomplete_width; }
+  span.ui-icon{display:none;}
+
+.message{
+  // color: grey;
+  // font-weight: bold;
+  padding: 10px;
+  border: 1px $message_yellow dotted;
+  background: $message_yellow;
+  display: none;
+}
+
+
+/*for example the message that says Saving . .  . over the form after an answer is submitted*/
+.hoveringMessage{position:fixed; top:0px; color:$font_color_saving_message; background: $saving_message_background;
+  padding:25px 0px; display:none; z-index:$z_middle; width:100%; margin-top:0px;}
+
+
+
+
+.designControls{display:block; background:$light_gray; width:100%; height:200px;}
+
+.aQuestion{display:block; width:100%; height:auto; margin:50px 0 0 0;}
+.questionInfo{display:block; height:30px; margin:0px auto; width:700px; text-align:left; background:$light_gray;}
+.questionType{display:inline-block; width:auto; font-size:13px; margin:10px 25px 0 10px;  }
+.requiredOrNot{display:inline-block; width:50px; font-size:13px; color:$font_color_standard; text-align:left; margin:10px 0 0 0;}
+input.requiredOrNot{width:20px; height:5px; margin-top:10px;vertical-align: top;}
+.deleting{display:inline-block; float:right; width:90px; margin:10px 10px 0 0;}
+label.deleteButton{font-size:13px; float:left; display:inline; margin:0px; width:60px;}
+button.deleteButton{display:inline;  width:20px; height:20px; float:left; margin:0px;}
+button.deleteButton img{height:10px; width:10px; margin-top:0px;}
+label.questionText{ /*display:block;*/ margin:0 auto; max-width:700px;}
+input.designFormTextInput{width:700px; max-width:700px; margin-bottom:0px; margin-top:5px;}
+
+.advancedOptions{width:700px; height:auto; background:$light_gray; margin:0 auto; padding:10px 0 35px 0;}
+.advanced{ font-size:13px; color:$font_color_standard; }
+.advanced-hidden{display:none;}
+.advanced-visible{display:block;}
+
+label.advanced{max-width:600px; width:600px; display:block; margin:0px auto; padding:15px 0px 5px 0px;}
+textarea.advanced{height:20px; width:600px; display:block; margin:0 auto; padding:0px;}
+
+
+
+
+button.designActionsButton{display:inline-block; width:150px; height:30px; border-radius:$button_border_radius;
+  background:$button_color; color:$button_text_color;
+  border:$button_border; font-size:14px; margin:10px 5px;}
+button.designActionsButton.addButton{margin-bottom:50px; }
+
+/*select{font-size:20px; padding:30px; background:white; border:solid 1px #666; width:300px;}
+*/
+select:focus{outline:none;font-size:20px;}
+
+
+
+
+form#render{display:block; background:white; z-index:100; padding:50px 0 50px 0;  margin:0 auto; width:800px  ;}
+
+.instructions{width:500px; margin:15px auto;}
+
+
+
+
+
+
+
+.disabled_skipped
+{
+  display: none;
+}
+
+.question
+{
+  margin-bottom: 1em;
+  padding-bottom: 2em;
+  border-top: 1px dotted $standard_border_color;
+  padding-top: 2em;
+}
+
+/*.question.label
+{
+  border-bottom: 0;
+  padding-top: 1em;
+  font-weight: bold;
+}*/
+
+.question.checkbox
+{
+  border-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/*.question.group
+{
+  margin-bottom: 0 !important;
+  border-bottom: 0 !important;
+  border-top: 0 !important;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// #content{display:inline-block; float:left;}
+
+
+//MAIN NAVIGATION
+// #footer-menu{
+//   display:block; width:100%; height:40px; background:$footer_color; padding-bottom:0px;  //there may be more styling in the html somewhere, check
+//   text-align:left;overflow:hidden; padding-top:5px;
+// }
+// #footer-menu span{display:block; width:auto; height:auto; margin-right:20px; vertical-align:middle;
+//   font-size:12px;color:$font_color_footer; }
+
+// #footer-menu span.brand{font-size:16px; float:left;}
+// #footer-menu span.tinyfont, #footer-menu span.tinyfont span{font-size:7px;}
+
+button.menuburger{
+  background-color:$light_gray; background-image: url(../images/burger.png); background-size: 30px 30px;
+  background-repeat: no-repeat;
+  // display:inline-block; float:left;
+  display:block; position:absolute; left:5px; top:5px; z-index:100;
+  width:30px; height:30px; padding:0px; margin:0px 10px 0 5px; }
+button.menuburger:focus, button.menuburger:active{border:none;}
+button.menuburger.menuisopen{  background-image: url(../images/burger_focus.png);border:none;}
+
+
+nav{color:$font_color_main_menu;
+  background:$menu_background_color;
+// background-image: url(../images/clouds.jpg);
+// background-size:100% auto;
+// background-repeat: no-repeat;
+  width:100%; height:335px; }
+nav.main-nav>a, nav.main-nav>span{display:block; width:inherit; height:35px;
+  border-bottom:$menu_elements_border_right; color:$main_menu_border_color; padding-top:20px; font-size:$font_size_main_menu;}
+
+// nav.main-nav a span{display:block;
+//   width:inherit;
+//   margin:auto; color:$main_menu_border_color; margin-top:15px; font-size:$font_size_main_menu;}
+// nav.main-nav a:last-child {
+//     border-right:none;
+// }
+
+nav.main-nav.open{display:block;}
+nav.main-nav.closed{display:none;}
+
+
+.aa-header{
+  display:block;
+  height:70px; length:100%; background:$header_color; /*this is new and conditional*/
+  padding:0px;
+  border-top:$standard_border;
+}
+
+// .aa-header.shrunkheader{height:20px; overflow:hidden;}
+
+// this is when you sync and get messaging
+// #log{position:fixed; right:0px; color:$font_color_saving_message; background: $saving_message_background;
+//   padding:25px 0px; display:none; z-index:$z_middle; width:100%; height:300px; overflow:hidden;}
+
+.mini-dashboard{display:block; background:$background_color_section; width:100%; height:70px;
+  padding:15px; z-index:200;}
+.mini-dashboard.fixed{position:fixed; top:0px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//things i may want from jquery mobile:
+/* loading icon */
+// .ui-icon-loading {
+//   background: url(../images/ajax-loader.gif);
+//   background-size: 46px 46px;
+// }
+/* loading screen */
+// .ui-loading .ui-loader { display: block; }
+// .ui-loader { display: none; z-index: 9999999; position: fixed; top: 50%; box-shadow: 0 1px 1px -1px #fff; left: 50%; border:0; }
+// .ui-loader-default { background: none; opacity: .18; width: 46px; height: 46px; margin-left: -23px; margin-top: -23px; }
+// .ui-loader-verbose { width: 200px; opacity: .88; height: auto; margin-left: -110px; margin-top: -43px; padding: 10px; }
+// .ui-loader-default h1 { font-size: 0; width: 0; height: 0; overflow: hidden; }
+// .ui-loader-verbose h1 { font-size: 16px; margin: 0; text-align: center; }
+// .ui-loader .ui-icon { background-color: #000; display: block; margin: 0; width: 44px; height: 44px; padding: 1px; -webkit-border-radius: 36px; -moz-border-radius: 36px; border-radius: 36px; }
+// .ui-loader-verbose .ui-icon { margin: 0 auto 10px; opacity: .75; }
+// .ui-loader-textonly { padding: 15px; margin-left: -115px;  }
+// .ui-loader-textonly .ui-icon { display: none; }
+// .ui-loader-fakefix { position: absolute; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* jQuery Mobile Framework : plugin to provide a date and time picker.
+ * Copyright (c) JTSage
+ * CC 3.0 Attribution.  May be relicensed without permission/notification.
+ * https://github.com/jtsage/jquery-mobile-datebox
+ */
+
+
+/* Base input element Styles */
+.ui-input-datebox { width: 97%; background-image: none; padding: .4em; line-height: 1.4; font-size: 16px; display: block; padding-top: 0px; padding-bottom: 0px; }
+.ui-input-datebox { min-height: 38px; }
+.ui-input-datebox .ui-btn-icon-notext { margin-top: 5px !important; margin-bottom: 5px !important; }
+.ui-input-datebox input { width: 100% !important; padding: 0 !important; margin-top: 5px !important; margin-right: -40px !important; border: 1px solid transparent !important; vertical-align: middle; display: inline-block !important; background-color: transparent; zoom: 1; *display: inline; }
+.ui-input-datebox input:focus { outline: none;}
+.ui-input-datebox .ui-btn-text {display: none;}
+
+@media all and (min-width: 450px){
+  .ui-input-datebox { width: 60%; display: inline-block; zoom:1; *display: inline; }
+}
+
+
+/* Calendar Mode Styles */
+.ui-datebox-gridheader { text-align: center; }
+.ui-datebox-gridheader h4 { text-align: center; display: inline-block; margin-top: 10px; margin-bottom: 10px; zoom:1; *display: inline;}
+.ui-datebox-gridplus { float: right; }
+.ui-datebox-gridminus { float: left; }
+.ui-datebox-gridplus-rtl { float: left; }
+.ui-datebox-gridminus-rtl { float: right; }
+.ui-datebox-gridrow { margin-left: 5px; margin-right: 5px; }
+.ui-datebox-grid { clear: both; margin-bottom: 5px; }
+.ui-datebox-griddate { width: 70px; height: 58px; display: inline-block; vertical-align: middle; text-align: center; line-height: 60px; font-weight: bold; font-size: 24px; zoom:1; *display: inline;}
+.ui-datebox-griddate { width: 63px; height: 58px; display: inline-block; vertical-align: middle; text-align: center; line-height: 60px; font-weight: bold; font-size: 24px; zoom:1; *display: inline;}
+.ui-datebox-griddate-empty { border: 1px solid transparent; color: #888; }
+.ui-datebox-griddate-label { height: 15px !important; line-height: 15px !important; color: black;}
+.ui-datebox-griddate-disable { color: $font_color_standard; }
+
+
+/* Android Mode Styles */
+.ui-datebox-header h4 { margin-top: 5px; margin-bottom: 5px; text-align: center; }
+.ui-datebox-controls { text-align: center; }
+.ui-datebox-controls div { width: 102px; text-align: center; display: inline-block; zoom: 1; *display: inline;}
+.ui-datebox-scontrols { text-align: center; }
+.ui-datebox-scontrols div { width: 55px; text-align: center; display: inline-block; zoom: 1; *display: inline;}
+.ui-datebox-scontrols .ui-datebox-sinput { width: 68px; }
+.ui-datebox-scontrols .ui-datebox-sinput input { width: 48px; text-align: center; margin-left: 3px; }
+.ui-datebox-input { width: 109px !important; margin-left: 1px; margin-right: 1px; text-align: center !important; display: inline-block !important; zoom:1; *display: inline; }
+
+
+/* Slide Mode Styles */
+.ui-datebox-slide { width: 562px; margin-left: auto; margin-right: auto;}
+.ui-datebox-sliderow-d { margin-bottom: 5px; text-align: center; height: 40px; width: 562px; overflow: hidden;}
+.ui-datebox-sliderow-ym { margin-bottom: 5px; text-align: center; height: 32px; width: 562px; overflow: hidden;}
+.ui-datebox-sliderow-hi { text-align: center; height: 32px; width: 562px; overflow: hidden;}
+.ui-datebox-sliderow-int { display: inline-block; white-space: nowrap;}
+.ui-datebox-slideyear { text-align: center; display: inline-block; zoom:1; *display:inline; width: 84px; vertical-align: middle; line-height: 30px; height: 30px; font-size: 14px; font-weight: bold; }
+.ui-datebox-slidemonth { text-align: center; display: inline-block; zoom:1; *display:inline; width: 51px; vertical-align: middle; line-height: 30px; height: 30px; font-size: 12px; font-weight: bold; }
+.ui-datebox-slideday { text-align: center; display: inline-block; zoom:1; *display:inline; width: 32px; vertical-align: middle; line-height: 20px; height: 38px; font-size: 14px; font-weight: bold; }
+.ui-datebox-slidehour { text-align: center; display: inline-block; zoom:1; *display:inline; width: 32px; vertical-align: middle; line-height: 22px; height: 24px; font-size: 14px; font-weight: bold; }
+.ui-datebox-slidemins { text-align: center; display: inline-block; zoom:1; *display:inline; width: 32px; vertical-align: middle; line-height: 22px; height: 24px; font-size: 14px; font-weight: bold; }
+.ui-datebox-slidearrow { text-align: center; display: inline-block; zoom:1; *display:inline; width: 10px; vertical-align: middle; line-height: 38px; height: 38px; font-size: 10px; font-weight: bold; }
+.ui-datebox-slidewday { font-size: 10px; font-weight: normal; }
+
+
+/* Flip Mode Styles */
+.ui-datebox-flipcontent { text-align: center; height: 125px; margin-bottom: -40px;}
+.ui-datebox-flipcontent div { margin-left: 3px; margin-right: 3px; width: 77px; height: 120px; display: inline-block; text-align: center; zoom: 1; *display: inline; overflow: hidden;}
+.ui-datebox-flipcenter { border: 1px solid #eee; height: 40px; margin-left: 10px; width: 260px; margin-right: auto; margin-left: auto; position: relative; top: -45px;}
+.ui-datebox-flipcontent ul { list-style-type: none; display: inline; }
+.ui-datebox-flipcontent li { height: 30px; }
+.ui-datebox-flipcontent li span { margin-top: 7px; display: block; }
+
+
+/* Shared Styles */
+.ui-datebox-container { border: 5px solid #111 !important; width: 562px; }
+.ui-datebox-screen { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; }
+.ui-datebox-screen-modal { background-color: black; -moz-opacity: 0.8; opacity:.80; filter: alpha(opacity=80); }
+.ui-datebox-hidden { display: none; }
+.ui-dialog .ui-datebox-container { border: none !important; }
+.ui-datebox-collapse a { display: inline-block; width: 45%; }
+
+.ui-datebox-inline { margin-top: 5px; border: 5px solid #111111 !important; margin-left: auto; margin-right: auto; text-align: center; }
+.ui-datebox-inlineblind { margin-top: 5px; border: 5px solid #111111 !important; margin-left: auto; margin-right: auto; text-align: center; }
+
