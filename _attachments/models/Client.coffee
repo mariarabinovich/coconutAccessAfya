@@ -11,31 +11,16 @@ class Client
       resultDoc = resultDoc.toJSON() if resultDoc.toJSON?
 
       if resultDoc.question
-        @clientID ?= resultDoc["caseid"]
+        @clientID ?= resultDoc.clientID
         @availableQuestionTypes.push resultDoc.question
         this[resultDoc.question] = [] unless this[resultDoc.question]?
         this[resultDoc.question].push resultDoc
-      else if resultDoc.source
-        @clientID ?= resultDoc["IDLabel"]
-        @availableQuestionTypes.push resultDoc["source"]
-        this[resultDoc["source"]] = [] unless this[resultDoc["source"]]?
-        this[resultDoc["source"]].push resultDoc
 
+    @availableQuestionTypes = _(@availableQuestionTypes).uniq()
     @sortResultArraysByCreatedAt()
 
-  clientResultsSortedMostRecentFirst: () =>
-    _(@clientResults).sortBy (result) ->
-      result.fDate or result.VisitDate or result.lastModifiedAt
-    .reverse()
-
-  sortResultArraysByCreatedAt: () =>
-    #TODO test with real data
-    _.each @availableQuestionTypes, (resultType) =>
-      @[resultType] = _.sortBy @[resultType], (result) ->
-        result.createdAt
-
   fetch: (options) ->
-    $.couch.db(Coconut.config.database_name()).view "#{Coconut.config.design_doc_name()}/clients",
+    $.couch.db(Coconut.config.database_name()).view "#{Coconut.config.design_doc_name()}/resultsByClientID",
       key: @clientID
       include_docs: true
       success: (result) =>
@@ -49,6 +34,18 @@ class Client
     _.each @availableQuestionTypes, (question) =>
       returnVal[question] = this[question]
     return returnVal
+
+  clientResultsSortedMostRecentFirst: () =>
+    _(@clientResults).sortBy (result) ->
+      result.fDate or result.VisitDate or result.lastModifiedAt
+    .reverse()
+
+  sortResultArraysByCreatedAt: () =>
+    #TODO test with real data
+    _.each @availableQuestionTypes, (resultType) =>
+      @[resultType] = _.sortBy @[resultType], (result) ->
+        result.createdAt
+
 
   flatten: (availableQuestionTypes = @availableQuestionTypes) ->
     returnVal = {}
@@ -95,12 +92,6 @@ class Client
           options.success(results) if count >= results.length
     return results
 
-  tblDemographyResultsOrClientDemographicResults: =>
-    _.compact((@["tblDemography"] || []).concat(@["Client Demographics"]))
-
-  tblSTIOrClinicalVisitResults: =>
-    _.compact((@["tblSTI"] || []).concat(@["Clinical Visit"]))
-
   mostRecentValue: (resultType,question) =>
     returnVal = null
     if @[resultType]?
@@ -108,42 +99,7 @@ class Client
       for result in sortedValues
         returnVal = result[question]
         break if returnVal? and returnVal != ""
-        # Handle inconsistent field naming
-        if resultType is "tblDemography" or resultType is "tblSTI"
-          returnVal = result[question.humanize()]
-          break if returnVal? and returnVal != ""
-          returnVal = result[question.toLowerCase()]
-          break if returnVal? and returnVal != ""
     return returnVal
-
-  mostRecentValueFromMapping: (mappings) =>
-    returnVal = null
-    for map in mappings
-      returnVal = @mostRecentValue(map.resultType,map.question)
-      if returnVal?
-        if map.postProcess?
-          returnVal = map.postProcess(returnVal)
-        break
-    return returnVal
-
-
-  mostRecentValueFromResultType: (resultType1,question1,resultType2,question2) ->
-    @mostRecentValueFromMapping [
-      {
-        resultType: resultType1
-        question: question1
-      }
-      {
-        resultType: resultType2
-        question: question2
-      }
-    ]
-
-  mostRecentValueFromClientDemographicOrTblDemography: (question1,question2) ->
-    @mostRecentValueFromResultType("Client Demographics",question1,"tblDemography",question2)
-
-  mostRecentValueFromClinicalVisitOrTblSTI: (question1,question2) ->
-    @mostRecentValueFromResultType("Clinical Visit",question1,"tblSTI",question2)
 
   allUniqueValues: (resultType, question, postProcess = null) =>
     if @[resultType]?
@@ -157,33 +113,6 @@ class Client
       .unique()
       .compact()
       .value()
-
-  allUniqueValuesFromMapping: (mappings) =>
-    _.chain(@[resultType])
-    .map (result) ->
-      @allUniqueValues(map.resultType,map.question,map.postProcess)
-    .flatten()
-    .unique()
-    .compact()
-    .value()
-
-  allUniqueValuesFromResultType: (resultType1,question1,resultType2,question2) ->
-    @allUniqueValuesFromMapping [
-      {
-        resultType: resultType1
-        question: question1
-      }
-      {
-        resultType: resultType2
-        question: question2
-      }
-    ]
-
-  allUniqueValuesFromClientDemographicAndTblDemography: (question1,question2) ->
-    @allUniqueValuesFromResultType("Client Demographics",question1,"tblDemography",question2)
-
-  allUniqueValuesFromClinicalVisitAndTblSTI: (question1,question2) ->
-    @allUniqueValuesFromResultType("Clinical Visit",question1,"tblSTI",question2)
 
   allQuestionsWithResult: (resultType, questions, resultToMatch, postProcess = null) ->
     if @[resultType]?
@@ -232,45 +161,11 @@ class Client
       .compact()
       .value()
 
-  hasClientDemographics: ->
-    return @["Client Demographics"]? and @["Client Demographics"].length > 0
-
-  hasTblDemography: ->
-    return @['tblDemography']? and @['tblDemography'].length > 0
-    
-  hasDemographicResult: ->
-    return @hasClientDemographics() || @hasTblDemography()
-
   mostRecentClinicalVisit: ->
     if @["Clinical Visit"]?
       _.max(@["Clinical Visit"], (result) ->
         moment(result["createdAt"]).unix()
       )
-
-  mostRecentTblSTI: ->
-    if @["tblSTI"]?
-      # Need to parse the date and turn into timestamp
-      return _.max(@["Clinical Visit"], (result) -> moment(result["Visit Date"]).unix())
-
-  initialVisitDate: ->
-    postProcess = (value) ->
-      moment(value)?.format(Coconut.config.get("date_format"))
-    @mostRecentValueFromMapping [
-      {
-        resultType: "Client Demographics"
-        question: "createdAt"
-        postProcess: postProcess
-      }
-      {
-        resultType: "tblDemography"
-        question: "fDate"
-        postProcess: postProcess
-      }
-    ]
-
-  dateFromDateQuestions: (resultType,postfix) ->
-    #_.keys
-    #dateQuestions.yearOfBirth
 
   calculateAge: (birthDate, onDate = new Date()) ->
       # From http://stackoverflow.com/questions/4060004/calculate-age-in-javascript
@@ -303,60 +198,3 @@ class Client
       else
         #TODO calculate this based on date that age was recorded
         return @mostRecentValue "tblDemography", "Age"
-
-  hivStatus: ->
-    #TODO should be checking test dates and using that as the basis for the most recent result
-    console.log "HIV Status"
-    @mostRecentValueFromMapping [
-      {
-        resultType: "Clinical Visit"
-        question: "ResultofHIVtest"
-      }
-      {
-        resultType: "Clinical Visit"
-        question: "WhatwastheresultofyourlastHIVtest"
-      }
-      {
-        resultType: "tblSTI"
-        question: "HIVTestResult"
-      }
-    ]
-
-  onArt: ->
-    #TODO map 2 to something
-    @mostRecentValueFromClinicalVisitOrTblSTI("AreyoucurrentlytakingARV","ARVTx")
-
-  lastBloodPressure: ->
-    systolic = @mostRecentValueFromClinicalVisitOrTblSTI("SystolicBloodPressure","BPSystolic")
-    diastolic = @mostRecentValueFromClinicalVisitOrTblSTI("DiastolicBloodPressure","BPDiastolic")
-
-    if systolic? and diastolic?
-      return "#{systolic}/#{diastolic}"
-    else
-      return "-"
-
-  allergies: ->
-    _.union(
-      @allQuestionsMatchingNameWithYesResult("Clinical Visit", "Allergy", (question) -> question.replace(/Allergyto/,""))
-      @allUniqueValues("tblSTI","Allergies")
-    ).join(", ")
-
-  complaintsAtPreviousVisit: ->
-    mostRecentClinicalVisit = @mostRecentClinicalVisit()
-    if mostRecentClinicalVisit?
-      return @allAnswersMatchingQuestionNameForResult(mostRecentClinicalVisit, /Complaint/i).join(", ")
-
-    mostRecentTblSTI = @mostRecentTblSTI()
-    if mostRecentTblSTI?
-      #TODO handle symptom mappings
-      return @allAnswersMatchingQuestionNameForResult(mostRecentTblSTI, "Symptom").join(", ")
-
-  treatmentGivenAtPreviousVIsit: ->
-    mostRecentClinicalVisit = @mostRecentClinicalVisit()
-    if mostRecentClinicalVisit?
-      return @allAnswersMatchingQuestionNameForResult(mostRecentClinicalVisit, "Treatment").join(", ")
-
-    mostRecentTblSTI = @mostRecentTblSTI()
-    if mostRecentTblSTI?
-      #TODO handle mappings
-      return @allAnswersMatchingQuestionNameForResult(mostRecentTblSTI, "Treat").join(", ")

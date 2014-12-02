@@ -13,7 +13,7 @@ class Router extends Backbone.Router
     "search/client": "clientSearch"
     # "new/result": "clientLookup"
     # "new/result/:question_id": "clientLookup"
-    # "new/result/:question_id/:client_id": "newResult"
+    "new/result/:question_id/:client_id": "newResult"
     "new/result/Client Registration/:lastName": "newClient"
     "edit/result/:result_id": "editResult"
     "delete/result/:result_id": "deleteResult"
@@ -264,18 +264,18 @@ class Router extends Backbone.Router
         Coconut.manageView.render()
 
 
-  # newResult: (question_id,client_id) ->
-  #   throw "New results require a client id" unless client_id?
-  #   @userLoggedIn
-  #     success: ->
-  #       Coconut.questionView ?= new QuestionView()
-  #       Coconut.questionView.result = new Result
-  #         question: unescape(question_id)
-  #         ClientID: unescape(client_id)
-  #       Coconut.questionView.model = new Question {id: unescape(question_id)}
-  #       Coconut.questionView.model.fetch
-  #         success: ->
-  #           Coconut.questionView.render()
+  newResult: (question_id,client_id) ->
+    throw "New results require a client id" unless client_id?
+    @userLoggedIn
+      success: ->
+        Coconut.questionView ?= new QuestionView()
+        Coconut.questionView.result = new Result
+          question: unescape(question_id)
+          ClientID: unescape(client_id)
+        Coconut.questionView.model = new Question {id: unescape(question_id)}
+        Coconut.questionView.model.fetch
+          success: ->
+            Coconut.questionView.render()
 
   newClient: (lastName) ->
     @userLoggedIn
