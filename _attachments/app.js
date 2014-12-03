@@ -18,6 +18,7 @@ Router = (function(_super) {
     "show/customResults/:question_id": "showCustomResults",
     "show/results/:question_id": "showResults",
     "search/client": "clientSearch",
+    "new/result/:question_id/:client_id": "newResult",
     "new/result/Client Registration/:lastName": "newClient",
     "edit/result/:result_id": "editResult",
     "delete/result/:result_id": "deleteResult",
@@ -128,16 +129,18 @@ Router = (function(_super) {
         Coconut.clientSummary.client = new Client({
           clientID: clientID
         });
+        console.log(Coconut.clientSummary.client);
         return Coconut.clientSummary.client.fetch({
           success: function() {
-            if (Coconut.clientSummary.client.hasDemographicResult()) {
+            console.log(Coconut.clientSummary.client);
+            if (Coconut.clientSummary.client.hasBeenRegistered()) {
               return Coconut.clientSummary.render();
             } else {
               return Coconut.router.navigate("/new/result/Client Demographics/" + clientID, true);
             }
           },
-          error: function() {
-            throw "Could not fetch or create client with " + clientID;
+          error: function(error) {
+            throw "Could not fetch or create client with " + clientID + ": " + (JSON.stringify(error));
           }
         });
       }
@@ -370,6 +373,31 @@ Router = (function(_super) {
           Coconut.manageView = new ManageView();
         }
         return Coconut.manageView.render();
+      }
+    });
+  };
+
+  Router.prototype.newResult = function(question_id, client_id) {
+    if (client_id == null) {
+      throw "New results require a client id";
+    }
+    return this.userLoggedIn({
+      success: function() {
+        if (Coconut.questionView == null) {
+          Coconut.questionView = new QuestionView();
+        }
+        Coconut.questionView.result = new Result({
+          question: unescape(question_id),
+          ClientID: unescape(client_id)
+        });
+        Coconut.questionView.model = new Question({
+          id: unescape(question_id)
+        });
+        return Coconut.questionView.model.fetch({
+          success: function() {
+            return Coconut.questionView.render();
+          }
+        });
       }
     });
   };

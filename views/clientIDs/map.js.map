@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "map.js",
+  "sourceRoot": "../..",
+  "sources": [
+    "views/clients/map.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA,CAAA,SAAC,QAAD,GAAA;AACE,EAAA,IAA0B,QAAQ,CAAC,QAAT,KAAqB,qBAA/C;WAAA,IAAA,CAAK,QAAQ,CAAC,GAAd,EAAkB,IAAlB,EAAA;GADF;AAAA,CAAA,CAAA,CAAA"
+}
