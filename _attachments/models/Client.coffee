@@ -26,8 +26,8 @@ class Client
       success: (result) =>
         @loadFromResultDocs(_.pluck(result.rows, "doc"))
         options?.success()
-      error: =>
-        options?.error()
+      error: (error) =>
+        options?.error(error)
 
   toJSON: =>
     returnVal = {}
@@ -198,3 +198,7 @@ class Client
       else
         #TODO calculate this based on date that age was recorded
         return @mostRecentValue "tblDemography", "Age"
+
+
+  hasBeenRegistered: =>
+    @["Client Registration"]?

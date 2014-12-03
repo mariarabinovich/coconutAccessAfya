@@ -96,14 +96,16 @@ class Router extends Backbone.Router
         Coconut.clientSummary ?= new ClientSummaryView()
         Coconut.clientSummary.client = new Client
           clientID: clientID
+        console.log Coconut.clientSummary.client
         Coconut.clientSummary.client.fetch
           success: ->
-            if Coconut.clientSummary.client.hasDemographicResult()
+            console.log Coconut.clientSummary.client
+            if Coconut.clientSummary.client.hasBeenRegistered()
               Coconut.clientSummary.render()
             else
               Coconut.router.navigate("/new/result/Client Demographics/#{clientID}",true)
-          error: ->
-            throw "Could not fetch or create client with #{clientID}"
+          error: (error) ->
+            throw "Could not fetch or create client with #{clientID}: #{JSON.stringify error}"
 
   userLoggedIn: (callback) ->
     User.isAuthenticated
