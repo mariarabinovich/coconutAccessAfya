@@ -10,39 +10,52 @@ ClientSummaryView = (function(_super) {
   function ClientSummaryView() {
     this.renderResult = __bind(this.renderResult, this);
     this.render = __bind(this.render, this);
+    this.changeQuestionSet = __bind(this.changeQuestionSet, this);
+    this.startVisit = __bind(this.startVisit, this);
+    this.editclientInfo = __bind(this.editclientInfo, this);
     return ClientSummaryView.__super__.constructor.apply(this, arguments);
   }
 
   ClientSummaryView.prototype.el = '#content';
 
+  ClientSummaryView.prototype.events = {
+    "click .startVisit": "startVisit",
+    "click .editClientInfo": "editclientInfo"
+  };
+
+  ClientSummaryView.prototype.editclientInfo = function() {
+    console.log('alskdfj');
+    Coconut.menuView.renderForClientInfo(this.client);
+    return document.location.href = "#edit/result/" + this.client.clientID;
+  };
+
+  ClientSummaryView.prototype.startVisit = function() {
+    Coconut.menuView.renderForClientVisit(this.client);
+    return document.location.href = "#new/result/Vitals/" + this.client.clientID;
+  };
+
+  ClientSummaryView.prototype.changeQuestionSet = function(newQuestionSet) {
+    return document.location.href = newQuestionSet;
+  };
+
   ClientSummaryView.prototype.render = function() {
     var data;
     console.log(this.client);
-    this.$el.html("<h1>Client " + this.client.clientID + "</h1> <a href='#new/result/Clinical%20Visit/" + this.client.clientID + "'><button>New clinical visit for " + this.client.clientID + "</button></a><br/> <table> " + (data = {
-      "Initial Visit Date": this.client.initialVisitDate(),
-      "Age": this.client.currentAge(),
-      "HIV Status": this.client.hivStatus(),
-      "On ART": this.client.onArt(),
-      "Last Blood Pressure": this.client.lastBloodPressure(),
-      "Allergies": this.client.allergies(),
-      "Complaints at Previous Visit": this.client.complaintsAtPreviousVisit(),
-      "Treatment Given at Previous Visit": this.client.treatmentGivenAtPreviousVIsit()
+    Coconut.menuView.renderForClient(this.client);
+    this.$el.html("<div class='aSection'> <table class='patientInfo'> <thead><th colspan='2'>Please ask the client if this information is up to date</th></thead> <tbody> " + (data = {
+      "Age": "Age",
+      "Gender": "Gender",
+      "Allergies": "Allergies",
+      "Known Issues": "Known Issues",
+      "Membership status": "Membership status"
     }, _.map(data, function(value, property) {
       return "<tr> <td> " + property + " </td> <td> " + value + " </td> </tr>";
-    }).join("")) + " </table> <h2>Previous Visit Data</h2> <br/> " + (_.map(this.client.clientResultsSortedMostRecentFirst(), (function(_this) {
-      return function(result, index) {
-        var date, id, question;
-        date = result.createdAt || result.VisitDate || result.fDate;
-        question = result.question || result.source;
-        id = result._id || "";
-        return "" + question + ": " + date + " <button onClick='$(\"#result-" + index + "\").toggle()' type='button'>View</button> " + (result.question != null ? "<a href='#edit/result/" + id + "'><button>Edit</button></a>" : "") + " <div id='result-" + index + "' style='display: none'> " + (_this.renderResult(result)) + " </div>";
-      };
-    })(this)).join("")));
+    }).join("")) + " </tbody> <tfoot><th colspan='2'> <a class='buttonLinks sideBySideButtons editClientInfo' > Edit " + (this.client.firstName()) + "'s Contact and Basic Info</a> </th></tfoot> </table> </div> <div class='aSection'> <a class='buttonLinks sideBySideButtons startVisit' > New clinical visit for " + (this.client.firstName()) + "</a> <a class='buttonLinks sideBySideButtons startVisit' > Followup visit for " + (this.client.firstName()) + "</a> </div>");
     return $("button").button();
   };
 
   ClientSummaryView.prototype.renderResult = function(result) {
-    return "<table> <thead> <th>Property</th> <th>Value</th> </thead> <tbody> " + (_.map(result, function(value, property) {
+    return "<table class='lastVisitResults'> <thead> <th>Property</th> <th>Value</th> </thead> <tbody> " + (_.map(result, function(value, property) {
       return "<tr> <td> " + property + " </td> <td> " + value + " </td> </tr>";
     }).join("")) + " <tr> </tr> </tbody> </table>";
   };

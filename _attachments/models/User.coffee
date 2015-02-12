@@ -13,6 +13,7 @@ class User extends Backbone.Model
   login: ->
     $.cookie('current_user', @username())
     $("#user").html @username()
+    $("#cliniciansName").html @username()
     $('#district').html @get "district"
     $("a[href=#logout]").show()
     $("a[href=#login]").hide()

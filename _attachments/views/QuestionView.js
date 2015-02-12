@@ -38,14 +38,14 @@ QuestionView = (function(_super) {
     return QuestionView.__super__.constructor.apply(this, arguments);
   }
 
+  QuestionView.prototype.el = '#content';
+
   QuestionView.prototype.initialize = function() {
     if (Coconut.resultCollection == null) {
       Coconut.resultCollection = new ResultCollection();
     }
     return this.autoscrollTimer = 0;
   };
-
-  QuestionView.prototype.el = '#content';
 
   QuestionView.prototype.triggerChangeIn = function(names) {
     var elements, name, _i, _len, _results;
@@ -69,7 +69,7 @@ QuestionView = (function(_super) {
 
   QuestionView.prototype.render = function() {
     var skipperList;
-    this.$el.html("<div class='hoveringMessage' id='messageText'> Saving... </div> <div class='formHeader'> <h1>" + this.model.id + "</h1> </div> <div class='mini-dashboard'> <p>(this is a minor patient dashboard) <span>Patient Name:</span> <span>Age:</span> <span>Gender:</span> <span>Illnesses or concerns:</span> <span>Status of Registration : 32% complete</span> <span>Status of Vitals : 0% complete</span> <span>Clinical Visit : 0% complete</span> </p> </div> <div id='question-view'> <form> " + (this.toHTMLForm(this.model)) + " </form> <form action='index.html'> <input type='submit' value='Complete'> </form> </div>");
+    this.$el.html("<div class='hoveringMessage' id='messageText'> Saving... </div> <div id='question-view'> <form> " + (this.toHTMLForm(this.model)) + " </form> </div>");
     this.updateCache();
     this.updateSkipLogic();
     skipperList = [];
@@ -129,8 +129,7 @@ QuestionView = (function(_super) {
     "click #question-view button:contains(+)": "repeat",
     "click #question-view a:contains(Get current location)": "getLocation",
     "click .next_error": "runValidate",
-    "click .validate_one": "onValidateOne",
-    "click #completeForm": "completeForm"
+    "click .validate_one": "onValidateOne"
   };
 
   QuestionView.prototype.runValidate = function() {

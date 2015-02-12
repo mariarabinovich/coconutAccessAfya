@@ -35,6 +35,24 @@ class Client
       returnVal[question] = this[question]
     return returnVal
 
+  name: =>
+    @["Client Registration"][0].Firstname + " " + @["Client Registration"][0].Lastname
+
+  firstName: =>
+    @["Client Registration"][0].Firstname
+
+
+
+
+
+
+
+
+
+
+
+
+
   clientResultsSortedMostRecentFirst: () =>
     _(@clientResults).sortBy (result) ->
       result.fDate or result.VisitDate or result.lastModifiedAt
@@ -69,7 +87,7 @@ class Client
 
   Questions: ->
     _.keys(@toJSON()).join(", ")
-  
+
   resultsAsArray: =>
     _.chain @possibleQuestions()
     .map (question) =>
@@ -167,37 +185,37 @@ class Client
         moment(result["createdAt"]).unix()
       )
 
-  calculateAge: (birthDate, onDate = new Date()) ->
-      # From http://stackoverflow.com/questions/4060004/calculate-age-in-javascript
-      age = onDate.getFullYear() - birthDate.getFullYear()
-      currentMonth = onDate.getMonth() - birthDate.getMonth()
-      age-- if (currentMonth < 0 or (currentMonth is 0 and onDate.getDate() < birthDate.getDate()))
-      return age
+  # calculateAge: (birthDate, onDate = new Date()) ->
+  #     # From http://stackoverflow.com/questions/4060004/calculate-age-in-javascript
+  #     age = onDate.getFullYear() - birthDate.getFullYear()
+  #     currentMonth = onDate.getMonth() - birthDate.getMonth()
+  #     age-- if (currentMonth < 0 or (currentMonth is 0 and onDate.getDate() < birthDate.getDate()))
+  #     return age
 
-  currentAge: ->
-    if @hasClientDemographics()
-      yearOfBirth = @mostRecentValue("Client Demographics", "Whatisyouryearofbirth")
-      monthOfBirth = @mostRecentValue("Client Demographics", "Whatisyourmonthofbirth")
-      dayOfBirth = @mostRecentValue("Client Demographics", "Whatisyourdayofbirth")
-      age = @mostRecentValue("Client Demographics", "Whatisyourage")
+  # currentAge: ->
+  #   if @hasClientDemographics()
+  #     yearOfBirth = @mostRecentValue("Client Demographics", "Whatisyouryearofbirth")
+  #     monthOfBirth = @mostRecentValue("Client Demographics", "Whatisyourmonthofbirth")
+  #     dayOfBirth = @mostRecentValue("Client Demographics", "Whatisyourdayofbirth")
+  #     age = @mostRecentValue("Client Demographics", "Whatisyourage")
 
-      if yearOfBirth?
-        unless monthOfBirth?
-          monthOfBirth = "June"
-          dayOfBirth = "1"
-        unless dayOfBirth?
-          dayOfBirth = "15"
-        return @calculateAge(new Date("#{yearOfBirth}-#{monthOfBirth}-#{dayOfBirth}"))
-      else
-        return age
+  #     if yearOfBirth?
+  #       unless monthOfBirth?
+  #         monthOfBirth = "June"
+  #         dayOfBirth = "1"
+  #       unless dayOfBirth?
+  #         dayOfBirth = "15"
+  #       return @calculateAge(new Date("#{yearOfBirth}-#{monthOfBirth}-#{dayOfBirth}"))
+  #     else
+  #       return age
 
-    if @hasTblDemography()
-      birthDate = @mostRecentValue "tblDemography", "DOB"
-      if birthDate?
-        return @calculateAge(new Date(birthDate))
-      else
-        #TODO calculate this based on date that age was recorded
-        return @mostRecentValue "tblDemography", "Age"
+  #   if @hasTblDemography()
+  #     birthDate = @mostRecentValue "tblDemography", "DOB"
+  #     if birthDate?
+  #       return @calculateAge(new Date(birthDate))
+  #     else
+  #       #TODO calculate this based on date that age was recorded
+  #       return @mostRecentValue "tblDemography", "Age"
 
 
   hasBeenRegistered: =>

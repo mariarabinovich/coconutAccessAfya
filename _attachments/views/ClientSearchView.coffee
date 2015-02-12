@@ -7,16 +7,15 @@ class ClientSearchView extends Backbone.View
     "click #addClient" : "addClient"
 
 
+
   render: =>
     @$el.html "
 
 
-      <div class='aa-header' data-role='header'>
-        <h1>Find/Create Client</h1>
-      </div>
+
       <span id='feedback'></span>
       <br>
-      <div>
+      <div class='aSection'>
         <label for='client_1'>Client Last Name</label>
         <input class='client' id='client_1' type='text' name='clientlastname'>
       </div>

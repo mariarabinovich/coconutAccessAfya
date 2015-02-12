@@ -1,0 +1,76 @@
+{
+   "_id": "Labs",
+   "_rev": "28-803829ebe8e439768d3ea204f908611d",
+   "id": "Labs",
+   "questions": [
+       {
+           "id": "382",
+           "_id": "382",
+           "label": "Are labs ordered for this client?",
+           "type": "radio",
+           "radio-options": "No, Yes",
+           "validation": "",
+           "required": "false",
+           "action_on_questions_loaded": "",
+           "skip_logic": "",
+           "action_on_change": "",
+           "safeLabel": "Arelabsorderedforthisclient"
+       },
+       {
+           "id": "925",
+           "_id": "925",
+           "label": "Select first lab",
+           "type": "radio",
+           "radio-options": "Lab name 1, lab name 2, Lab name 3, Lab name 4, Lab 5",
+           "validation": "",
+           "required": "true",
+           "action_on_questions_loaded": "",
+           "skip_logic": "ResultOfQuestion('Arelabsorderedforthisclient') isnt 'Yes'",
+           "action_on_change": "",
+           "safeLabel": "Selectfirstlab"
+       },
+       {
+           "id": "36",
+           "_id": "36",
+           "label": "Select a second lab",
+           "type": "radio",
+           "radio-options": "Skip, Lab name 1, lab name 2, Lab name 3, Lab name 4, Lab 5",
+           "validation": "",
+           "required": "true",
+           "action_on_questions_loaded": "",
+           "skip_logic": "ResultOfQuestion('Arelabsorderedforthisclient') isnt 'Yes' ",
+           "action_on_change": "",
+           "safeLabel": "Selectasecondlab"
+       },
+       {
+           "id": "825",
+           "_id": "825",
+           "label": "Select a third lab",
+           "type": "radio",
+           "radio-options": "Skip, Lab name 1, lab name 2, Lab name 3, Lab name 4, Lab 5",
+           "validation": "",
+           "required": "true",
+           "action_on_questions_loaded": "",
+           "skip_logic": "ResultOfQuestion('Arelabsorderedforthisclient') isnt 'Yes' or ResultOfQuestion('Selectasecondlab') is 'Skip' ",
+           "action_on_change": "",
+           "safeLabel": "Selectathirdlab"
+       },
+       {
+           "id": "779",
+           "_id": "779",
+           "label": "Select a fourth lab",
+           "type": "radio",
+           "radio-options": "Skip, Lab name 1, lab name 2, Lab name 3, Lab name 4, Lab 5",
+           "validation": "",
+           "required": "true",
+           "action_on_questions_loaded": "",
+           "skip_logic": "ResultOfQuestion('Arelabsorderedforthisclient') isnt 'Yes' or ResultOfQuestion('Selectasecondlab') is 'Skip' or ResultOfQuestion('Selectathirdlab') is 'Skip' ",
+           "action_on_change": "",
+           "safeLabel": "Selectafourthlab"
+       }
+   ],
+   "required": "false",
+   "collection": "question",
+   "couchapp": {
+   }
+}

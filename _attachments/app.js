@@ -300,7 +300,6 @@ Router = (function(_super) {
       success: function() {
         return Coconut.questions.get(unescape(question_id)).destroy({
           success: function() {
-            Coconut.menuView.render();
             return Coconut.router.navigate("manage", true);
           }
         });
@@ -465,7 +464,6 @@ Router = (function(_super) {
             if (confirmed === "confirmed") {
               return Coconut.questionView.result.destroy({
                 success: function() {
-                  Coconut.menuView.update();
                   return Coconut.router.navigate("show/results/" + (escape(Coconut.questionView.result.question())), true);
                 }
               });
@@ -564,7 +562,7 @@ Router = (function(_super) {
         Coconut.questionView = new QuestionView();
         Coconut.menuView = new MenuView();
         Coconut.syncView = new SyncView();
-        Coconut.menuView.render();
+        Coconut.menuView.renderForNonClient();
         Coconut.syncView.update();
         return Backbone.history.start();
       },

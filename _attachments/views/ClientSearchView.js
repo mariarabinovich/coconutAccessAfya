@@ -20,7 +20,7 @@ ClientSearchView = (function(_super) {
   };
 
   ClientSearchView.prototype.render = function() {
-    this.$el.html("<div class='aa-header' data-role='header'> <h1>Find/Create Client</h1> </div> <span id='feedback'></span> <br> <div> <label for='client_1'>Client Last Name</label> <input class='client' id='client_1' type='text' name='clientlastname'> </div> <div id='results'></div>");
+    this.$el.html("<span id='feedback'></span> <br> <div class='aSection'> <label for='client_1'>Client Last Name</label> <input class='client' id='client_1' type='text' name='clientlastname'> </div> <div id='results'></div>");
     return $("head title").html("Coconut Find/Create Client");
   };
 

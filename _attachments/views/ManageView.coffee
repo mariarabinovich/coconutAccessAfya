@@ -4,13 +4,16 @@ class ManageView extends Backbone.View
 
   render: =>
     @$el.html "
-    <div class='header'><h1>test</h1></div>
+    <nav class='submenu'>
+      <a class='selected' href='#'>Question Sets</a>
       <a href='#sync'>Sync</a>
       <a href='#configure'>Set cloud vs mobile</a>
       <a href='#users'>Manage users</a>
       <a href='#messaging'>Send message to users</a>
+    </nav>
+
       <h2>Question Sets</h2>
-      <a href='#design'>New</a>
+      <a class='buttonLinks' href='#design'>New</a>
       <table>
         <thead>
           <th></th>
@@ -24,7 +27,8 @@ class ManageView extends Backbone.View
     "
     $("a").button()
     Coconut.questions.fetch
-      success: ->
+      include_docs: true
+      success: (result) ->
         Coconut.questions.each (question) ->
           questionName = question.id
           questionId = escape(question.id)

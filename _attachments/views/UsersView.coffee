@@ -36,10 +36,17 @@ class UsersView extends Backbone.View
           _id: user.get("_id").replace(/user\./,"")
         js2form($('#user').get(0), user.toJSON())
     return false
-  
+
   render: =>
     fields =  "_id,password,district,name,comments".split(",")
     @$el.html "
+      <nav class='submenu'>
+        <a href='#manage'>Question Sets</a>
+        <a href='#sync'>Sync</a>
+        <a href='#configure'>Set cloud vs mobile</a>
+        <a class='selected' href='#'>Manage users</a>
+        <a href='#messaging'>Send message to users</a>
+      </nav>
       <h2>Create/edit users</h2>
       <h3>Use phone number for username to enable SMS messages</h3>
       <form id='user'>
@@ -68,7 +75,7 @@ class UsersView extends Backbone.View
         </tbody>
       </table>
     "
-    
+
     @userCollection.fetch
       success: =>
         @userCollection.sortBy (user) ->

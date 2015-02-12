@@ -15,10 +15,11 @@ ManageView = (function(_super) {
   ManageView.prototype.el = '#content';
 
   ManageView.prototype.render = function() {
-    this.$el.html("<div class='header'><h1>test</h1></div> <a href='#sync'>Sync</a> <a href='#configure'>Set cloud vs mobile</a> <a href='#users'>Manage users</a> <a href='#messaging'>Send message to users</a> <h2>Question Sets</h2> <a href='#design'>New</a> <table> <thead> <th></th> <th></th> <th></th> <th></th> </thead> <tbody> </tbody> </table>");
+    this.$el.html("<nav class='submenu'> <a class='selected' href='#'>Question Sets</a> <a href='#sync'>Sync</a> <a href='#configure'>Set cloud vs mobile</a> <a href='#users'>Manage users</a> <a href='#messaging'>Send message to users</a> </nav> <h2>Question Sets</h2> <a class='buttonLinks' href='#design'>New</a> <table> <thead> <th></th> <th></th> <th></th> <th></th> </thead> <tbody> </tbody> </table>");
     $("a").button();
     return Coconut.questions.fetch({
-      success: function() {
+      include_docs: true,
+      success: function(result) {
         Coconut.questions.each(function(question) {
           var questionId, questionName;
           questionName = question.id;

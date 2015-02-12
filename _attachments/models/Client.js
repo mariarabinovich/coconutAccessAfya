@@ -11,6 +11,8 @@ Client = (function() {
     this.resultsAsArray = __bind(this.resultsAsArray, this);
     this.sortResultArraysByCreatedAt = __bind(this.sortResultArraysByCreatedAt, this);
     this.clientResultsSortedMostRecentFirst = __bind(this.clientResultsSortedMostRecentFirst, this);
+    this.firstName = __bind(this.firstName, this);
+    this.name = __bind(this.name, this);
     this.toJSON = __bind(this.toJSON, this);
     this.clientID = options != null ? options.clientID : void 0;
     if (options != null ? options.results : void 0) {
@@ -69,6 +71,14 @@ Client = (function() {
       };
     })(this));
     return returnVal;
+  };
+
+  Client.prototype.name = function() {
+    return this["Client Registration"][0].Firstname + " " + this["Client Registration"][0].Lastname;
+  };
+
+  Client.prototype.firstName = function() {
+    return this["Client Registration"][0].Firstname;
   };
 
   Client.prototype.clientResultsSortedMostRecentFirst = function() {
@@ -255,49 +265,6 @@ Client = (function() {
       return _.max(this["Clinical Visit"], function(result) {
         return moment(result["createdAt"]).unix();
       });
-    }
-  };
-
-  Client.prototype.calculateAge = function(birthDate, onDate) {
-    var age, currentMonth;
-    if (onDate == null) {
-      onDate = new Date();
-    }
-    age = onDate.getFullYear() - birthDate.getFullYear();
-    currentMonth = onDate.getMonth() - birthDate.getMonth();
-    if (currentMonth < 0 || (currentMonth === 0 && onDate.getDate() < birthDate.getDate())) {
-      age--;
-    }
-    return age;
-  };
-
-  Client.prototype.currentAge = function() {
-    var age, birthDate, dayOfBirth, monthOfBirth, yearOfBirth;
-    if (this.hasClientDemographics()) {
-      yearOfBirth = this.mostRecentValue("Client Demographics", "Whatisyouryearofbirth");
-      monthOfBirth = this.mostRecentValue("Client Demographics", "Whatisyourmonthofbirth");
-      dayOfBirth = this.mostRecentValue("Client Demographics", "Whatisyourdayofbirth");
-      age = this.mostRecentValue("Client Demographics", "Whatisyourage");
-      if (yearOfBirth != null) {
-        if (monthOfBirth == null) {
-          monthOfBirth = "June";
-          dayOfBirth = "1";
-        }
-        if (dayOfBirth == null) {
-          dayOfBirth = "15";
-        }
-        return this.calculateAge(new Date("" + yearOfBirth + "-" + monthOfBirth + "-" + dayOfBirth));
-      } else {
-        return age;
-      }
-    }
-    if (this.hasTblDemography()) {
-      birthDate = this.mostRecentValue("tblDemography", "DOB");
-      if (birthDate != null) {
-        return this.calculateAge(new Date(birthDate));
-      } else {
-        return this.mostRecentValue("tblDemography", "Age");
-      }
     }
   };
 

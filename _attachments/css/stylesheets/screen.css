@@ -2,7 +2,7 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 5, ../../../../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,45 +24,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../.rvm/gems/ruby-2.1.3/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -102,23 +102,33 @@ h2 {
   font-size: 18px;
   color: #111;
   font-weight: 200;
+  margin-top: 20px;
 }
 
-/* line 36, ../sass/screen.scss */
+/* line 37, ../sass/screen.scss */
 h3 {
   font-size: 16px;
   color: #000;
   font-weight: 200;
+  margin: 15px;
 }
 
-/* line 42, ../sass/screen.scss */
+/* line 44, ../sass/screen.scss */
+h4 {
+  font-size: 12px;
+  color: #222;
+  font-weight: 600;
+  margin: -15px 0px;
+}
+
+/* line 48, ../sass/screen.scss */
 p {
   font-size: 14px;
   color: #333;
   font-weight: 200;
 }
 
-/* line 49, ../sass/screen.scss */
+/* line 55, ../sass/screen.scss */
 body {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -134,12 +144,12 @@ body {
   background: #eee;
 }
 
-/* line 67, ../sass/screen.scss */
+/* line 73, ../sass/screen.scss */
 ul {
   list-style: none;
 }
 
-/* line 89, ../sass/screen.scss */
+/* line 94, ../sass/screen.scss */
 a.clientresult {
   display: block;
   margin: 0 auto;
@@ -148,7 +158,7 @@ a.clientresult {
   height: 50px;
 }
 
-/* line 91, ../sass/screen.scss */
+/* line 96, ../sass/screen.scss */
 .resultblocks {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -163,14 +173,14 @@ a.clientresult {
   font-size: 14px;
 }
 
-/* line 104, ../sass/screen.scss */
+/* line 109, ../sass/screen.scss */
 .resultblocks.title {
   font-size: 14px;
   font-weight: bold;
   background: #aaa;
 }
 
-/* line 105, ../sass/screen.scss */
+/* line 110, ../sass/screen.scss */
 .resulttext {
   display: table-cell;
   height: 50px;
@@ -180,46 +190,46 @@ a.clientresult {
 }
 
 /*clientSearchView:*/
-/* line 111, ../sass/screen.scss */
+/* line 116, ../sass/screen.scss */
 #feedback {
   color: red;
 }
 
-/* line 115, ../sass/screen.scss */
+/* line 120, ../sass/screen.scss */
 .client {
   text-transform: uppercase;
 }
 
 /*from ResultsView.coffee put here to clean code:*/
-/* line 120, ../sass/screen.scss */
+/* line 125, ../sass/screen.scss */
 table.results th.header, table.results td {
   font-size: 150%;
 }
 
 /*from ScanBarcodeView:*/
-/* line 125, ../sass/screen.scss */
+/* line 130, ../sass/screen.scss */
 #feedback {
   color: red;
 }
 
-/* line 129, ../sass/screen.scss */
+/* line 134, ../sass/screen.scss */
 .client {
   text-transform: uppercase;
 }
 
 /*from ReportView:*/
-/* line 133, ../sass/screen.scss */
+/* line 138, ../sass/screen.scss */
 .dissaggregatedResults {
   display: none;
 }
 
 /*from help:*/
-/* line 138, ../sass/screen.scss */
+/* line 143, ../sass/screen.scss */
 .helpMessage {
   display: block;
 }
 
-/* line 141, ../sass/screen.scss */
+/* line 146, ../sass/screen.scss */
 textarea:focus, input:focus {
   outline: none;
   -webkit-tap-highlight-color: red;
@@ -227,7 +237,7 @@ textarea:focus, input:focus {
   -webkit-user-modify: read-write-plaintext-only;
 }
 
-/* line 148, ../sass/screen.scss */
+/* line 153, ../sass/screen.scss */
 textarea {
   height: 100px;
   font-size: 18px;
@@ -238,7 +248,7 @@ textarea {
 }
 
 /*images on design form page that are icons:*/
-/* line 153, ../sass/screen.scss */
+/* line 158, ../sass/screen.scss */
 #design-view {
   display: block;
 }
@@ -246,7 +256,7 @@ textarea {
 /*.ui-btn-inner.ui-btn-corner-all{background:red;}
 
 label[type=checkbox]{background:red;}*/
-/* line 164, ../sass/screen.scss */
+/* line 169, ../sass/screen.scss */
 .formHeader {
   display: block;
   width: 100%;
@@ -256,7 +266,7 @@ label[type=checkbox]{background:red;}*/
 }
 
 /*buttons for yes/no*/
-/* line 166, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 label {
   display: block;
   clear: both;
@@ -268,14 +278,14 @@ label {
 }
 
 /*questions specifically above the radio buttons:*/
-/* line 171, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
 label[type=radio] {
   margin-top: 60px;
 }
 
 /*just thinking through tablet/phone sizes and readability, not sure if this css works*/
 /*yes/no and optional choice selector buttons:*/
-/* line 173, ../sass/screen.scss */
+/* line 178, ../sass/screen.scss */
 label.radio {
   border-radius: 8px;
   display: block;
@@ -287,7 +297,7 @@ label.radio {
   text-align: center;
 }
 
-/* line 183, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 input {
   margin-top: 20px;
   margin-bottom: 50px;
@@ -303,21 +313,21 @@ input {
   font-size: 18px;
 }
 
-/* line 197, ../sass/screen.scss */
+/* line 202, ../sass/screen.scss */
 input:focus {
   outline: none;
   border: solid 2px #999;
 }
 
 /*this just hides the little radio circle on the button/labels:*/
-/* line 202, ../sass/screen.scss */
+/* line 207, ../sass/screen.scss */
 input[type=radio] {
   display: none;
   visibility: hidden;
 }
 
 /*selected state color change:*/
-/* line 206, ../sass/screen.scss */
+/* line 211, ../sass/screen.scss */
 input[type=radio]:checked + label.radio {
   background: #5393c5;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#5393c5), to(#6facd5));
@@ -328,23 +338,23 @@ input[type=radio]:checked + label.radio {
   background-image: linear-gradient(#5393c5, #6facd5);
 }
 
-/* line 216, ../sass/screen.scss */
+/* line 221, ../sass/screen.scss */
 input[type="autocomplete from list"], input[type="autocomplete from previous entries"], input[type="text"] {
   text-align: left;
 }
 
-/* line 219, ../sass/screen.scss */
+/* line 224, ../sass/screen.scss */
 input[type="autocomplete from list"] {
   margin-bottom: 0px;
 }
 
-/* line 221, ../sass/screen.scss */
+/* line 226, ../sass/screen.scss */
 input[type="text"]:focus, input[type="text"].focus, input[type="autocomplete from list"]:focus, input[type="autocomplete from list"].focus,
 input[type="autocomplete from previous entries"]:focus, input[type="autocomplete from previous entries"].focus {
   /*border: solid 2px rgba(200,0,150,.9); box-shadow: 0 0 0px 0px #969696;*/
 }
 
-/* line 226, ../sass/screen.scss */
+/* line 231, ../sass/screen.scss */
 input[type=number] {
   width: 250px;
   font-size: 20px;
@@ -352,7 +362,7 @@ input[type=number] {
 }
 
 /*come back to this: how are numbers selected on tablet?*/
-/* line 230, ../sass/screen.scss */
+/* line 235, ../sass/screen.scss */
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   cursor: pointer;
@@ -364,56 +374,57 @@ input[type=number]::-webkit-inner-spin-button {
   text-align: center;
 }
 
-/* line 242, ../sass/screen.scss */
+/* line 247, ../sass/screen.scss */
 input[type=number]::-webkit-inner-spin-button:before,
 input[type=number]::-webkit-inner-spin-button:after {
   background: #eee;
   border: solid 1px #999;
   content: "^";
   position: absolute;
-  right: -10px;
+  right: -11px;
   font-family: monospace;
   width: 24px;
-  height: 23px;
+  height: 22px;
   font-size: 32px;
   font-weight: lighter;
   color: #999;
 }
 
-/* line 255, ../sass/screen.scss */
+/* line 260, ../sass/screen.scss */
 input[type=number]::-webkit-inner-spin-button:before {
-  top: 1px;
+  top: 2px;
 }
 
-/* line 258, ../sass/screen.scss */
+/* line 263, ../sass/screen.scss */
 input[type=number]::-webkit-inner-spin-button:after {
-  bottom: 1px;
+  bottom: 2px;
+  right: -10px;
   -webkit-transform: rotate(180deg);
 }
 
 /*BUTTONS:*/
-/* line 264, ../sass/screen.scss */
+/* line 270, ../sass/screen.scss */
 input[type=submit], label[type=checkbox], input[type=button], button {
   display: block;
-  width: 120px;
-  height: 40px;
+  width: 200px;
+  height: 15px;
   background: #ccc;
-  color: #eee;
+  color: #333;
   cursor: pointer;
-  border: 0px solid #333;
+  border: 1px solid #333;
   margin: 10px auto;
   border-radius: 8px;
 }
 
-/* line 268, ../sass/screen.scss */
+/* line 274, ../sass/screen.scss */
 input[type=submit]:focus, label[type=checkbox]:focus, input[type=button]:focus, button:focus {
   background: #aaa;
-  color: #333;
-  border: 1px solid #333;
+  color: #999;
+  border: 1px solid #fff;
 }
 
 /*AUTOCOMPLETE LISTS: Make these less ridiculous, they should have real class names*/
-/* line 276, ../sass/screen.scss */
+/* line 282, ../sass/screen.scss */
 ul.ui-listview {
   background: #ccc;
   list-style: none;
@@ -424,28 +435,28 @@ ul.ui-listview {
   padding: 0px;
 }
 
-/* line 278, ../sass/screen.scss */
+/* line 284, ../sass/screen.scss */
 li.ui-btn {
   border: 1px solid #999;
 }
 
 /*li.ui-btn .ui-btn-inner.ui-btn-inner.ui-li.ui-corner-top {color:red;}*/
 /*li.ui-btn>div>div a{color:red;}*/
-/* line 281, ../sass/screen.scss */
+/* line 287, ../sass/screen.scss */
 .ui-btn-text a {
   display: block;
-  color: #eee;
+  color: #333;
   padding: 15px 0 15px 0;
   margin: 0px auto 0 auto;
   width: 80%;
 }
 
-/* line 284, ../sass/screen.scss */
+/* line 290, ../sass/screen.scss */
 span.ui-icon {
   display: none;
 }
 
-/* line 286, ../sass/screen.scss */
+/* line 294, ../sass/screen.scss */
 .message {
   padding: 10px;
   border: 1px yellow dotted;
@@ -454,7 +465,7 @@ span.ui-icon {
 }
 
 /*for example the message that says Saving . .  . over the form after an answer is submitted*/
-/* line 297, ../sass/screen.scss */
+/* line 305, ../sass/screen.scss */
 .hoveringMessage {
   position: fixed;
   top: 0px;
@@ -467,7 +478,7 @@ span.ui-icon {
   margin-top: 0px;
 }
 
-/* line 303, ../sass/screen.scss */
+/* line 311, ../sass/screen.scss */
 .designControls {
   display: block;
   background: #ccc;
@@ -475,7 +486,7 @@ span.ui-icon {
   height: 200px;
 }
 
-/* line 305, ../sass/screen.scss */
+/* line 313, ../sass/screen.scss */
 .aQuestion {
   display: block;
   width: 100%;
@@ -483,7 +494,7 @@ span.ui-icon {
   margin: 50px 0 0 0;
 }
 
-/* line 306, ../sass/screen.scss */
+/* line 314, ../sass/screen.scss */
 .questionInfo {
   display: block;
   height: 30px;
@@ -493,7 +504,7 @@ span.ui-icon {
   background: #ccc;
 }
 
-/* line 307, ../sass/screen.scss */
+/* line 315, ../sass/screen.scss */
 .questionType {
   display: inline-block;
   width: auto;
@@ -501,7 +512,7 @@ span.ui-icon {
   margin: 10px 25px 0 10px;
 }
 
-/* line 308, ../sass/screen.scss */
+/* line 316, ../sass/screen.scss */
 .requiredOrNot {
   display: inline-block;
   width: 50px;
@@ -511,7 +522,7 @@ span.ui-icon {
   margin: 10px 0 0 0;
 }
 
-/* line 309, ../sass/screen.scss */
+/* line 317, ../sass/screen.scss */
 input.requiredOrNot {
   width: 20px;
   height: 5px;
@@ -519,7 +530,7 @@ input.requiredOrNot {
   vertical-align: top;
 }
 
-/* line 310, ../sass/screen.scss */
+/* line 318, ../sass/screen.scss */
 .deleting {
   display: inline-block;
   float: right;
@@ -527,7 +538,7 @@ input.requiredOrNot {
   margin: 10px 10px 0 0;
 }
 
-/* line 311, ../sass/screen.scss */
+/* line 319, ../sass/screen.scss */
 label.deleteButton {
   font-size: 13px;
   float: left;
@@ -536,7 +547,7 @@ label.deleteButton {
   width: 60px;
 }
 
-/* line 312, ../sass/screen.scss */
+/* line 320, ../sass/screen.scss */
 button.deleteButton {
   display: inline;
   width: 20px;
@@ -545,21 +556,21 @@ button.deleteButton {
   margin: 0px;
 }
 
-/* line 313, ../sass/screen.scss */
+/* line 321, ../sass/screen.scss */
 button.deleteButton img {
   height: 10px;
   width: 10px;
   margin-top: 0px;
 }
 
-/* line 314, ../sass/screen.scss */
+/* line 322, ../sass/screen.scss */
 label.questionText {
   /*display:block;*/
   margin: 0 auto;
   max-width: 700px;
 }
 
-/* line 315, ../sass/screen.scss */
+/* line 323, ../sass/screen.scss */
 input.designFormTextInput {
   width: 700px;
   max-width: 700px;
@@ -567,7 +578,7 @@ input.designFormTextInput {
   margin-top: 5px;
 }
 
-/* line 317, ../sass/screen.scss */
+/* line 325, ../sass/screen.scss */
 .advancedOptions {
   width: 700px;
   height: auto;
@@ -576,23 +587,23 @@ input.designFormTextInput {
   padding: 10px 0 35px 0;
 }
 
-/* line 318, ../sass/screen.scss */
+/* line 326, ../sass/screen.scss */
 .advanced {
   font-size: 13px;
   color: #555;
 }
 
-/* line 319, ../sass/screen.scss */
+/* line 327, ../sass/screen.scss */
 .advanced-hidden {
   display: none;
 }
 
-/* line 320, ../sass/screen.scss */
+/* line 328, ../sass/screen.scss */
 .advanced-visible {
   display: block;
 }
 
-/* line 322, ../sass/screen.scss */
+/* line 330, ../sass/screen.scss */
 label.advanced {
   max-width: 600px;
   width: 600px;
@@ -601,7 +612,7 @@ label.advanced {
   padding: 15px 0px 5px 0px;
 }
 
-/* line 323, ../sass/screen.scss */
+/* line 331, ../sass/screen.scss */
 textarea.advanced {
   height: 20px;
   width: 600px;
@@ -610,33 +621,38 @@ textarea.advanced {
   padding: 0px;
 }
 
-/* line 328, ../sass/screen.scss */
+/* line 333, ../sass/screen.scss */
+button {
+  min-height: 40px;
+}
+
+/* line 336, ../sass/screen.scss */
 button.designActionsButton {
   display: inline-block;
   width: 150px;
   height: 30px;
   border-radius: 8px;
   background: #ccc;
-  color: #eee;
-  border: 0px solid #333;
+  color: #333;
+  border: 1px solid #333;
   font-size: 14px;
   margin: 10px 5px;
 }
 
-/* line 331, ../sass/screen.scss */
+/* line 339, ../sass/screen.scss */
 button.designActionsButton.addButton {
   margin-bottom: 50px;
 }
 
 /*select{font-size:20px; padding:30px; background:white; border:solid 1px #666; width:300px;}
 */
-/* line 335, ../sass/screen.scss */
+/* line 343, ../sass/screen.scss */
 select:focus {
   outline: none;
   font-size: 20px;
 }
 
-/* line 340, ../sass/screen.scss */
+/* line 348, ../sass/screen.scss */
 form#render {
   display: block;
   background: white;
@@ -646,18 +662,18 @@ form#render {
   width: 800px;
 }
 
-/* line 342, ../sass/screen.scss */
+/* line 350, ../sass/screen.scss */
 .instructions {
   width: 500px;
   margin: 15px auto;
 }
 
-/* line 350, ../sass/screen.scss */
+/* line 358, ../sass/screen.scss */
 .disabled_skipped {
   display: none;
 }
 
-/* line 355, ../sass/screen.scss */
+/* line 363, ../sass/screen.scss */
 .question {
   margin-bottom: 1em;
   padding-bottom: 2em;
@@ -671,20 +687,22 @@ form#render {
   padding-top: 1em;
   font-weight: bold;
 }*/
-/* line 370, ../sass/screen.scss */
+/* line 379, ../sass/screen.scss */
 .question.checkbox {
   border-top: 0;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-/*.question.group
-{
+/* line 386, ../sass/screen.scss */
+.question.group {
   margin-bottom: 0 !important;
   border-bottom: 0 !important;
   border-top: 0 !important;
-}*/
-/* line 414, ../sass/screen.scss */
+  margin-top: 0 !important;
+}
+
+/* line 422, ../sass/screen.scss */
 button.menuburger {
   background-color: #ccc;
   background-image: url(../images/burger.png);
@@ -699,20 +717,85 @@ button.menuburger {
   height: 30px;
   padding: 0px;
   margin: 0px 10px 0 5px;
-}
-
-/* line 420, ../sass/screen.scss */
-button.menuburger:focus, button.menuburger:active {
   border: none;
 }
 
-/* line 421, ../sass/screen.scss */
+/* line 426, ../sass/screen.scss */
 button.menuburger.menuisopen {
   background-image: url(../images/burger_focus.png);
   border: none;
 }
 
-/* line 424, ../sass/screen.scss */
+/* line 427, ../sass/screen.scss */
+button.menuback {
+  background-color: #ccc;
+  background-image: url(../images/back.png);
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  z-index: 300;
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  margin: 0px 10px 0 5px;
+  border: none;
+}
+
+/* line 431, ../sass/screen.scss */
+button.endTheVisit {
+  background-color: transparent;
+  background-image: url(../images/profile_gray.png);
+  background-size: 70px 70px;
+  background-repeat: no-repeat;
+  display: block;
+  position: fixed;
+  left: 5px;
+  top: 5px;
+  z-index: 300;
+  width: 70px;
+  height: 70px;
+  padding: 0px;
+  margin: 0px 10px 0 5px;
+  border: none;
+}
+
+/* line 436, ../sass/screen.scss */
+button.endTheVisit:focus {
+  background-color: transparent;
+  background-image: url(../images/profile_white.png);
+}
+
+/* line 440, ../sass/screen.scss */
+.profileIconDiv {
+  background-image: url(../images/profile_gray.png);
+  background-size: 100px 100px;
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  left: 55px;
+  top: 5px;
+  z-index: 300;
+  width: 100px;
+  height: 100px;
+  padding: 0px;
+  margin: 0px 10px 0 5px;
+}
+
+/* line 444, ../sass/screen.scss */
+button.menuback.menuisopen {
+  background-image: url(../images/back_focus.png);
+  border: none;
+}
+
+/* line 445, ../sass/screen.scss */
+button.menuburger:focus, button.menuburger:active, button.menuback:focus, button.menuback:active {
+  border: none;
+}
+
+/* line 447, ../sass/screen.scss */
 nav {
   color: #eee;
   background: #ccc;
@@ -720,7 +803,7 @@ nav {
   height: 335px;
 }
 
-/* line 430, ../sass/screen.scss */
+/* line 453, ../sass/screen.scss */
 nav.main-nav > a, nav.main-nav > span {
   display: block;
   width: inherit;
@@ -731,18 +814,115 @@ nav.main-nav > a, nav.main-nav > span {
   font-size: 14px;
 }
 
-/* line 440, ../sass/screen.scss */
+/* line 463, ../sass/screen.scss */
 nav.main-nav.open {
   display: block;
 }
 
-/* line 441, ../sass/screen.scss */
+/* line 464, ../sass/screen.scss */
 nav.main-nav.closed {
   display: none;
 }
 
-/* line 444, ../sass/screen.scss */
-.aa-header {
+/* line 466, ../sass/screen.scss */
+.clientmenu {
+  width: 80%;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 200;
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  border-radius: 10px;
+  border: 1px solid #999;
+}
+
+/* line 468, ../sass/screen.scss */
+.clientmenu.visible {
+  display: block;
+}
+
+/* line 469, ../sass/screen.scss */
+.clientmenu.hidden {
+  display: none;
+}
+
+/* line 473, ../sass/screen.scss */
+nav.submenu {
+  display: block;
+  width: 100%;
+  height: 40px;
+}
+
+/* line 475, ../sass/screen.scss */
+nav.submenu a {
+  display: inline-block;
+  height: 40px;
+  width: auto;
+  background-color: #ccc;
+  line-height: 40px;
+  font-size: 11px;
+  padding: 0 10px;
+}
+
+/* line 478, ../sass/screen.scss */
+nav.submenu a.selected {
+  background-color: #eee;
+}
+
+/* line 480, ../sass/screen.scss */
+nav.visitOptions {
+  display: block;
+  width: 100%;
+  height: 90px;
+}
+
+/* line 481, ../sass/screen.scss */
+nav.visitOptions ul {
+  display: block;
+  width: 100%;
+  position: absolute;
+  left: 59px;
+}
+
+/* line 482, ../sass/screen.scss */
+nav.visitOptions ul li {
+  display: inline-block;
+  height: 90px;
+  width: 18%;
+  background-color: #ccc;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding: 0;
+  margin: 0px;
+  border: 1px solid #999;
+  text-align: center;
+  float: left;
+}
+
+/* line 487, ../sass/screen.scss */
+nav.visitOptions ul li.selected {
+  background-color: #eee;
+}
+
+/* line 488, ../sass/screen.scss */
+img.visitOptionsIcons {
+  min-width: 50px;
+  max-width: 70px;
+  height: auto;
+}
+
+/* line 489, ../sass/screen.scss */
+li.questionSetName {
+  margin: 0px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+/* line 500, ../sass/screen.scss */
+.header {
   display: block;
   height: 70px;
   length: 100%;
@@ -752,7 +932,16 @@ nav.main-nav.closed {
   border-top: 1px solid #999;
 }
 
-/* line 457, ../sass/screen.scss */
+/* line 507, ../sass/screen.scss */
+.aSection {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  text-align: center;
+}
+
+/* line 515, ../sass/screen.scss */
 .mini-dashboard {
   display: block;
   background: #ccc;
@@ -762,10 +951,100 @@ nav.main-nav.closed {
   z-index: 200;
 }
 
-/* line 459, ../sass/screen.scss */
+/* line 517, ../sass/screen.scss */
 .mini-dashboard.fixed {
   position: fixed;
   top: 0px;
+}
+
+/* line 524, ../sass/screen.scss */
+button.fullwidthdropdown {
+  width: 100%;
+  height: 50px;
+  border-radius: 0px;
+  border: none;
+}
+
+/* line 529, ../sass/screen.scss */
+form.hideText {
+  font-size: 0;
+  display: block;
+  line-height: 0;
+}
+
+/* line 532, ../sass/screen.scss */
+a.buttonLinks {
+  display: block;
+  width: 200px;
+  height: 15px;
+  background-color: #ccc;
+  color: #333;
+  border: 1px solid #333;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 15px 5px;
+  margin: 10px;
+}
+
+/* line 537, ../sass/screen.scss */
+a.buttonLinks:focus {
+  background-color: #aaa;
+  color: #999;
+  border: 1px solid #fff;
+}
+
+/* line 539, ../sass/screen.scss */
+a.buttonLinks.sideBySideButtons {
+  display: inline-block;
+  float: left;
+}
+
+/* line 543, ../sass/screen.scss */
+table {
+  display: block;
+  font-size: 12px;
+  line-height: 30px;
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 544, ../sass/screen.scss */
+table thead, table tr:nth-child(even) {
+  background-color: #ccc;
+}
+
+/* line 549, ../sass/screen.scss */
+table.lastVisitResults {
+  width: 90%;
+  font-size: 12px;
+}
+
+/* line 552, ../sass/screen.scss */
+table.patientInfo {
+  width: 300px;
+  margin-top: 57px;
+}
+
+/* line 553, ../sass/screen.scss */
+table.patientInfo tr td {
+  padding: 0px 20px;
+}
+
+/* line 560, ../sass/screen.scss */
+.visitTitle {
+  display: inline-block;
+  position: absolute;
+  left: 95px;
+  text-align: left;
+}
+
+/* line 561, ../sass/screen.scss */
+.clientTitle {
+  display: inline-block;
+  position: absolute;
+  left: 200px;
+  text-align: left;
 }
 
 /* loading icon */
@@ -776,7 +1055,7 @@ nav.main-nav.closed {
  * https://github.com/jtsage/jquery-mobile-datebox
  */
 /* Base input element Styles */
-/* line 520, ../sass/screen.scss */
+/* line 610, ../sass/screen.scss */
 .ui-input-datebox {
   width: 97%;
   background-image: none;
@@ -788,18 +1067,18 @@ nav.main-nav.closed {
   padding-bottom: 0px;
 }
 
-/* line 521, ../sass/screen.scss */
+/* line 611, ../sass/screen.scss */
 .ui-input-datebox {
   min-height: 38px;
 }
 
-/* line 522, ../sass/screen.scss */
+/* line 612, ../sass/screen.scss */
 .ui-input-datebox .ui-btn-icon-notext {
   margin-top: 5px !important;
   margin-bottom: 5px !important;
 }
 
-/* line 523, ../sass/screen.scss */
+/* line 613, ../sass/screen.scss */
 .ui-input-datebox input {
   width: 100% !important;
   padding: 0 !important;
@@ -813,18 +1092,18 @@ nav.main-nav.closed {
   *display: inline;
 }
 
-/* line 524, ../sass/screen.scss */
+/* line 614, ../sass/screen.scss */
 .ui-input-datebox input:focus {
   outline: none;
 }
 
-/* line 525, ../sass/screen.scss */
+/* line 615, ../sass/screen.scss */
 .ui-input-datebox .ui-btn-text {
   display: none;
 }
 
 @media all and (min-width: 450px) {
-  /* line 528, ../sass/screen.scss */
+  /* line 618, ../sass/screen.scss */
   .ui-input-datebox {
     width: 60%;
     display: inline-block;
@@ -833,12 +1112,12 @@ nav.main-nav.closed {
   }
 }
 /* Calendar Mode Styles */
-/* line 533, ../sass/screen.scss */
+/* line 623, ../sass/screen.scss */
 .ui-datebox-gridheader {
   text-align: center;
 }
 
-/* line 534, ../sass/screen.scss */
+/* line 624, ../sass/screen.scss */
 .ui-datebox-gridheader h4 {
   text-align: center;
   display: inline-block;
@@ -848,39 +1127,39 @@ nav.main-nav.closed {
   *display: inline;
 }
 
-/* line 535, ../sass/screen.scss */
+/* line 625, ../sass/screen.scss */
 .ui-datebox-gridplus {
   float: right;
 }
 
-/* line 536, ../sass/screen.scss */
+/* line 626, ../sass/screen.scss */
 .ui-datebox-gridminus {
   float: left;
 }
 
-/* line 537, ../sass/screen.scss */
+/* line 627, ../sass/screen.scss */
 .ui-datebox-gridplus-rtl {
   float: left;
 }
 
-/* line 538, ../sass/screen.scss */
+/* line 628, ../sass/screen.scss */
 .ui-datebox-gridminus-rtl {
   float: right;
 }
 
-/* line 539, ../sass/screen.scss */
+/* line 629, ../sass/screen.scss */
 .ui-datebox-gridrow {
   margin-left: 5px;
   margin-right: 5px;
 }
 
-/* line 540, ../sass/screen.scss */
+/* line 630, ../sass/screen.scss */
 .ui-datebox-grid {
   clear: both;
   margin-bottom: 5px;
 }
 
-/* line 541, ../sass/screen.scss */
+/* line 631, ../sass/screen.scss */
 .ui-datebox-griddate {
   width: 70px;
   height: 58px;
@@ -894,7 +1173,7 @@ nav.main-nav.closed {
   *display: inline;
 }
 
-/* line 542, ../sass/screen.scss */
+/* line 632, ../sass/screen.scss */
 .ui-datebox-griddate {
   width: 63px;
   height: 58px;
@@ -908,38 +1187,38 @@ nav.main-nav.closed {
   *display: inline;
 }
 
-/* line 543, ../sass/screen.scss */
+/* line 633, ../sass/screen.scss */
 .ui-datebox-griddate-empty {
   border: 1px solid transparent;
   color: #888;
 }
 
-/* line 544, ../sass/screen.scss */
+/* line 634, ../sass/screen.scss */
 .ui-datebox-griddate-label {
   height: 15px !important;
   line-height: 15px !important;
   color: black;
 }
 
-/* line 545, ../sass/screen.scss */
+/* line 635, ../sass/screen.scss */
 .ui-datebox-griddate-disable {
   color: #555;
 }
 
 /* Android Mode Styles */
-/* line 549, ../sass/screen.scss */
+/* line 639, ../sass/screen.scss */
 .ui-datebox-header h4 {
   margin-top: 5px;
   margin-bottom: 5px;
   text-align: center;
 }
 
-/* line 550, ../sass/screen.scss */
+/* line 640, ../sass/screen.scss */
 .ui-datebox-controls {
   text-align: center;
 }
 
-/* line 551, ../sass/screen.scss */
+/* line 641, ../sass/screen.scss */
 .ui-datebox-controls div {
   width: 102px;
   text-align: center;
@@ -948,12 +1227,12 @@ nav.main-nav.closed {
   *display: inline;
 }
 
-/* line 552, ../sass/screen.scss */
+/* line 642, ../sass/screen.scss */
 .ui-datebox-scontrols {
   text-align: center;
 }
 
-/* line 553, ../sass/screen.scss */
+/* line 643, ../sass/screen.scss */
 .ui-datebox-scontrols div {
   width: 55px;
   text-align: center;
@@ -962,19 +1241,19 @@ nav.main-nav.closed {
   *display: inline;
 }
 
-/* line 554, ../sass/screen.scss */
+/* line 644, ../sass/screen.scss */
 .ui-datebox-scontrols .ui-datebox-sinput {
   width: 68px;
 }
 
-/* line 555, ../sass/screen.scss */
+/* line 645, ../sass/screen.scss */
 .ui-datebox-scontrols .ui-datebox-sinput input {
   width: 48px;
   text-align: center;
   margin-left: 3px;
 }
 
-/* line 556, ../sass/screen.scss */
+/* line 646, ../sass/screen.scss */
 .ui-datebox-input {
   width: 109px !important;
   margin-left: 1px;
@@ -986,14 +1265,14 @@ nav.main-nav.closed {
 }
 
 /* Slide Mode Styles */
-/* line 560, ../sass/screen.scss */
+/* line 650, ../sass/screen.scss */
 .ui-datebox-slide {
   width: 562px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 561, ../sass/screen.scss */
+/* line 651, ../sass/screen.scss */
 .ui-datebox-sliderow-d {
   margin-bottom: 5px;
   text-align: center;
@@ -1002,7 +1281,7 @@ nav.main-nav.closed {
   overflow: hidden;
 }
 
-/* line 562, ../sass/screen.scss */
+/* line 652, ../sass/screen.scss */
 .ui-datebox-sliderow-ym {
   margin-bottom: 5px;
   text-align: center;
@@ -1011,7 +1290,7 @@ nav.main-nav.closed {
   overflow: hidden;
 }
 
-/* line 563, ../sass/screen.scss */
+/* line 653, ../sass/screen.scss */
 .ui-datebox-sliderow-hi {
   text-align: center;
   height: 32px;
@@ -1019,13 +1298,13 @@ nav.main-nav.closed {
   overflow: hidden;
 }
 
-/* line 564, ../sass/screen.scss */
+/* line 654, ../sass/screen.scss */
 .ui-datebox-sliderow-int {
   display: inline-block;
   white-space: nowrap;
 }
 
-/* line 565, ../sass/screen.scss */
+/* line 655, ../sass/screen.scss */
 .ui-datebox-slideyear {
   text-align: center;
   display: inline-block;
@@ -1039,7 +1318,7 @@ nav.main-nav.closed {
   font-weight: bold;
 }
 
-/* line 566, ../sass/screen.scss */
+/* line 656, ../sass/screen.scss */
 .ui-datebox-slidemonth {
   text-align: center;
   display: inline-block;
@@ -1053,7 +1332,7 @@ nav.main-nav.closed {
   font-weight: bold;
 }
 
-/* line 567, ../sass/screen.scss */
+/* line 657, ../sass/screen.scss */
 .ui-datebox-slideday {
   text-align: center;
   display: inline-block;
@@ -1067,7 +1346,7 @@ nav.main-nav.closed {
   font-weight: bold;
 }
 
-/* line 568, ../sass/screen.scss */
+/* line 658, ../sass/screen.scss */
 .ui-datebox-slidehour {
   text-align: center;
   display: inline-block;
@@ -1081,7 +1360,7 @@ nav.main-nav.closed {
   font-weight: bold;
 }
 
-/* line 569, ../sass/screen.scss */
+/* line 659, ../sass/screen.scss */
 .ui-datebox-slidemins {
   text-align: center;
   display: inline-block;
@@ -1095,7 +1374,7 @@ nav.main-nav.closed {
   font-weight: bold;
 }
 
-/* line 570, ../sass/screen.scss */
+/* line 660, ../sass/screen.scss */
 .ui-datebox-slidearrow {
   text-align: center;
   display: inline-block;
@@ -1109,21 +1388,21 @@ nav.main-nav.closed {
   font-weight: bold;
 }
 
-/* line 571, ../sass/screen.scss */
+/* line 661, ../sass/screen.scss */
 .ui-datebox-slidewday {
   font-size: 10px;
   font-weight: normal;
 }
 
 /* Flip Mode Styles */
-/* line 575, ../sass/screen.scss */
+/* line 665, ../sass/screen.scss */
 .ui-datebox-flipcontent {
   text-align: center;
   height: 125px;
   margin-bottom: -40px;
 }
 
-/* line 576, ../sass/screen.scss */
+/* line 666, ../sass/screen.scss */
 .ui-datebox-flipcontent div {
   margin-left: 3px;
   margin-right: 3px;
@@ -1136,7 +1415,7 @@ nav.main-nav.closed {
   overflow: hidden;
 }
 
-/* line 577, ../sass/screen.scss */
+/* line 667, ../sass/screen.scss */
 .ui-datebox-flipcenter {
   border: 1px solid #eee;
   height: 40px;
@@ -1148,31 +1427,31 @@ nav.main-nav.closed {
   top: -45px;
 }
 
-/* line 578, ../sass/screen.scss */
+/* line 668, ../sass/screen.scss */
 .ui-datebox-flipcontent ul {
   list-style-type: none;
   display: inline;
 }
 
-/* line 579, ../sass/screen.scss */
+/* line 669, ../sass/screen.scss */
 .ui-datebox-flipcontent li {
   height: 30px;
 }
 
-/* line 580, ../sass/screen.scss */
+/* line 670, ../sass/screen.scss */
 .ui-datebox-flipcontent li span {
   margin-top: 7px;
   display: block;
 }
 
 /* Shared Styles */
-/* line 584, ../sass/screen.scss */
+/* line 674, ../sass/screen.scss */
 .ui-datebox-container {
   border: 5px solid #111 !important;
   width: 562px;
 }
 
-/* line 585, ../sass/screen.scss */
+/* line 675, ../sass/screen.scss */
 .ui-datebox-screen {
   position: absolute;
   top: 0px;
@@ -1181,7 +1460,7 @@ nav.main-nav.closed {
   height: 100%;
 }
 
-/* line 586, ../sass/screen.scss */
+/* line 676, ../sass/screen.scss */
 .ui-datebox-screen-modal {
   background-color: black;
   -moz-opacity: 0.8;
@@ -1189,23 +1468,23 @@ nav.main-nav.closed {
   filter: alpha(opacity=80);
 }
 
-/* line 587, ../sass/screen.scss */
+/* line 677, ../sass/screen.scss */
 .ui-datebox-hidden {
   display: none;
 }
 
-/* line 588, ../sass/screen.scss */
+/* line 678, ../sass/screen.scss */
 .ui-dialog .ui-datebox-container {
   border: none !important;
 }
 
-/* line 589, ../sass/screen.scss */
+/* line 679, ../sass/screen.scss */
 .ui-datebox-collapse a {
   display: inline-block;
   width: 45%;
 }
 
-/* line 591, ../sass/screen.scss */
+/* line 681, ../sass/screen.scss */
 .ui-datebox-inline {
   margin-top: 5px;
   border: 5px solid #111111 !important;
@@ -1214,7 +1493,7 @@ nav.main-nav.closed {
   text-align: center;
 }
 
-/* line 592, ../sass/screen.scss */
+/* line 682, ../sass/screen.scss */
 .ui-datebox-inlineblind {
   margin-top: 5px;
   border: 5px solid #111111 !important;

@@ -1,6 +1,8 @@
 @import "compass";
 
 //COLORSCHEME:
+$white: #fff;
+$transparent_white: rgba(255,255,255,.9);
 $extra_light_gray:#eee;
 $light_gray:#ccc;
 $gray:#aaa;
@@ -45,35 +47,45 @@ $font_color_p: $extra_dark_gray;
 $font_color_h1: #222;
 $font_color_h2: #111;
 $font_color_h3: #000;
+$font_color_h4: #222; //subheader
 $font_color_label: $dark_gray;
 $font_color_input: $dark_gray;
 $font_color_text_area: $dark_gray;
 $font_color_saving_message: white;
 
+$font_size_small: 12px;
 $font_size_p: 14px;
 $font_size_h1: 22px;
 $font_size_h2: 18px;
 $font_size_h3: 16px;
+$font_size_h4: 12px; //subheader
 $font_size_label: 16px;
 $font_size_input: 18px;
 $font_size_main_menu:14px;
+$font_size_sub_menu:11px;
 $font_size_text_area:18px;
+
 
 //BUTTONS
 $button_color: $light_gray;
 $button_color_focus: $gray;
 $button_color_pressed: $gray;
-$button_width: 120px;
-$button_height:40px;
-$button_text_color: $extra_light_gray;
-$button_focus_text_color: $extra_dark_gray;
-$button_border:0px solid $extra_dark_gray;
-$button_border_focus: 1px solid $extra_dark_gray;
+$button_width: 200px;
+$button_height:15px;
+$button_text_color: $extra_dark_gray;
+$button_focus_text_color: $dark_gray;
+$button_border:1px solid $extra_dark_gray;
+$button_border_focus: 1px solid $white;
 $button_border_radius: 8px;
+$button_font_size: 12px;
+$button_padding:15px 5px;
+$button_margin:10px;
 
 
 //PADDINGS AND MARGINS AND SIZES OF ELEMENTS:
 $padding_between_label_and_input:15px;
+$padding_above_h2: 20px;
+$space_around_h4: -15px 0px;
 $input_width:80%;
 $input_max_width:500px;
 $label_width:80%;

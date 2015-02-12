@@ -220,7 +220,8 @@ class Router extends Backbone.Router
       success: ->
         Coconut.questions.get(unescape(question_id)).destroy
           success: ->
-            Coconut.menuView.render()
+
+            #Coconut.clientDashboardView.render()
             Coconut.router.navigate("manage",true)
 
   sync: (action) ->
@@ -291,6 +292,7 @@ class Router extends Backbone.Router
           success: ->
             Coconut.questionView.render()
 
+
   editResult: (result_id) ->
     @userLoggedIn
       success: ->
@@ -322,7 +324,8 @@ class Router extends Backbone.Router
             if confirmed is "confirmed"
               Coconut.questionView.result.destroy
                 success: ->
-                  Coconut.menuView.update()
+                  # Coconut.menuView.update()
+                  #Coconut.clientDashboardView.update() #should this be done elsewhere??
                   Coconut.router.navigate("show/results/#{escape(Coconut.questionView.result.question())}",true)
             else
               Coconut.questionView.model = new Question
@@ -401,6 +404,7 @@ class Router extends Backbone.Router
         # $("#footer-menu").html "
 
 
+
         #   <span>
 
         #   <a href='#login'>Login</a>
@@ -416,14 +420,18 @@ class Router extends Backbone.Router
         # "
         # $("[data-role=footer]").navbar()
         $('#application-title').html Coconut.config.title()
+        # Coconut.currentPage = 'hello'
         Coconut.loginView = new LoginView()
         Coconut.questions = new QuestionCollection()
         Coconut.questionView = new QuestionView()
         Coconut.menuView = new MenuView()
+        #Coconut.clientDashboardView = new ClientDashboardView() #MOVE THIS TO BE SOMEWHERE WHEN A CLIENT IS SELECTED
         Coconut.syncView = new SyncView()
-        Coconut.menuView.render()
+        Coconut.menuView.renderForNonClient()
+        #Coconut.clientDashboardView.render() #MOVE THIS TO BE SOMEWHERE WHEN A CLIENT IS SELECTED
         Coconut.syncView.update()
         Backbone.history.start()
+
       error: ->
         Coconut.localConfigView ?= new LocalConfigView()
         Coconut.localConfigView.render()

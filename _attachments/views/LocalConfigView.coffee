@@ -3,8 +3,16 @@ class LocalConfigView extends Backbone.View
 
   render: ->
     @$el.html "
+      <nav class='submenu'>
+        <a href='#manage'>Question Sets</a>
+        <a href='#sync'>Sync</a>
+        <a class='selected' href='#'>Set cloud vs mobile</a>
+        <a href='#users'>Manage users</a>
+        <a href='#messaging'>Send message to users</a>
+      </nav>
+
       <form id='local-config'>
-        <h1>Configure your Coconut system</h1>
+        <h2>Configure your Coconut system</h2>
         <label>Coconut Cloud URL</label>
         <input type='text' name='coconut-cloud' value='http://'></input>
         <fieldset id='mode-fieldset'>

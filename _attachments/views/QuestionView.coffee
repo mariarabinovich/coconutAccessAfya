@@ -5,6 +5,7 @@ window.SkipTheseWhen = ( argQuestions, result ) ->
     questions.push window.questionCache[question]
   disabledClass = "disabled_skipped"
 
+
   for question in questions
     if result
       question.addClass disabledClass
@@ -13,13 +14,24 @@ window.SkipTheseWhen = ( argQuestions, result ) ->
 
 window.ResultOfQuestion = ( name ) -> return window.getValueCache[name]?() || null
 
+
+
 class QuestionView extends Backbone.View
+
+  el: '#content'
 
   initialize: ->
     Coconut.resultCollection ?= new ResultCollection()
     @autoscrollTimer = 0
+    #Coconut.clientDashboardView = new ClientDashboardView()
+    #Coconut.clientDashboardView.render()
+    #@$el.html "<div id='clientDashboard'>TEST CLIENT DASHBOARD</div>"
+    #@$el.append "
+    #    <div class='formHeader'>
+    #    PATIENTNAME But this will also have the options for the other forms </div>
+    #"
 
-  el: '#content'
+
 
   triggerChangeIn: ( names ) ->
 
@@ -32,37 +44,34 @@ class QuestionView extends Backbone.View
 
   render: =>
 
+
+   #     <form action='index.html'>
+   #       <input type='submit' value='Complete'>
+   #     </form>
+   #     <form action='index.html'>
+   #       <input type='submit' value='ANOTHER OPTION'>
+   #     </form>
+
+
     @$el.html "
+
 
       <div class='hoveringMessage' id='messageText'>
         Saving...
       </div>
-      <div class='formHeader'>
-        <h1>#{@model.id}</h1> </div>
-      <div class='mini-dashboard'>
-        <p>(this is a minor patient dashboard)
-        <span>Patient Name:</span>
-        <span>Age:</span>
-        <span>Gender:</span>
-        <span>Illnesses or concerns:</span>
-        <span>Status of Registration : 32% complete</span>
-        <span>Status of Vitals : 0% complete</span>
-        <span>Clinical Visit : 0% complete</span>
-        </p>
-      </div>
+
+
       <div id='question-view'>
         <form>
           #{@toHTMLForm(@model)}
         </form>
 
-        <form action='index.html'>
-          <input type='submit' value='Complete'>
-      </form>
+
       </div>
 
     "
 
-
+    #change the
     @updateCache()
 
     # for first run
@@ -133,7 +142,7 @@ class QuestionView extends Backbone.View
     "click #question-view a:contains(Get current location)" : "getLocation"
     "click .next_error"   : "runValidate"
     "click .validate_one" : "onValidateOne"
-    "click #completeForm" : "completeForm"
+    # "click #completeForm" : "completeForm"
     # "onscroll" : "fixMiniDashboard"
 
   runValidate: -> @validateAll()
@@ -156,6 +165,8 @@ class QuestionView extends Backbone.View
 
 
   onChange: (event) ->
+
+    #Coconut.clientDashboardView.update()
     $target = $(event.target)
 
     #

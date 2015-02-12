@@ -45,11 +45,18 @@ class MessagingView extends Backbone.View
     @phoneNumbers = _.map $("input[type=checkbox].phone-number:checked"), (item) ->
       $(item).attr("id").replace(/check-user\./,"")
     $("#to").html @phoneNumbers.join(", ")
-  
+
   render: =>
     fields =  "_id,district,name,comments".split(",")
     messageFields =  "date,to,text".split(",")
     @$el.html "
+      <nav class='submenu'>
+        <a href='#manage'>Question Sets</a>
+        <a href='#sync'>Sync</a>
+        <a href='#configure'>Set cloud vs mobile</a>
+        <a href='#users'>Manage users</a>
+        <a class='selected' href='#'>Send message to users</a>
+      </nav>
       <h2>Send Message</h2>
       <h3>Select Recipients</h2>
 
@@ -92,7 +99,7 @@ class MessagingView extends Backbone.View
         </tbody>
       </table>
     "
-    
+
     @userCollection.fetch
       success: =>
         $("table.recipients").before "<input id='check-all' type='checkbox'></input>Select All"
@@ -142,4 +149,4 @@ class MessagingView extends Backbone.View
               }
             </tr>
           "
-        
+

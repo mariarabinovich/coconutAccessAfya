@@ -5,19 +5,84 @@ var MenuView,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 MenuView = (function(_super) {
+  var currentDate, dayOfTheWeek, days, utcDate;
+
   __extends(MenuView, _super);
 
   function MenuView() {
     this.checkReplicationStatus = __bind(this.checkReplicationStatus, this);
-    this.render = __bind(this.render, this);
+    this.renderForAdmin = __bind(this.renderForAdmin, this);
+    this.renderForLegacyRecords = __bind(this.renderForLegacyRecords, this);
+    this.renderForHealthySchools = __bind(this.renderForHealthySchools, this);
+    this.renderForNonClient = __bind(this.renderForNonClient, this);
+    this.renderForClient = __bind(this.renderForClient, this);
+    this.renderForClientVisit = __bind(this.renderForClientVisit, this);
+    this.renderForClientInfo = __bind(this.renderForClientInfo, this);
+    this.leaveClient = __bind(this.leaveClient, this);
+    this.leaveVisit = __bind(this.leaveVisit, this);
+    this.clientOptions = __bind(this.clientOptions, this);
+    this.changeQuestionSet = __bind(this.changeQuestionSet, this);
     return MenuView.__super__.constructor.apply(this, arguments);
   }
 
   MenuView.prototype.el = '.main_header';
 
+  currentDate = new Date();
+
+  days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  dayOfTheWeek = currentDate.getDay();
+
+  utcDate = days[dayOfTheWeek] + ' ' + (currentDate.getMonth() + 1) + '/' + currentDate.getDate() + '/' + currentDate.getFullYear();
+
   MenuView.prototype.events = {
-    "change": "render",
-    "click .menuburger": "openOrCloseMenu"
+    "change": "renderForNonClient",
+    "click .menuburger": "openOrCloseMenu",
+    "click .menuitem": "changeHeader",
+    "click .aSection": "openOrCloseMenu",
+    "click #backtoclientsearch": "leaveClient",
+    "click #clientoptionsmenu": "clientOptions",
+    "click #stayinvisit": "clientOptions",
+    "click .exitvisit": "leaveVisit",
+    "click .questionSetName": "changeQuestionSet"
+  };
+
+  MenuView.prototype.changeQuestionSet = function(event) {
+    var newQuestionSet, target;
+    target = $(event.target);
+    newQuestionSet = target.closest("li").attr("href");
+    Coconut.clientSummary.changeQuestionSet(newQuestionSet);
+    target.closest("li").parent().find("li.selected").removeClass("selected");
+    return target.closest("li").addClass("selected");
+  };
+
+  MenuView.prototype.clientOptions = function() {
+    var clientmenu, theclient;
+    theclient = Coconut.clientSummary.client;
+    clientmenu = $('.clientmenu');
+    clientmenu.toggleClass("visible");
+    return clientmenu.slideToggle("slow");
+  };
+
+  MenuView.prototype.leaveVisit = function() {
+    var theclient;
+    theclient = Coconut.clientSummary.client;
+    this.renderForClient(theclient);
+    return document.location.href = "#summary/" + theclient.clientID;
+  };
+
+  MenuView.prototype.leaveClient = function() {
+    this.renderForNonClient();
+    return document.location.href = "#search/client";
+  };
+
+  MenuView.prototype.changeHeader = function(event) {
+    var newmenutitle, target;
+    target = $(event.target);
+    newmenutitle = target.closest("a").attr("title");
+    console.log(newmenutitle);
+    $("div.header h1").html(newmenutitle);
+    return this.openOrCloseMenu();
   };
 
   MenuView.prototype.openOrCloseMenu = function() {
@@ -30,7 +95,31 @@ MenuView = (function(_super) {
     return thisbutton.toggleClass("menuisopen", "slow");
   };
 
-  MenuView.prototype.render = function() {
+  MenuView.prototype.renderForClientInfo = function(client) {
+    return this.$el.html("<div class='header'> <button class='menuback exitvisit'></button> <h1>" + (client.name()) + "</h1> <h4>EDIT CLIENT INFO</h4> </div>");
+  };
+
+  MenuView.prototype.renderForClientVisit = function(client) {
+    var data, scrolled_val;
+    scrolled_val = $(document).scrollTop().valueOf();
+    console.log(scrolled_val);
+    return this.$el.html("<div class='header'> <button class='endTheVisit' id='clientoptionsmenu'></button> <div class='visitTitle'><h1>" + (client.name()) + "</h1> <h4> " + utcDate + ", Clinician: <span id='cliniciansName'></span></h4></div> </div> <div class='clientmenu hidden'> <div class='visitTitle'><h1>" + (client.name()) + "</h1> <h4> CURRENT VISIT:" + utcDate + "</h4></div> <table class='patientInfo'> <tbody> " + (data = {
+      "Age": "Age",
+      "Gender": "Gender",
+      "Allergies": "Allergies",
+      "Known Issues": "Known Issues",
+      "Membership status": "Membership status"
+    }, _.map(data, function(value, property) {
+      return "<tr> <td> " + property + " </td> <td> " + value + " </td> </tr>";
+    }).join("")) + " </tbody> </table> <a class='buttonLinks' id='stayinvisit'>Back to the visit</a> <a class='buttonLinks exitvisit'>leave this visit</a> </div> <nav class='visitOptions'> <ul> <li class='questionSetName selected' href='#new/result/Vitals/" + client.clientID + "'><img src='css/images/vitals.png' alt='vitals' class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Complaints/" + client.clientID + "'><img src='css/images/complaint.png' alt='complaint' class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Labs/" + client.clientID + "'><img src='css/images/labs.png' alt='labs'  class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Diagnosis/" + client.clientID + "'><img src='css/images/diagnose.png' alt='diagnose'  class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Complete%20Visit/" + client.clientID + "'><img src='css/images/complete.png' alt='complete' class='visitOptionsIcons'></li> </ul> </nav>");
+  };
+
+  MenuView.prototype.renderForClient = function(client) {
+    console.log("hello");
+    return this.$el.html("<div class='header'> <button class='menuback' id='backtoclientsearch' ></button> <div class='profileIconDiv'></div> <div class='clientTitle'> <h1>" + (client.name()) + "</h1> </div> </div>");
+  };
+
+  MenuView.prototype.renderForNonClient = function() {
     var adminButtons, syncButton;
     if (atServer()) {
       adminButtons = "<a href='#login'>Login</a> <a href='#logout'>Logout</a> <a id='reports' href='#reports'>Reports</a> <a id='manage-button' href='#manage'>Manage</a> &nbsp;";
@@ -38,11 +127,17 @@ MenuView = (function(_super) {
     if ("mobile" === Coconut.config.local.get("mode")) {
       syncButton = "<a href='#sync/send_and_get'>Sync <span class='tinyfont'>(last done: <span class='sync-sent-and-get-status'></span>)</span></a>";
     }
-    this.$el.html("<button class='menuburger'></button> <nav class='main-nav closed'> <a href='#'><span>Find/Add Client</span></a> <a href='#'><span>Healthy Schools Intake</span></a> <a href='#'><span>Reports</span></a> <a href='#'><span>Feedback</span></a> <a href='index.html#logout'><span id='user'>Username / </span><span> logout</span></a> " + (syncButton || '') + " " + (adminButtons || '') + " </nav>");
+    this.$el.html("<div class='header'> <button class='menuburger'></button> <h1>Find or Add Clients</h1> </div> <nav class='main-nav closed'> <a class='menuitem selected' title ='Find or Add Clients' href='#'><span>Find/Add Client</span></a> <a class='menuitem' title ='Reports' href='#reports'><span>Reports</span></a> <a class='menuitem' title ='Feedback' href='#help'><span>Feedback</span></a> <a class='menuitem' title ='System Admin' href='#manage'><span>Manage</span></a> <a class='menuitem' title ='Login logout' href='index.html#logout'><span id='user'>Username / </span><span> logout</span></a> " + (syncButton || '') + " " + (adminButtons || '') + " </nav>");
     this.updateVersion();
     this.checkReplicationStatus();
     return Coconut.questions.fetch;
   };
+
+  MenuView.prototype.renderForHealthySchools = function() {};
+
+  MenuView.prototype.renderForLegacyRecords = function() {};
+
+  MenuView.prototype.renderForAdmin = function() {};
 
   MenuView.prototype.updateVersion = function() {
     return $.ajax("version", {
