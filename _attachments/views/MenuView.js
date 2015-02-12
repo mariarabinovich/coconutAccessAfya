@@ -103,7 +103,7 @@ MenuView = (function(_super) {
     var data, scrolled_val;
     scrolled_val = $(document).scrollTop().valueOf();
     console.log(scrolled_val);
-    return this.$el.html("<div class='header'> <button class='endTheVisit' id='clientoptionsmenu'></button> <div class='visitTitle'><h1>" + (client.name()) + "</h1> <h4> " + utcDate + ", Clinician: <span id='cliniciansName'></span></h4></div> </div> <div class='clientmenu hidden'> <div class='visitTitle'><h1>" + (client.name()) + "</h1> <h4> CURRENT VISIT:" + utcDate + "</h4></div> <table class='patientInfo'> <tbody> " + (data = {
+    return this.$el.html("<div class='header'> <button class='endTheVisit' id='clientoptionsmenu'></button> </div> <div class='clientmenu hidden'> <div class='visitTitle'><h1>" + (client.name()) + "</h1> <h4> CURRENT VISIT:" + utcDate + ", Clinician: <span id='cliniciansName'></span></h4></div> <table class='patientInfo'> <tbody> " + (data = {
       "Age": "Age",
       "Gender": "Gender",
       "Allergies": "Allergies",
@@ -111,7 +111,7 @@ MenuView = (function(_super) {
       "Membership status": "Membership status"
     }, _.map(data, function(value, property) {
       return "<tr> <td> " + property + " </td> <td> " + value + " </td> </tr>";
-    }).join("")) + " </tbody> </table> <a class='buttonLinks' id='stayinvisit'>Back to the visit</a> <a class='buttonLinks exitvisit'>leave this visit</a> </div> <nav class='visitOptions'> <ul> <li class='questionSetName selected' href='#new/result/Vitals/" + client.clientID + "'><img src='css/images/vitals.png' alt='vitals' class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Complaints/" + client.clientID + "'><img src='css/images/complaint.png' alt='complaint' class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Labs/" + client.clientID + "'><img src='css/images/labs.png' alt='labs'  class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Diagnosis/" + client.clientID + "'><img src='css/images/diagnose.png' alt='diagnose'  class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Complete%20Visit/" + client.clientID + "'><img src='css/images/complete.png' alt='complete' class='visitOptionsIcons'></li> </ul> </nav>");
+    }).join("")) + " </tbody> </table> <a class='buttonLinks' id='stayinvisit'>Back to the visit  &gt;</a> <a class='buttonLinks exitvisit'>&lt; leave this visit</a> </div> <nav class='visitOptions'> <ul> <li class='questionSetName selected' href='#new/result/Vitals/" + client.clientID + "'><img src='css/images/vitals.png' alt='vitals' class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Complaints/" + client.clientID + "'><img src='css/images/complaint.png' alt='complaint' class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Labs/" + client.clientID + "'><img src='css/images/labs.png' alt='labs'  class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Diagnosis/" + client.clientID + "'><img src='css/images/diagnose.png' alt='diagnose'  class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Complete%20Visit/" + client.clientID + "'><img src='css/images/complete.png' alt='complete' class='visitOptionsIcons'></li> </ul> </nav>");
   };
 
   MenuView.prototype.renderForClient = function(client) {

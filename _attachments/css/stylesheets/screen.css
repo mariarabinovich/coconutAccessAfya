@@ -875,6 +875,9 @@ nav.visitOptions {
   display: block;
   width: 100%;
   height: 90px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
 }
 
 /* line 481, ../sass/screen.scss */
@@ -1023,7 +1026,7 @@ table.lastVisitResults {
 /* line 552, ../sass/screen.scss */
 table.patientInfo {
   width: 300px;
-  margin-top: 57px;
+  margin-top: 40px;
 }
 
 /* line 553, ../sass/screen.scss */
@@ -1034,8 +1037,6 @@ table.patientInfo tr td {
 /* line 560, ../sass/screen.scss */
 .visitTitle {
   display: inline-block;
-  position: absolute;
-  left: 95px;
   text-align: left;
 }
 

@@ -477,7 +477,7 @@ nav.submenu a{
       line-height: 40px; font-size:$font_size_sub_menu; padding:0 10px;}
 nav.submenu a.selected{background-color:$extra_light_gray;}
 
-nav.visitOptions{display:block; width:100%; height:90px; }
+nav.visitOptions{display:block; width:100%; height:90px; position:fixed; top:0px; left:0px;}
 nav.visitOptions ul{display:block; width:100%; position:absolute; left:59px;}
 nav.visitOptions ul li{display:inline-block; height:90px; width:18%; background-color:$light_gray;
     box-sizing:border-box;
@@ -549,7 +549,7 @@ table thead, table tr:nth-child(even) {
 table.lastVisitResults{width:90%; font-size:$font_size_small;}
 
 
-table.patientInfo{width:300px; margin-top:57px; }
+table.patientInfo{width:300px; margin-top:40px; }
 table.patientInfo tr td{ padding: 0px 20px;}
 
 // table.lastVisitResults tr:nth-child(even) {
@@ -557,7 +557,7 @@ table.patientInfo tr td{ padding: 0px 20px;}
 // }
 
 
-.visitTitle{display:inline-block; position:absolute; left:95px; text-align:left;}
+.visitTitle{display:inline-block;  text-align:left; }
 .clientTitle{display:inline-block; position:absolute; left:200px; text-align:left;}
 
 

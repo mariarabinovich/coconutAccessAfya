@@ -84,14 +84,18 @@ class MenuView extends Backbone.View
   renderForClientVisit: (client) =>
     scrolled_val = $(document).scrollTop().valueOf()
     console.log scrolled_val
+    #<div class='header'>
+    #  <button class='endTheVisit' id='clientoptionsmenu'></button>
+    #    <div class='visitTitle'><h1>#{client.name()}</h1> <h4> #{utcDate}, Clinician: <span id='cliniciansName'></span></h4></div>
+    #</div>
+
     @$el.html "
     <div class='header'>
       <button class='endTheVisit' id='clientoptionsmenu'></button>
-        <div class='visitTitle'><h1>#{client.name()}</h1> <h4> #{utcDate}, Clinician: <span id='cliniciansName'></span></h4></div>
     </div>
 
     <div class='clientmenu hidden'>
-        <div class='visitTitle'><h1>#{client.name()}</h1> <h4> CURRENT VISIT:#{utcDate}</h4></div>
+        <div class='visitTitle'><h1>#{client.name()}</h1> <h4> CURRENT VISIT:#{utcDate}, Clinician: <span id='cliniciansName'></span></h4></div>
         <table class='patientInfo'>
         <tbody>
         #{
@@ -117,8 +121,8 @@ class MenuView extends Backbone.View
         }
         </tbody>
       </table>
-      <a class='buttonLinks' id='stayinvisit'>Back to the visit</a>
-      <a class='buttonLinks exitvisit'>leave this visit</a>
+      <a class='buttonLinks' id='stayinvisit'>Back to the visit  &gt;</a>
+      <a class='buttonLinks exitvisit'>&lt; leave this visit</a>
 
     </div>
 
