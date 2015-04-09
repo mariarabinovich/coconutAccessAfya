@@ -31,7 +31,10 @@ ClientSummaryView = (function(_super) {
 
   ClientSummaryView.prototype.startVisit = function() {
     Coconut.menuView.renderForClientVisit(this.client);
-    return document.location.href = "#new/result/Vitals/" + this.client.clientID;
+    $("html, body").animate({
+      scrollTop: $('#top-menu').offset().top
+    });
+    return document.location.href = "#new/result/Outpatient Visit/" + this.client.clientID;
   };
 
   ClientSummaryView.prototype.changeQuestionSet = function(newQuestionSet) {
@@ -42,7 +45,7 @@ ClientSummaryView = (function(_super) {
     var data;
     console.log(this.client);
     Coconut.menuView.renderForClient(this.client);
-    this.$el.html("<div class='aSection'> <table class='patientInfo'> <thead><th colspan='2'>Please ask the client if this information is up to date</th></thead> <tbody> " + (data = {
+    this.$el.html("<div class='aSection'> <table class='patientInfo'> <thead><th colspan='2' class = 'noteorhint'>Please check that this information is up to date</th></thead> <tbody> " + (data = {
       "Age": "Age",
       "Gender": "Gender",
       "Allergies": "Allergies",
@@ -50,7 +53,15 @@ ClientSummaryView = (function(_super) {
       "Membership status": "Membership status"
     }, _.map(data, function(value, property) {
       return "<tr> <td> " + property + " </td> <td> " + value + " </td> </tr>";
-    }).join("")) + " </tbody> <tfoot><th colspan='2'> <a class='buttonLinks sideBySideButtons editClientInfo' > Edit " + (this.client.firstName()) + "'s Contact and Basic Info</a> </th></tfoot> </table> </div> <div class='aSection'> <a class='buttonLinks sideBySideButtons startVisit' > New clinical visit for " + (this.client.firstName()) + "</a> <a class='buttonLinks sideBySideButtons startVisit' > Followup visit for " + (this.client.firstName()) + "</a> </div>");
+    }).join("")) + " </tbody> <tfoot><th colspan='2'> <a class='buttonLinks editClientInfo' > Edit " + (this.client.firstName()) + "'s Info</a> </th></tfoot> </table> </div> <a class='buttonLinks startVisit' > New clinical visit for " + (this.client.firstName()) + "</a> <a class='buttonLinks startVisit' > Followup visit for " + (this.client.firstName()) + "</a> <div class='aSection'> <h2>Previous Visits/Forms</h2> " + (_.map(this.client.clientResultsSortedMostRecentFirst(), (function(_this) {
+      return function(result, index) {
+        var date, id, question;
+        date = result.createdAt || result.VisitDate || result.fDate;
+        question = result.question || result.source;
+        id = result._id || "";
+        return "<form class='previousVisitsList hideText'> <button class='fullwidthdropdown' onClick='$(\"#result-" + index + "\").slideToggle(1000)' type='button'>" + question + ": " + date + "</button> </form> <div id='result-" + index + "' class='aPreviousVisit' style='display: none'> " + (_this.renderResult(result)) + " " + (result.question != null ? "<form class='hideText' method='get' action='#edit/result/" + id + "'> <button>Edit</button> </form>" : "") + " </div>";
+      };
+    })(this)).join("")) + " </div>");
     return $("button").button();
   };
 

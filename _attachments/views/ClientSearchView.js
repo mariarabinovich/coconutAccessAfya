@@ -20,8 +20,7 @@ ClientSearchView = (function(_super) {
   };
 
   ClientSearchView.prototype.render = function() {
-    this.$el.html("<span id='feedback'></span> <br> <div class='aSection'> <label for='client_1'>Client Last Name</label> <input class='client' id='client_1' type='text' name='clientlastname'> </div> <div id='results'></div>");
-    return $("head title").html("Coconut Find/Create Client");
+    return this.$el.html("<span id='feedback'></span> <br> <div class='aSection'> <label for='client_1'>Client Last Name</label> <input class='client' id='client_1' type='text' name='clientlastname'> </div> <div id='results'></div>");
   };
 
   ClientSearchView.prototype.onChange = function() {
@@ -32,7 +31,6 @@ ClientSearchView = (function(_super) {
     menu.css('display', 'none');
     burgerbutton.removeClass("menuisopen", "slow");
     client1 = ($("#client_1").val() || '').toUpperCase();
-    console.log(client1);
     if (client1.length === 0) {
       return $("#results").html("");
     } else {
@@ -49,9 +47,9 @@ ClientSearchView = (function(_super) {
           results = _(result.rows).map(function(row) {
             return row.value;
           });
-          return $("#results").html("<h1>RESULTS</h1> <a href='" + (typeof sortbythis !== "undefined" && sortbythis !== null) + "' class='clientresult' > <div class='resultblocks title'> <p class='resulttext'> Last name </p> </div> <div class='resultblocks title'> <p class='resulttext'> First name </p> </div> <div class='resultblocks title'> <p class='resulttext'> Other names </p> </div> <div class='resultblocks title'> <p class='resulttext'> Phone number </p> </div> </a> " + (_(results).map(function(result) {
+          return $("#results").html("<!--- <a href='" + (typeof sortbythis !== "undefined" && sortbythis !== null) + "' class='clientresult' > --> <div class='clientresult' > <div class='resultblocks title'> <p class='resulttext'> Last name </p> </div> <div class='resultblocks title'> <p class='resulttext'> First name </p> </div> <div class='resultblocks title'> <p class='resulttext'> Other names </p> </div> <div class='resultblocks title'> <p class='resulttext'> Phone number </p> </div> </div> <!---  </a> --> " + (_(results).map(function(result) {
             return "<a href='#summary/" + result.id + "' class='clientresult' > <div class='resultblocks'> <p class='resulttext'> " + result.last_name + " </p> </div> <div class='resultblocks'> <p class='resulttext'> " + result.first_name + " </p> </div> <div class='resultblocks'> <p class='resulttext'> " + result.other_names + " </p> </div> <div class='resultblocks'> <p class='resulttext'> " + result.phone + " </p> </div> </a>";
-          }).join("")) + " <h3>don't see your client?</h3> <button id='addClient' type='button'>add new client</button>");
+          }).join("")) + " <button id='addClient' type='button'>add new client</button>");
         }
       });
     }
@@ -60,7 +58,11 @@ ClientSearchView = (function(_super) {
   ClientSearchView.prototype.addClient = function() {
     var lastName;
     lastName = ($("#client_1").val() || '').toUpperCase();
-    return Coconut.router.navigate("/new/result/Client Registration/" + lastName, true);
+    $("html, body").animate({
+      scrollTop: $('#top-menu').offset().top
+    });
+    Coconut.router.navigate("/new/result/Client Registration/" + lastName, true);
+    return Coconut.isItANewPerson = true;
   };
 
   return ClientSearchView;

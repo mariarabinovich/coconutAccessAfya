@@ -36,7 +36,7 @@ class ManageView extends Backbone.View
             <tr>
               <td>#{questionName}</td>
               <td><a href='#edit/#{questionId}'>edit</a></td>
-              <td><a href='#delete/#{questionId}'>delete</a></td>
+              <!--<td><a href='#delete/#{questionId}'>delete</a></td>-->
               <td><a href='#edit/resultSummary/#{questionId}'>summary</a></td>
             </tr>
           "

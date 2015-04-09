@@ -5,42 +5,103 @@
    "required": "false",
    "questions": [
        {
-           "id": "205",
-           "_id": "205",
-           "label": "What type of visit was this primarily?",
+           "id": "300",
+           "_id": "300",
+           "label": "Clinic",
            "type": "radio",
-           "radio-options": "Emergency illness or dehydration, First aid, Lab request, Vaccination, Maternity, Prenatal, Followup, Other",
+           "radio-options": "Sinai, Kisii",
            "validation": "",
            "required": "true",
            "action_on_questions_loaded": "",
            "skip_logic": "",
            "action_on_change": "",
-           "safeLabel": "Whattypeofvisitwasthisprimarily"
+           "safeLabel": "Clinic",
+           "section":"endVisit"
        },
        {
-           "id": "424",
-           "_id": "424",
-           "label": "Please elaborate on the type of visit.",
-           "type": "text",
+           "id": "205",
+           "_id": "205",
+           "label": "Did this visit qualify for one of the following USAID categories?",
+           "type": "radio",
+           "radio-options": "HIV AIDS, Reproductive health, Family planning, Maternal or child health,  No it did not",
            "validation": "",
-           "required": "false",
+           "required": "true",
            "action_on_questions_loaded": "",
-           "skip_logic": "ResultOfQuestion('Whattypeofvisitwasthisprimarily') isnt 'Other'",
+           "skip_logic": "",
            "action_on_change": "",
-           "safeLabel": "Pleaseelaborateonthetypeofvisit"
+           "safeLabel": "USAIDcategories",
+           "section":"endVisit"
        },
+       {
+           "id": "215",
+           "_id": "215",
+           "label": "Select an Access Afya visit category that best describes this visit",
+           "type": "radio",
+           "radio-options": "Child welfare, Family planning, Anti natal, Chronic care patient, Urgent care or first aid, Outpatient checkup",
+           "validation": "",
+           "required": "true",
+           "action_on_questions_loaded": "",
+           "skip_logic": "",
+           "action_on_change": "",
+           "safeLabel": "SelectanAccessAfyavisitcategorythatbestdescribesthisvisit",
+           "section":"endVisit"
+       },
+       {
+           "id": "2015",
+           "_id": "2015",
+           "label": "Select a chronic care category",
+           "type": "radio",
+           "radio-options": "Diabetes, Hypertensive, Diabetes and Hypertensive, Asthma, HIV, Other",
+           "validation": "",
+           "required": "true",
+           "action_on_questions_loaded": "",
+           "skip_logic": "ResultOfQuestion('SelectanAccessAfyavisitcategorythatbestdescribesthisvisit') isnt 'Chronic care patient'",
+           "action_on_change": "",
+           "safeLabel": "Selectachroniccarecategory",
+           "section":"endVisit"
+       },
+       {
+           "id": "2017",
+           "_id": "2017",
+           "label": "What kind of urgent care?",
+           "type": "radio",
+           "radio-options": "Resusitation, Stabilization, Burns, Wounds, Other",
+           "validation": "",
+           "required": "true",
+           "action_on_questions_loaded": "",
+           "skip_logic": "ResultOfQuestion('SelectanAccessAfyavisitcategorythatbestdescribesthisvisit') isnt 'Urgent care or first aid'",
+           "action_on_change": "",
+           "safeLabel": "Whatkindofurgentcare",
+           "section":"endVisit"
+       },
+
        {
            "id": "206",
            "_id": "206",
            "label": "Please briefly summarize the visit in one or two sentences.",
-           "type": "text",
+           "type": "textarea",
            "validation": "",
            "required": "true",
            "action_on_questions_loaded": "",
            "skip_logic": "",
            "action_on_change": "",
-           "safeLabel": "Pleasebrieflysummarizethevisitinoneortwosentences"
-       }
+           "safeLabel": "Pleasebrieflysummarizethevisitinoneortwosentences",
+           "section":"endVisit"
+       },
+        {
+            "_id": "631",
+            "action_on_change": "",
+            "action_on_questions_loaded": "",
+            "id": "631",
+            "label": "complete",
+            "repeatable": "false",
+            "required": "true",
+            "safeLabel": "complete",
+            "skip_logic": "",
+            "type": "checkbox",
+            "validation": "",
+           "section":"endVisit"
+        }
    ],
    "collection": "question"
 }

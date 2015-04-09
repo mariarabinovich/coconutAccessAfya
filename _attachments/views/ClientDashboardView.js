@@ -15,7 +15,15 @@ ClientDashboardView = (function(_super) {
   ClientDashboardView.prototype.el = '#clientDashboard';
 
   ClientDashboardView.prototype.events = {
-    "change": "render"
+    "change": "render",
+    "click .manageActions": "scrolltotop"
+  };
+
+  ClientDashboardView.prototype.scrolltotop = function() {
+    alert("skdf");
+    return $("html, body").animate({
+      scrollTop: $('#top-menu').offset().top
+    });
   };
 
   ClientDashboardView.prototype.render = function() {

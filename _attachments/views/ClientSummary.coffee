@@ -13,12 +13,14 @@ class ClientSummaryView extends Backbone.View
   startVisit: =>
     Coconut.menuView.renderForClientVisit(@client)
     #Shrink the client summary table
-    #reveal first questioneer (vitals)
-    #console.log "kljasdflkj"
-    document.location.href = "#new/result/Vitals/#{@client.clientID}"
+    alert ('hi')
+    $("html, body").animate
+        scrollTop: $('#top-menu').offset().top
+    document.location.href = "#new/result/Outpatient Visit/#{@client.clientID}"
 
-  changeQuestionSet: (newQuestionSet)=>
-    document.location.href = newQuestionSet
+
+  #changeQuestionSet: (newQuestionSet)=>
+  #  document.location.href = newQuestionSet
 
   render: =>
     console.log @client
@@ -26,36 +28,14 @@ class ClientSummaryView extends Backbone.View
     Coconut.menuView.renderForClient(@client)
 
 
-#    <div class='aSection'>
-#        <h2>Previous Visits/Forms</h2>
-#        #{
-#          _.map(@client.clientResultsSortedMostRecentFirst(), (result,index) =>
-#            date = result.createdAt || result.VisitDate || result.fDate
-#            question = result.question || result.source
-#            id = result._id || ""
-#            "
-#            <form class='previousVisitsList hideText'>
-#              <button class='fullwidthdropdown' onClick='$(\"#result-#{index}\").slideToggle(1000)' type='button'>#{question}: #{date}</button>
-#            </form>
-#            <div id='result-#{index}' class='aPreviousVisit' style='display: none'>
-#              #{@renderResult(result)}
-#              #{if result.question? then "
-#                <form class='hideText' method='get' action='#edit/result/#{id}'>
-#                  <button>Edit</button>
-#                </form>
-#              " else ""}
-#            </div>
-#            "
-#          ).join("")
-#        }
-#      </div>
+
 
 
 
     @$el.html "
       <div class='aSection'>
       <table class='patientInfo'>
-        <thead><th colspan='2'>Please ask the client if this information is up to date</th></thead>
+        <thead><th colspan='2' class = 'noteorhint'>Please check that this information is up to date</th></thead>
         <tbody>
         #{
           data = {
@@ -89,7 +69,7 @@ class ClientSummaryView extends Backbone.View
         }
         </tbody>
         <tfoot><th colspan='2'>
-          <a class='buttonLinks sideBySideButtons editClientInfo' > Edit #{@client.firstName()}'s Contact and Basic Info</a>
+          <a class='buttonLinks editClientInfo' > Edit #{@client.firstName()}'s Info</a>
         </th></tfoot>
       </table>
       </div>
@@ -98,13 +78,37 @@ class ClientSummaryView extends Backbone.View
 
 
 
-      <div class='aSection'>
-        <a class='buttonLinks sideBySideButtons startVisit' >
+        <a class='buttonLinks startVisit' >
           New clinical visit for #{@client.firstName()}</a>
 
-        <a class='buttonLinks sideBySideButtons startVisit' >
+        <a class='buttonLinks startVisit' >
           Followup visit for #{@client.firstName()}</a>
+
+
+          <div class='aSection'>
+        <h2>Previous Visits/Forms</h2>
+        #{
+          _.map(@client.clientResultsSortedMostRecentFirst(), (result,index) =>
+            date = result.createdAt || result.VisitDate || result.fDate
+            question = result.question || result.source
+            id = result._id || ""
+            "
+            <form class='previousVisitsList hideText'>
+              <button class='fullwidthdropdown' onClick='$(\"#result-#{index}\").slideToggle(1000)' type='button'>#{question}: #{date}</button>
+            </form>
+            <div id='result-#{index}' class='aPreviousVisit' style='display: none'>
+              #{@renderResult(result)}
+              #{if result.question? then "
+                <form class='hideText' method='get' action='#edit/result/#{id}'>
+                  <button>Edit</button>
+                </form>
+              " else ""}
+            </div>
+            "
+          ).join("")
+        }
       </div>
+
     "
     $("button").button()
 

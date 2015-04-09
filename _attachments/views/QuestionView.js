@@ -34,6 +34,8 @@ QuestionView = (function(_super) {
   __extends(QuestionView, _super);
 
   function QuestionView() {
+    this.scrollToTop = __bind(this.scrollToTop, this);
+    this.selectMultiple = __bind(this.selectMultiple, this);
     this.render = __bind(this.render, this);
     return QuestionView.__super__.constructor.apply(this, arguments);
   }
@@ -68,8 +70,11 @@ QuestionView = (function(_super) {
   };
 
   QuestionView.prototype.render = function() {
-    var skipperList;
-    this.$el.html("<div class='hoveringMessage' id='messageText'> Saving... </div> <div id='question-view'> <form> " + (this.toHTMLForm(this.model)) + " </form> </div>");
+    var bmidialogcontent, skipperList;
+    bmidialogcontent = "<h1>Notice</h1> <p> Patient's BMI  is is <div id= 'bmivalue'></div> <br> the normal BMI range is 20 to 24 </p> <br> <a class='remodal-cancel' >OK</a>";
+    this.$el.html("<div class='hoveringMessage' id='messageText'> Saving... </div> <div id='question-view'  class='remodal-bg'> <form> " + (this.toHTMLForm(this.model)) + " </form> </div> <div class='remodal' data-remodal-id='modal'> " + bmidialogcontent + " </div> <div id='round-button'  >UP</div>");
+    $(".visitSection").addClass("hiddenSections");
+    $(".regVisit-vitalsSection").removeClass("hiddenSections");
     this.updateCache();
     this.updateSkipLogic();
     skipperList = [];
@@ -78,45 +83,21 @@ QuestionView = (function(_super) {
         if (question.actionOnChange().match(/skip/i)) {
           skipperList.push(question.safeLabel());
         }
-        if (question.get("action_on_questions_loaded") !== "") {
+        if ((question.get("action_on_questions_loaded") != null) && question.get("action_on_questions_loaded") !== "") {
           return CoffeeScript["eval"](question.get("action_on_questions_loaded"));
         }
       };
     })(this));
     js2form($('form').get(0), this.result.toJSON());
     this.triggerChangeIn(skipperList);
-    this.$el.find("input[type=text],input[type=number],input[type='autocomplete from previous entries'],input[type='autocomplete from list']").textinput();
-    this.$el.find('input[type=checkbox]').checkboxradio();
-    this.$el.find('ul').listview();
-    this.$el.find('select').selectmenu();
-    this.$el.find('a').button();
-    this.$el.find('input[type=date]').datebox({
-      mode: "calbox",
-      dateFormat: "%d-%m-%Y"
-    });
-    _.each($("input[type='autocomplete from list'],input[type='autocomplete from previous entries']"), function(element) {
-      var minLength, source;
-      element = $(element);
-      if (element.attr("type") === 'autocomplete from list') {
-        source = element.attr("data-autocomplete-options").replace(/\n|\t/, "").split(/, */);
-        minLength = 0;
-      } else {
-        source = document.location.pathname.substring(0, document.location.pathname.indexOf("index.html")) + ("_list/values/byValue?key=\"" + (element.attr("name")) + "\"");
-        minLength = 1;
-      }
-      return element.autocomplete({
-        source: source,
-        minLength: minLength,
-        target: "#" + (element.attr("id")) + "-suggestions",
-        callback: function(event) {
-          element.val($(event.currentTarget).text());
-          return element.autocomplete('clear');
-        }
+    $('form').on('focus', 'input[type=number]', function(e) {
+      $(this).on('mousewheel.disableScroll', function(e) {
+        e.preventDefault();
       });
     });
-    if (this.readonly) {
-      return $('input, textarea').attr("readonly", "true");
-    }
+    return $('form').on('blur', 'input[type=number]', function(e) {
+      $(this).off('mousewheel.disableScroll');
+    });
   };
 
   QuestionView.prototype.events = {
@@ -129,7 +110,21 @@ QuestionView = (function(_super) {
     "click #question-view button:contains(+)": "repeat",
     "click #question-view a:contains(Get current location)": "getLocation",
     "click .next_error": "runValidate",
-    "click .validate_one": "onValidateOne"
+    "click .validate_one": "onValidateOne",
+    "click #round-button": "scrollToTop",
+    "click .checkboxLabel": "selectMultiple"
+  };
+
+  QuestionView.prototype.selectMultiple = function() {
+    var thecheckbox;
+    thecheckbox = $(this).find('input');
+    return thecheckbox.toggle('checked');
+  };
+
+  QuestionView.prototype.scrollToTop = function() {
+    return $("html, body").animate({
+      scrollTop: $('#top-menu').offset().top
+    });
   };
 
   QuestionView.prototype.runValidate = function() {
@@ -145,10 +140,8 @@ QuestionView = (function(_super) {
     return burgerbutton.removeClass("menuisopen", "slow");
   };
 
-  QuestionView.prototype.completeForm = function() {};
-
   QuestionView.prototype.onChange = function(event) {
-    var $target, eventStamp, messageVisible, targetName, wasValid;
+    var $target, eventStamp, messageVisible, targetName;
     $target = $(event.target);
     eventStamp = $target.attr("id");
     if (eventStamp === this.oldStamp && (new Date()).getTime() < this.throttleTime + 1000) {
@@ -164,22 +157,30 @@ QuestionView = (function(_super) {
       }
       this.validateAll();
       Coconut.menuView.update();
+      this.save();
+      this.updateSkipLogic();
+      return this.actionOnChange(event);
     } else {
       this.changedComplete = false;
       messageVisible = window.questionCache[targetName].find(".message").is(":visible");
-      if (!messageVisible) {
-        wasValid = this.validateOne({
-          key: targetName,
-          autoscroll: false,
-          button: "<button type='button' data-name='" + targetName + "' class='validate_one'>Validate</button>"
-        });
-      }
-    }
-    this.save();
-    this.updateSkipLogic();
-    this.actionOnChange(event);
-    if (wasValid && !messageVisible) {
-      return this.autoscroll(event);
+      return _.delay((function(_this) {
+        return function() {
+          var wasValid;
+          if (!messageVisible) {
+            wasValid = _this.validateOne({
+              key: targetName,
+              autoscroll: false,
+              button: "<button type='button' data-name='" + targetName + "' class='validate_one'>Validate</button>"
+            });
+            _this.save();
+            _this.updateSkipLogic();
+            _this.actionOnChange(event);
+            if (wasValid) {
+              return _this.autoscroll(event);
+            }
+          }
+        };
+      })(this), 500);
     }
   };
 
@@ -214,6 +215,9 @@ QuestionView = (function(_super) {
     if (isValid) {
       $("[name=complete]").parent().scrollTo();
     }
+    if (isValid) {
+      $("[name=complete]").scrollTo();
+    }
     return isValid;
   };
 
@@ -247,6 +251,7 @@ QuestionView = (function(_super) {
       return true;
     } else {
       $message.show().html("" + message + " " + button).find("button").button();
+      this.scrollToQuestion($question);
       return false;
     }
   };
@@ -301,24 +306,32 @@ QuestionView = (function(_super) {
     return "";
   };
 
+  QuestionView.prototype.scrollToQuestion = function(question) {
+    return this.autoscroll($(question).prev());
+  };
+
   QuestionView.prototype.autoscroll = function(event) {
-    var $div, $target, name;
+    var $div, $target, safetyCounter;
     clearTimeout(this.autoscrollTimer);
     if (event.jquery) {
       $div = event;
-      name = $div.attr("data-question-name");
+      window.scrollTargetName = $div.attr("data-question-name") || $div.attr("name");
     } else {
       $target = $(event.target);
-      name = $target.attr("name");
-      $div = window.questionCache[name];
+      window.scrollTargetName = $target.attr("name");
+      $div = window.questionCache[window.scrollTargetName];
     }
     this.$next = $div.next();
     if (!this.$next.is(":visible") && this.$next.length > 0) {
-      while (!this.$next.is(":visible")) {
+      safetyCounter = 0;
+      while (!this.$next.is(":visible") && (safetyCounter += 1) < 100) {
         this.$next = this.$next.next();
       }
     }
     if (this.$next.is(":visible")) {
+      if (window.questionCache[window.scrollTargetName].find(".message").is(":visible")) {
+        return;
+      }
       $(window).on("scroll", (function(_this) {
         return function() {
           $(window).off("scroll");
@@ -328,7 +341,7 @@ QuestionView = (function(_super) {
       return this.autoscrollTimer = setTimeout((function(_this) {
         return function() {
           $(window).off("scroll");
-          return _this.$next.scrollTo().find("input[type=text],input[type=number]").focus();
+          return _this.$next.scrollTo().find("input[type=text],input[type=number], textarea").focus();
         };
       })(this), 1000);
     }
@@ -430,7 +443,7 @@ QuestionView = (function(_super) {
     }
     return _.map(questions, (function(_this) {
       return function(question) {
-        var html, index, name, newGroupId, option, options, question_id, repeatable;
+        var html, index, name, newGroupId, option, options, optionsUrl, placeholderText, question_id, repeatable, result, resultOptionsArray, section, specifyHeight, textareaHeight, theOptionsArrayFile, thing;
         if (question.repeatable() === "true") {
           repeatable = "<button>+</button>";
         } else {
@@ -449,16 +462,23 @@ QuestionView = (function(_super) {
           if (groupId != null) {
             name = "group." + groupId + "." + name;
           }
-          return "<div " + (question.validation() ? question.validation() ? "data-validation = '" + (escape(question.validation())) + "'" : void 0 : "") + " data-required='" + (question.required()) + "' class='question " + ((typeof question.type === "function" ? question.type() : void 0) || '') + "' data-question-name='" + name + "' data-question-id='" + question_id + "' data-action_on_change='" + (_.escape(question.actionOnChange())) + "' > " + (!~question.type().indexOf('hidden') ? "<label type='" + (question.type()) + "' for='" + question_id + "'>" + (question.label()) + " <span></span></label>" : void 0) + " <div class='message'></div> " + ((function() {
-            var _i, _len, _ref;
+          return "<div " + (question.validation() ? question.validation() ? "data-validation = '" + (escape(question.validation())) + "'" : void 0 : "") + " data-required='" + (question.required()) + "' class='question " + ((typeof question.type === "function" ? question.type() : void 0) || '') + " " + (question.section()) + "' data-question-name='" + name + "' data-question-id='" + question_id + "' data-action_on_change='" + (_.escape(question.actionOnChange())) + "' > " + (!~question.type().indexOf('hidden') ? "<label type='" + (question.type()) + "' for='" + question_id + "'>" + (question.label()) + " <span></span></label>" : void 0) + " <div class='message'></div> " + ((function() {
+            var _i, _j, _k, _l, _len, _len1, _len2, _len3, _len4, _len5, _len6, _len7, _m, _n, _o, _p, _ref, _ref1, _ref2, _ref3, _ref4;
             switch (question.type()) {
               case "textarea":
-                return "<input name='" + name + "' type='text' id='" + question_id + "' value='" + (_.escape(question.value())) + "'></input>";
+                placeholderText = question.placeholdertext();
+                textareaHeight = question.textareaheight();
+                if (textareaHeight !== null) {
+                  specifyHeight = "style = 'height:" + textareaHeight + "'";
+                } else {
+                  specifyHeight = "";
+                }
+                return "<textarea name='" + name + "' type='textarea' id='" + question_id + "' value='" + (_.escape(question.value())) + "' placeholder='" + placeholderText + "' " + specifyHeight + "></textarea>";
               case "select":
                 if (this.readonly) {
                   return question.value();
                 } else {
-                  html = "<select>";
+                  html = "<select  >";
                   _ref = question.get("select-options").split(/, */);
                   for (index = _i = 0, _len = _ref.length; _i < _len; index = ++_i) {
                     option = _ref[index];
@@ -467,13 +487,44 @@ QuestionView = (function(_super) {
                   return html += "</select>";
                 }
                 break;
+              case "multiselect":
+                if (this.readonly) {
+                  return question.value();
+                } else {
+                  html = "<ul class='multiSelectList'>";
+                  _ref1 = question.get("select-options").split(/, */);
+                  for (index = _j = 0, _len1 = _ref1.length; _j < _len1; index = ++_j) {
+                    option = _ref1[index];
+                    html += "<li><input class = 'largecheckbox' id='" + question_id + "-" + index + "'  name='" + name + "' type='checkbox' value='" + option + "'><label for = '" + question_id + "-" + index + "' class ='checkboxLabel'>" + option + "</label></li>";
+                  }
+                  return html += "</ul>";
+                }
+                break;
+              case "multiselect-labs":
+                if (this.readonly) {
+                  return question.value();
+                } else {
+                  resultOptionsArray = question.labresultoptions().split(/, */);
+                  html = "<ul class='multiSelectList'>";
+                  _ref2 = question.get("select-options").split(/, */);
+                  for (index = _k = 0, _len2 = _ref2.length; _k < _len2; index = ++_k) {
+                    option = _ref2[index];
+                    html += "<li><input class = 'largecheckbox' id='" + question_id + "-" + index + "'  name='" + name + "' type='checkbox' value='" + option + "'> <label for = '" + question_id + "-" + index + "' class ='checkboxLabel'>" + option + " " + resultOptionsArray[index] + " </label> ";
+                  }
+                  return html += "</ul>";
+                }
+                break;
               case "radio":
                 if (this.readonly) {
                   return "<input class='radioradio' name='" + name + "' type='text' id='" + question_id + "' value='" + (question.value()) + "'></input>";
                 } else {
                   options = question.get("radio-options");
                   return _.map(options.split(/, */), function(option, index) {
-                    return "<input class='radio' type='radio' name='" + name + "' id='" + question_id + "-" + index + "' value='" + (_.escape(option)) + "'/> <label class='radio' for='" + question_id + "-" + index + "'>" + option + "</label> <!-- <div class='ui-radio'> <label for=''" + question_id + "-" + index + "' data-corners='true' data-shadow='false' data-iconshadow='true' data-wrapperels='span' data-icon='radio-off' data-theme='c' class='ui-btn ui-btn-corner-all ui-btn-icon-left ui-radio-off ui-btn-up-c'> <span class='ui-btn-inner ui-btn-corner-all'> <span class='ui-btn-text'>" + option + "</span> <span class='ui-icon ui-icon-radio-off ui-icon-shadow'>&nbsp;</span> </span> </label> <input type='radio' name='" + name + "' id='" + question_id + "-" + index + "' value='" + (_.escape(option)) + "'/> </div> -->";
+                    if (index === 0) {
+                      return "<input class='radio' type='radio' name='" + name + "' id='" + question_id + "-" + index + "' value='" + (_.escape(option)) + "' checked ='checked'/> <label class='radio' for='" + question_id + "-" + index + "'>" + option + "</label>";
+                    } else {
+                      return " <input class='radio' type='radio' name='" + name + "' id='" + question_id + "-" + index + "' value='" + (_.escape(option)) + "'/> <label class='radio' for='" + question_id + "-" + index + "'>" + option + "</label>";
+                    }
                   }).join("");
                 }
                 break;
@@ -484,13 +535,118 @@ QuestionView = (function(_super) {
                   return "<input style='display:none' name='" + name + "' id='" + question_id + "' type='checkbox' value='true'></input>";
                 }
                 break;
-              case "autocomplete from list":
-              case "autocomplete from previous entries":
-                return "<!-- autocomplete='off' disables browser completion --> <input autocomplete='off' name='" + name + "' id='" + question_id + "' type='" + (question.type()) + "' value='" + (question.value()) + "' data-autocomplete-options='" + (question.get("autocomplete-options")) + "'></input> <ul id='" + question_id + "-suggestions' data-role='listview' data-inset='true'/>";
+              case "date":
+                if (this.readonly) {
+                  return question.value();
+                } else {
+                  return "<input  type='text' id='datepicker-" + question_id + "' ></input>";
+                }
+                break;
+              case "number":
+                if (this.readonly) {
+                  return question.value();
+                } else {
+                  return "<input name='" + name + "' type='number' id='" + question_id + "' value='" + (question.value()) + "'></input>";
+                }
+                break;
+              case "multitag":
+                if (this.readonly) {
+                  return question.value();
+                } else {
+                  placeholderText = question.placeholdertext();
+                  html = "<select  class='chosen-select' multiple data-placeholder='" + placeholderText + "'>";
+                  _ref3 = question.get("multitag-options").split(/, */);
+                  for (index = _l = 0, _len3 = _ref3.length; _l < _len3; index = ++_l) {
+                    option = _ref3[index];
+                    html += "<option name='" + name + "' id='" + question_id + "-" + index + "' value='" + option + "'>" + option + "</option>";
+                  }
+                  return html += "</select>";
+                }
+                break;
+              case "multitag from file":
+                if (this.readonly) {
+                  return question.value();
+                } else {
+                  placeholderText = question.placeholdertext();
+                  theOptionsArrayFile = question.get("multitag-options-file");
+                  result = [];
+                  optionsUrl = "" + theOptionsArrayFile;
+                  $.ajax("questionOptions/" + optionsUrl, {
+                    async: false,
+                    success: function(data, status, xhr) {
+                      return result = $.csv.toArray(data);
+                    },
+                    error: function(xhr, status, err) {
+                      return console.log("nah " + err);
+                    },
+                    complete: function(xhr, status) {}
+                  });
+                  html = "<select  class='chosen-select' multiple data-placeholder='" + placeholderText + "'>";
+                  for (_m = 0, _len4 = result.length; _m < _len4; _m++) {
+                    option = result[_m];
+                    html += "<option name='" + name + "' id='" + question_id + "-" + index + "' value='" + option + "'>" + option + "</option>";
+                  }
+                  return html += "</select>";
+                }
+                break;
+              case "multitag from file with groups":
+                if (this.readonly) {
+                  return question.value();
+                } else {
+                  placeholderText = question.placeholdertext();
+                  theOptionsArrayFile = question.get("multitag-options-file");
+                  result = [];
+                  optionsUrl = "" + theOptionsArrayFile;
+                  $.ajaxSetup({
+                    async: false
+                  });
+                  $.getJSON("questionOptions/" + optionsUrl, function(jsn) {
+                    result = jsn.jsonObject;
+                  });
+                  html = "<select  class='chosen-select' multiple data-placeholder='" + placeholderText + "'>";
+                  for (index = _n = 0, _len5 = result.length; _n < _len5; index = ++_n) {
+                    section = result[index];
+                    html += "<optgroup label  = " + section.name + ">";
+                    _ref4 = section.options;
+                    for (index = _o = 0, _len6 = _ref4.length; _o < _len6; index = ++_o) {
+                      option = _ref4[index];
+                      html += "<option value='" + option + "'>" + option + "</option>";
+                    }
+                    html += "</optgroup>";
+                  }
+                  return html += "</select>";
+                }
+                break;
+              case "multitag from file with pairs":
+                if (this.readonly) {
+                  return question.value();
+                } else {
+                  placeholderText = question.placeholdertext();
+                  theOptionsArrayFile = question.get("multitag-options-file");
+                  result = [];
+                  optionsUrl = "" + theOptionsArrayFile;
+                  $.ajaxSetup({
+                    async: false
+                  });
+                  $.getJSON("questionOptions/" + optionsUrl, function(jsn) {
+                    result = jsn.jsonObject;
+                  });
+                  html = "<select  class='chosen-select' multiple data-placeholder='" + placeholderText + "'>";
+                  for (index = _p = 0, _len7 = result.length; _p < _len7; index = ++_p) {
+                    thing = result[index];
+                    html += "<option value = " + thing.code + ">" + thing.name + "-" + thing.code + "</option>";
+                  }
+                  return html += "</select>";
+                }
+                break;
               case "location":
-                return "<a data-question-id='" + question_id + "'>Get current location</a> <label for='" + question_id + "-description'>Location Description</label> <input type='text' name='" + name + "-description' id='" + question_id + "-description'></input> " + (_.map(["latitude", "longitude"], function(field) {
+                this.watchID = navigator.geolocation.getAccurateCurrentPosition(function() {}, function() {}, function() {}, {
+                  desiredAccuracy: 50,
+                  maxWait: 60 * 5 * 1000
+                });
+                return "<a data-question-id='" + question_id + "'>Get current location</a> <label for='" + question_id + "-description'>Location Description</label> <input type='text' name='" + name + "-description' id='" + question_id + "-description'></input> " + (_.map(["latitude", "longitude", "accuracy"], function(field) {
                   return "<label for='" + question_id + "-" + field + "'>" + field + "</label><input readonly='readonly' type='number' name='" + name + "-" + field + "' id='" + question_id + "-" + field + "'></input>";
-                }).join("")) + " " + (_.map(["altitude", "accuracy", "altitudeAccuracy", "heading", "timestamp"], function(field) {
+                }).join("")) + " " + (_.map(["altitude", "altitudeAccuracy", "heading", "timestamp"], function(field) {
                   return "<input type='hidden' name='" + name + "-" + field + "' id='" + question_id + "-" + field + "'></input>";
                 }).join(""));
               case "image":
@@ -601,29 +757,43 @@ QuestionView = (function(_super) {
   };
 
   QuestionView.prototype.getLocation = function(event) {
-    var question_id;
+    var maxWait, onError, onProgress, onSuccess, question_id, requiredAccuracy, updateFormWithCoordinates;
+    requiredAccuracy = 200;
+    maxWait = 3 * 60 * 1000;
     question_id = $(event.target).closest("[data-question-id]").attr("data-question-id");
     $("#" + question_id + "-description").val("Retrieving position, please wait.");
-    return navigator.geolocation.getCurrentPosition((function(_this) {
+    updateFormWithCoordinates = function(geoposition) {
+      _.each(geoposition.coords, function(value, key) {
+        return $("#" + question_id + "-" + key).val(value);
+      });
+      $("#" + question_id + "-timestamp").val(moment(geoposition.timestamp).format(Coconut.config.get("datetime_format")));
+      return $.getJSON("http://api.geonames.org/findNearbyPlaceNameJSON?lat=" + geoposition.coords.latitude + "&lng=" + geoposition.coords.longitude + "&username=mikeymckay&callback=?", null, (function(_this) {
+        return function(result) {
+          return $("#" + question_id + "-description").val(parseFloat(result.geonames[0].distance).toFixed(1) + " km from center of " + result.geonames[0].name);
+        };
+      })(this));
+    };
+    onSuccess = (function(_this) {
       return function(geoposition) {
-        _.each(geoposition.coords, function(value, key) {
-          return $("#" + question_id + "-" + key).val(value);
-        });
-        $("#" + question_id + "-timestamp").val(moment(geoposition.timestamp).format(Coconut.config.get("datetime_format")));
+        $("label[type=location]").html("Household Location");
+        updateFormWithCoordinates(geoposition);
         $("#" + question_id + "-description").val("Success");
-        _this.save();
-        return $.getJSON("http://api.geonames.org/findNearbyPlaceNameJSON?lat=" + geoposition.coords.latitude + "&lng=" + geoposition.coords.longitude + "&username=mikeymckay&callback=?", null, function(result) {
-          $("#" + question_id + "-description").val(parseFloat(result.geonames[0].distance).toFixed(1) + " km from center of " + result.geonames[0].name);
-          return _this.save();
-        });
+        return _this.save();
       };
-    })(this), function(error) {
-      return $("#" + question_id + "-description").val("Error: " + error);
-    }, {
-      frequency: 1000,
-      enableHighAccuracy: true,
-      timeout: 30000,
-      maximumAge: 0
+    })(this);
+    onError = function(error) {
+      return $("#" + question_id + "-description").val("Error: " + (JSON.stringify(error)));
+    };
+    onProgress = (function(_this) {
+      return function(geoposition) {
+        updateFormWithCoordinates(geoposition);
+        return $("label[type=location]").html("Household Location<div style='background-color:yellow'>Current accuracy is " + geoposition.coords.accuracy + " meters - must be less than " + requiredAccuracy + " meters. Make sure there are no trees or buildings blocking view to the sky.</div>");
+      };
+    })(this);
+    navigator.geolocation.clearWatch(this.watchID);
+    return navigator.geolocation.getAccurateCurrentPosition(onSuccess, onError, onProgress, {
+      desiredAccuracy: requiredAccuracy,
+      maxWait: maxWait
     });
   };
 

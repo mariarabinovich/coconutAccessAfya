@@ -1,5 +1,9 @@
 class Question extends Backbone.Model
   type: -> @get("type")
+  section: -> @get("section") #this is new
+  labresultoptions: -> @get("lab-result-types") #this is new
+  placeholdertext: -> @get("placeholder-text") #this is new
+  textareaheight:-> @get("textarea-height") #this is new
   label: -> if @get("label")? then @get("label") else @get("id")
   safeLabel: -> @label().replace(/[^a-zA-Z0-9 -]/g,"").replace(/[ -]/g,"")
   repeatable: -> @get("repeatable")
@@ -15,6 +19,17 @@ class Question extends Backbone.Model
 
   url: "/question"
 
+
+  #substringMatcher :(strs) ->
+  #      return findMatches: (q, cb)->
+  #        matches =[]
+  #        substrRegex = new RegExp(q, 'i')
+  #        for str in strs
+  #          if substrRegex.test (str)
+  #            matches.push value:str
+  #        cb(matches);
+
+
   set: (attributes) ->
     if attributes.questions?
       attributes.questions =  _.map attributes.questions, (question) ->
@@ -28,7 +43,7 @@ class Question extends Backbone.Model
     if result.length is 1
       result = result[0]
       @set { id : result.id }
-      for property in ["label","type","repeatable","required","validation"]
+      for property in ["label","type","repeatable","required","validation", "section"]
         attribute = {}
         attribute[property] = result.get(property)
         @set attribute
@@ -67,7 +82,7 @@ Question.fromDomNode = (domNode) ->
       return unless id
       result = new Question
       result.set { id : id }
-      for property in ["label","type","repeatable","select-options","radio-options","autocomplete-options","validation","required", "action_on_questions_loaded", "skip_logic", "action_on_change", "image-path", "image-style"]
+      for property in ["label","type","repeatable","select-options","radio-options","autocomplete-options","validation","required", "action_on_questions_loaded", "skip_logic", "action_on_change", "image-path", "image-style", "section", "lab-result-types", "readonly", "textarea-height", "multitag-options"]
         attribute = {}
         # Note that we are using find but the id property ensures a proper match
         propertyValue = question.find("##{property}-#{id}").val()

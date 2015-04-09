@@ -1,7 +1,7 @@
 {
   "env" : {
     "default" : {
-      "db" : "http://admin:password@0.0.0.0:5984/new"
+      "db" : "http://admin:password@0.0.0.0:5984/accessafya"
     },
     "cloud" : {
       "db" : "http://accessafya:accessafya@accessafya.couchappy.com/accessafya"

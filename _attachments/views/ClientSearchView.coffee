@@ -9,6 +9,7 @@ class ClientSearchView extends Backbone.View
 
 
   render: =>
+
     @$el.html "
 
 
@@ -22,12 +23,10 @@ class ClientSearchView extends Backbone.View
       <div id='results'></div>
 
 
-
-
-
     "
+    #$('#constantbuttons').height(10).css({visibility:0})
     # $("input").textinput()
-    $("head title").html "Coconut Find/Create Client"
+    # $("head title").html "Coconut Find/Create Client"
 
 
 
@@ -45,7 +44,7 @@ class ClientSearchView extends Backbone.View
 
 
     client1 = ($("#client_1").val() || '').toUpperCase()
-    console.log(client1)
+    #console.log(client1)
     if client1.length == 0
       $("#results").html ""
     else
@@ -62,8 +61,9 @@ class ClientSearchView extends Backbone.View
           results=_(result.rows).map (row) ->
             row.value
           $("#results").html "
-            <h1>RESULTS</h1>
-            <a href='#{sortbythis?}' class='clientresult' >
+
+            <!--- <a href='#{sortbythis?}' class='clientresult' > -->
+            <div class='clientresult' >
                 <div class='resultblocks title'>
                   <p class='resulttext'> Last name </p>
                 </div>
@@ -76,7 +76,8 @@ class ClientSearchView extends Backbone.View
                 <div class='resultblocks title'>
                   <p class='resulttext'> Phone number </p>
                 </div>
-              </a>
+            </div>
+            <!---  </a> -->
 
             #{
             _(results).map (result) ->
@@ -100,15 +101,43 @@ class ClientSearchView extends Backbone.View
             .join("")
             }
 
-            <h3>don't see your client?</h3>
 
 
             <button id='addClient' type='button'>add new client</button>
 
+
+
+
+
+
+
+
+
+
+
+
             "
+        # $(".chosen-select").chosen()
   addClient: ->
     lastName = ($("#client_1").val() || '').toUpperCase()
+    $("html, body").animate
+        scrollTop: $('#top-menu').offset().top
     Coconut.router.navigate("/new/result/Client Registration/#{lastName}",true)
+
+    Coconut.isItANewPerson = true
+    #the above variable was set to let questionView displavi a 'start new ysit button. The better wav y to do this will be to have question yew recognize when it is "registration" and just displavi the button then'
+    #$('#constantbuttons').html "
+
+    #@$el.append "
+      #<a class='buttonLinks ' id='startTheVisit'  onclick = 'startVisit()' >
+        #  New clinical visit</a>"
+
+
+
+
+
+    #Coconut.menuView.renderForClientVisit(@client)
+    #document.location.href = "#new/result/Vitals/#{@client.clientID}"
 
 
 

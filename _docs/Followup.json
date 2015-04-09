@@ -1,0 +1,87 @@
+{
+   "_id": "Followup",
+   "_rev": "1190-a4eb75a94ff0f529c98ec83d3f93b598",
+   "id": "Followup",
+   "questions": [
+       {
+           "id": "825",
+           "_id": "825",
+           "label": "Did the patient follow the treatment successfully",
+           "type": "radio",
+           "radio-options": "no, yes",
+           "validation": "",
+           "required": "true",
+           "action_on_questions_loaded": "",
+           "skip_logic": "",
+           "action_on_change": "",
+           "safeLabel": "Didthepatientfollowthetreatmentsuccessfully"
+       },
+       {
+           "id": "657",
+           "_id": "657",
+           "label": "Has the situation improved",
+           "type": "radio",
+           "radio-options": "no, yes",
+           "validation": "",
+           "required": "true",
+           "action_on_questions_loaded": "",
+           "skip_logic": "",
+           "action_on_change": "",
+           "safeLabel": "Hasthesituationimproved"
+       },
+       {
+           "id": "769",
+           "_id": "769",
+           "label": "Notes or explanation",
+           "type": "text",
+           "validation": "",
+           "required": "true",
+           "action_on_questions_loaded": "",
+           "skip_logic": "",
+           "action_on_change": "",
+           "safeLabel": "Notesorexplanation"
+       },
+       {
+           "id": "921",
+           "_id": "921",
+           "label": "Rediagnose",
+           "type": "text",
+           "validation": "",
+           "required": "true",
+           "action_on_questions_loaded": "",
+           "skip_logic": "",
+           "action_on_change": "",
+           "safeLabel": "Rediagnose"
+       },
+       {
+           "id": "281",
+           "_id": "281",
+           "label": "Would you like to start another (new) visit",
+           "type": "radio",
+           "radio-options": "no, yes",
+           "validation": "",
+           "required": "true",
+           "action_on_questions_loaded": "",
+           "skip_logic": "",
+           "action_on_change": "",
+           "safeLabel": "Wouldyouliketostartanothernewvisit"
+       },
+       {
+           "id": "12",
+           "_id": "12",
+           "label": "",
+           "type": "radio",
+           "radio-options": "option1,option2",
+           "validation": "",
+           "required": "true",
+           "action_on_questions_loaded": "",
+           "skip_logic": "",
+           "action_on_change": "",
+           "safeLabel": ""
+       }
+   ],
+   "required": "false",
+   "collection": "question",
+   "couchapp": {
+   }
+}

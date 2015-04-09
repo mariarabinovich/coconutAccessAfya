@@ -1,0 +1,88 @@
+{"jsonObject": [
+    {
+    "name": "Constitutional",
+    "options": ["unexplained weight loss", "night sweats", "atigue / malaise / lethargy", "sleep changes", "loss of appetite", "strong appetite", "fever", "itch / rash", "recent trauma", "lumps / bumps / masses", "unexplained falls"]
+    },
+    {
+    "name":"Eyes",
+    "options": ["visual changes", "headache", "eye pain", " double vision", "scotomas (blind spots)", "eye discharge", "eye itch"]
+    },
+    {
+    "name":"Ear nose mouth throat (ENT)",
+    "options": ["runny nose", "frequent nose bleeds (epistaxis)", "sinus pain", "stuffy ears", "ear pain", "ringing in ears (tinnitus)", "gingival bleeding", "toothache", "sore throat", "pain with swallowing (odynophagia)"]
+    },
+    {
+    "name":"Cardiovascular",
+    "options": ["chest pain", "shortness of breath", "exercise intolerance", "PND", "orthopnoea", "oedema", "palpitations", "faintness", "loss of consciousness", "claudication"]
+    },
+    {
+    "name":"Respiratory",
+    "options": ["cough", "sputum", "wheeze", "haemoptysis", "shortness of breath", "exercise intolerance"]
+    },
+    {
+    "name":"Gastrointestinal",
+    "options": ["abdominal pain", "unintentional weight loss", "difficulty swallowing", "indigestion", "bloating", "cramping", "anorexia", "food avoidance", "nausea / vomiting", "diarrhea / constipation", "inability to pass gas (obstipation)", "vomiting blood (haematemesis)", "bright red blood per rectum (BRBPR / hematochezia)", "foul smelling dark black tarry stools (melaena)", "dry heaves of the bowels (tenesmus)"]
+    },
+    {
+    "name":"Genitourinary Urinary",
+    "options": ["micturition - incontinence", "dysuria", "haematuria", "nocturia", "polyuria", "hesitancy", "terminal dribbling", "decreased force of stream"]
+    },
+    {
+    "name":"Genital",
+    "options": ["vaginal discharge", "genital pain", "infrequent menses", "frequent menses", "irregular menses", "heavy menses", "light menses", "short menses", "long menses", "excessive pain or cramping during menses", "gravida / para / abortus", "menarche", "menopause"]
+    },
+    {
+    "name":"Musculoskeletal",
+    "options": ["pain", "misalignment", "stiffness", "joint swelling", "decreased range of motion", "crepitus", "functional deficit", "arthritis"]
+    },
+    {
+    "name":"Integumentary / Skin",
+    "options": ["pruritus", "rashes", "stria", "lesions", "wounds", "incisions", "acanthosis nigricans", "nodules", "tumors", "eczema", "excessive dryness or discoloration"]
+    },
+    {
+    "name":"Breast",
+    "options": ["breast pain", "breast soreness", "breast lumps", "breast discharge"]
+    },
+    {
+    "name":"Neurological",
+    "options": ["changes in sight", "changes insmell", "changes in hearing", "changes in taste", "seizures", "faints", "fits", "headache", "pins and needles (paraesthesiae) or numbness", "limb weakness", "poor balance", "speech problems", "sphincter disturbance", "higher mental function and psychiatric symptoms"]
+    },
+    {
+    "name":"Psychiatric",
+    "options": ["depression", "sleep changes", "anxiety", "difficulty concentrating", "body image", "work and school performance", "paranoia", "anhedonia", "lack of energy", "episodes of mania", "episodic change in personality", "expansive personality", "sexual or financial binges"]
+    },
+    {
+    "name":"Endocrine Hyperthyroid",
+    "options": ["prefer cold weather", "mood swings", "sweaty", "diarrhoea", "oligomenorrhoea", "weight loss despite increased appetite", "tremor", "palpitations", "visual disturbances"]
+    },
+    {
+    "name":"Endocrine Hypothyroid",
+    "options": ["prefer hot weather", "slow", "tired", "depressed", "thin hair", "croaky voice", "heavy periods", "constipation", "dry skin"]
+    },
+    {
+    "name":"Endocrine Diabetes",
+    "options": ["polydipsia", "polyuria", "polyphagia", "dizziness", "sweating", "headache", "hunger", "tongue dysarticulation"]
+    },
+    {
+    "name":"Endocrine Adrenal",
+    "options": ["difficult to treat hypertension", "chronic low blood pressure", "orthostatic symptoms", "darkening of skin"]
+    },
+    {
+    "name":"Endocrine Reproductive (female)",
+    "options": ["menarche", "vaginal bleeding irregularities", "use of birth control pills", "changes in sexual arousal or libido"]
+    },
+    {
+    "name":"Endocrine Reproductive (male)",
+    "options": ["difficulty with erection or sexual arousal", "depression", "lack of stamina / energy"]
+    },
+    {
+    "name":"Hematologic / lymphatic",
+    "options": ["anemia", "purpura", "petechia", "prolonged or excessive bleeding", "use of anticoagulant and antiplatelet drugs (including aspirin)", "family history of hemophilia", "history of a blood transfusion", "refused for blood donation"]
+    },
+    {
+    "name":"Allergic / immunologic",
+    "options": ["difficulty breathing or choking (anaphylaxis)", "swelling or pain at groin(s)", "swelling or pain at axilla(e) or neck", "swollen lymph nodes / glands", "allergic response (rash / itch) to materials", "allergic response to foods", "allergic response to animals (e.g. cats)", "reaction to bee sting", "unusual sneezing", "runny nose or itchy / teary eyes"]
+    }
+]
+}
+

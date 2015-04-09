@@ -17,6 +17,22 @@ Question = (function(_super) {
     return this.get("type");
   };
 
+  Question.prototype.section = function() {
+    return this.get("section");
+  };
+
+  Question.prototype.labresultoptions = function() {
+    return this.get("lab-result-types");
+  };
+
+  Question.prototype.placeholdertext = function() {
+    return this.get("placeholder-text");
+  };
+
+  Question.prototype.textareaheight = function() {
+    return this.get("textarea-height");
+  };
+
   Question.prototype.label = function() {
     if (this.get("label") != null) {
       return this.get("label");
@@ -97,7 +113,7 @@ Question = (function(_super) {
       this.set({
         id: result.id
       });
-      _ref = ["label", "type", "repeatable", "required", "validation"];
+      _ref = ["label", "type", "repeatable", "required", "validation", "section"];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         property = _ref[_i];
         attribute = {};
@@ -164,7 +180,7 @@ Question.fromDomNode = function(domNode) {
       result.set({
         id: id
       });
-      _ref = ["label", "type", "repeatable", "select-options", "radio-options", "autocomplete-options", "validation", "required", "action_on_questions_loaded", "skip_logic", "action_on_change", "image-path", "image-style"];
+      _ref = ["label", "type", "repeatable", "select-options", "radio-options", "autocomplete-options", "validation", "required", "action_on_questions_loaded", "skip_logic", "action_on_change", "image-path", "image-style", "section", "lab-result-types", "readonly", "textarea-height", "multitag-options"];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         property = _ref[_i];
         attribute = {};

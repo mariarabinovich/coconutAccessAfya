@@ -20,6 +20,7 @@ MenuView = (function(_super) {
     this.renderForClientInfo = __bind(this.renderForClientInfo, this);
     this.leaveClient = __bind(this.leaveClient, this);
     this.leaveVisit = __bind(this.leaveVisit, this);
+    this.shrinkMenu = __bind(this.shrinkMenu, this);
     this.clientOptions = __bind(this.clientOptions, this);
     this.changeQuestionSet = __bind(this.changeQuestionSet, this);
     return MenuView.__super__.constructor.apply(this, arguments);
@@ -37,6 +38,8 @@ MenuView = (function(_super) {
 
   MenuView.prototype.events = {
     "change": "renderForNonClient",
+    "scroll window": "shrinkMenu",
+    "touchmove #content": "shrinkMenu",
     "click .menuburger": "openOrCloseMenu",
     "click .menuitem": "changeHeader",
     "click .aSection": "openOrCloseMenu",
@@ -50,10 +53,14 @@ MenuView = (function(_super) {
   MenuView.prototype.changeQuestionSet = function(event) {
     var newQuestionSet, target;
     target = $(event.target);
-    newQuestionSet = target.closest("li").attr("href");
-    Coconut.clientSummary.changeQuestionSet(newQuestionSet);
+    $(".visitSection").addClass("hiddenSections");
+    newQuestionSet = target.closest("li").attr("title");
+    $("." + ("" + newQuestionSet)).removeClass("hiddenSections");
     target.closest("li").parent().find("li.selected").removeClass("selected");
-    return target.closest("li").addClass("selected");
+    target.closest("li").addClass("selected");
+    return $("html, body").animate({
+      scrollTop: $('#top-menu').offset().top
+    });
   };
 
   MenuView.prototype.clientOptions = function() {
@@ -62,6 +69,12 @@ MenuView = (function(_super) {
     clientmenu = $('.clientmenu');
     clientmenu.toggleClass("visible");
     return clientmenu.slideToggle("slow");
+  };
+
+  MenuView.prototype.shrinkMenu = function() {
+    if (scrolled_val > 0) {
+      return $('.visitOptions').toggleClass('tiny');
+    }
   };
 
   MenuView.prototype.leaveVisit = function() {
@@ -92,7 +105,8 @@ MenuView = (function(_super) {
     theheader = $('.aa-header');
     menu.toggleClass("open");
     menu.slideToggle("slow");
-    return thisbutton.toggleClass("menuisopen", "slow");
+    thisbutton.toggleClass("menuisopen", "slow");
+    return $('#constantbuttons').html("");
   };
 
   MenuView.prototype.renderForClientInfo = function(client) {
@@ -100,10 +114,10 @@ MenuView = (function(_super) {
   };
 
   MenuView.prototype.renderForClientVisit = function(client) {
-    var data, scrolled_val;
-    scrolled_val = $(document).scrollTop().valueOf();
-    console.log(scrolled_val);
-    return this.$el.html("<div class='header'> <button class='endTheVisit' id='clientoptionsmenu'></button> </div> <div class='clientmenu hidden'> <div class='visitTitle'><h1>" + (client.name()) + "</h1> <h4> CURRENT VISIT:" + utcDate + ", Clinician: <span id='cliniciansName'></span></h4></div> <table class='patientInfo'> <tbody> " + (data = {
+    var data;
+    $(".visitSection").addClass("hiddenSections");
+    $(".regVisit-vitalsSection").removeClass("hiddenSections");
+    return this.$el.html("<!--<div class='header'> <button class='endTheVisit' id='clientoptionsmenu'></button> </div>--> <div class='clientmenu hidden'> <div class='visitTitle'><h1>" + (client.name()) + "</h1> <h4> CURRENT VISIT:" + utcDate + ", Clinician: <span id='cliniciansName'></span></h4></div> <table class='patientInfo'> <tbody> " + (data = {
       "Age": "Age",
       "Gender": "Gender",
       "Allergies": "Allergies",
@@ -111,12 +125,12 @@ MenuView = (function(_super) {
       "Membership status": "Membership status"
     }, _.map(data, function(value, property) {
       return "<tr> <td> " + property + " </td> <td> " + value + " </td> </tr>";
-    }).join("")) + " </tbody> </table> <a class='buttonLinks' id='stayinvisit'>Back to the visit  &gt;</a> <a class='buttonLinks exitvisit'>&lt; leave this visit</a> </div> <nav class='visitOptions'> <ul> <li class='questionSetName selected' href='#new/result/Vitals/" + client.clientID + "'><img src='css/images/vitals.png' alt='vitals' class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Complaints/" + client.clientID + "'><img src='css/images/complaint.png' alt='complaint' class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Labs/" + client.clientID + "'><img src='css/images/labs.png' alt='labs'  class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Diagnosis/" + client.clientID + "'><img src='css/images/diagnose.png' alt='diagnose'  class='visitOptionsIcons'></li> <li class='questionSetName ' href='#new/result/Complete%20Visit/" + client.clientID + "'><img src='css/images/complete.png' alt='complete' class='visitOptionsIcons'></li> </ul> </nav>");
+    }).join("")) + " </tbody> </table> <a class='buttonLinks' id='stayinvisit'>Back to the visit  &gt;</a> <a class='buttonLinks exitvisit'>&lt; leave this visit</a> </div> <nav class='visitOptions'> <ul> <li class='' ><img src='css/images/info.png' alt='info' class='visitOptionsIcons' id = 'clientoptionsmenu'></li> <li class='questionSetName selected' title='regVisit-vitalsSection' ><img src='css/images/vitals.png' alt='vitals' class='visitOptionsIcons'></li> <li class='questionSetName' title='regVisit-complaintSection' ><img src='css/images/complaint.png' alt='complaint' class='visitOptionsIcons'></li> <li class='questionSetName' title='regVisit-labsSection' ><img src='css/images/labs.png' alt='labs'  class='visitOptionsIcons'></li> <li class='questionSetName' title='regVisit-diagnosisSection' ><img src='css/images/diagnose.png' alt='diagnose'  class='visitOptionsIcons'></li> <li class='questionSetName' title='regVisit-endVisitSection' ><img src='css/images/complete.png' alt='complete' class='visitOptionsIcons'></li> </ul> </nav>");
   };
 
   MenuView.prototype.renderForClient = function(client) {
     console.log("hello");
-    return this.$el.html("<div class='header'> <button class='menuback' id='backtoclientsearch' ></button> <div class='profileIconDiv'></div> <div class='clientTitle'> <h1>" + (client.name()) + "</h1> </div> </div>");
+    return this.$el.html("<div class='header'> <button class='menuback' id='backtoclientsearch' ></button> <!--<div class='profileIconDiv'></div>--> <div class='clientTitle'> <h1>" + (client.name()) + "</h1> </div> </div>");
   };
 
   MenuView.prototype.renderForNonClient = function() {
@@ -127,7 +141,7 @@ MenuView = (function(_super) {
     if ("mobile" === Coconut.config.local.get("mode")) {
       syncButton = "<a href='#sync/send_and_get'>Sync <span class='tinyfont'>(last done: <span class='sync-sent-and-get-status'></span>)</span></a>";
     }
-    this.$el.html("<div class='header'> <button class='menuburger'></button> <h1>Find or Add Clients</h1> </div> <nav class='main-nav closed'> <a class='menuitem selected' title ='Find or Add Clients' href='#'><span>Find/Add Client</span></a> <a class='menuitem' title ='Reports' href='#reports'><span>Reports</span></a> <a class='menuitem' title ='Feedback' href='#help'><span>Feedback</span></a> <a class='menuitem' title ='System Admin' href='#manage'><span>Manage</span></a> <a class='menuitem' title ='Login logout' href='index.html#logout'><span id='user'>Username / </span><span> logout</span></a> " + (syncButton || '') + " " + (adminButtons || '') + " </nav>");
+    this.$el.html("<div class='header'> <button class='menuburger'></button> <h1>Find or Add Clients</h1> </div> <nav class='main-nav closed'> <a class='menuitem selected' title ='Find or Add Clients' href='#'><span>Find/Add Client</span></a> <a class='menuitem' title ='Healthy Schools' href='#healthyschools'><span>Healthy Schools</span></a> <a class='menuitem' title ='Legacy Input' href='#legacyinput'><span>Legacy Input</span></a> <a class='menuitem' title ='Feedback' href='#help'><span>Feedback</span></a> <a class='menuitem admin' title ='Reports' href='#reports'><span>Reports</span></a> <a class='menuitem admin' title ='System Admin' href='#manage'><span>Manage</span></a> <a class='menuitem admin' title ='Login logout' href='index.html#logout'><span id='user'>Username / </span><span> logout</span></a> <!--" + (syncButton || '') + " " + (adminButtons || '') + "--> </nav>");
     this.updateVersion();
     this.checkReplicationStatus();
     return Coconut.questions.fetch;

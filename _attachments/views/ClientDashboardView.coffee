@@ -23,6 +23,8 @@ class ClientDashboardView extends Backbone.View
   # updateClientInfo: ->
 
 
+
+
   render: =>
     clientInfo = "somestuff about the client"
     # alert clientInfo
@@ -37,6 +39,9 @@ class ClientDashboardView extends Backbone.View
         <a class='manageActions' href='#'>Clinician notes (0%)</a>
       </div>
       "
+
+
+
   update:->
     clientInfo = "theres new client info"
     @$el.html "

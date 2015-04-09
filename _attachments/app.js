@@ -43,6 +43,8 @@ Router = (function(_super) {
     "users": "users",
     "messaging": "messaging",
     "help": "help",
+    "healthyschools": "healthySchools",
+    "legacyinput": "legacyInput",
     "summary/:client_id": "summary",
     "": "default"
   };
@@ -71,6 +73,28 @@ Router = (function(_super) {
           Coconut.helpView = new HelpView();
         }
         return Coconut.helpView.render();
+      }
+    });
+  };
+
+  Router.prototype.healthySchools = function() {
+    return this.userLoggedIn({
+      success: function() {
+        if (Coconut.healthySchoolsView == null) {
+          Coconut.healthySchoolsView = new HealthySchoolsView();
+        }
+        return Coconut.healthySchoolsView.render();
+      }
+    });
+  };
+
+  Router.prototype.legacyInput = function() {
+    return this.userLoggedIn({
+      success: function() {
+        if (Coconut.legacyInputView == null) {
+          Coconut.legacyInputView = new LegacyInputView();
+        }
+        return Coconut.legacyInputView.render();
       }
     });
   };
@@ -587,6 +611,10 @@ Coconut.router.startApp();
 
 window.atServer = function() {
   return window.location.hostname.indexOf(Coconut.config.get("cloud")) !== -1;
+};
+
+window.lastSchoolNameUsed = function() {
+  return 'slkdf';
 };
 
 Coconut.debug = function(string) {

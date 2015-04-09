@@ -10,6 +10,8 @@ class MenuView extends Backbone.View
 
   events:
     "change" : "renderForNonClient" #is this correct..
+    "scroll window" :  "shrinkMenu"
+    "touchmove #content" : "shrinkMenu"
     "click .menuburger" : "openOrCloseMenu"
     "click .menuitem" : "changeHeader"
     "click .aSection" : "openOrCloseMenu" #figure out the parentchild issue that makes this not work
@@ -25,11 +27,14 @@ class MenuView extends Backbone.View
 
   changeQuestionSet : (event)=>
     target = $(event.target)
-    newQuestionSet = target.closest("li").attr("href")
-    Coconut.clientSummary.changeQuestionSet(newQuestionSet)
+    $(".visitSection").addClass("hiddenSections")
+    newQuestionSet = target.closest("li").attr("title")
+    $("."+"#{newQuestionSet}").removeClass("hiddenSections")
+    #Coconut.clientSummary.changeQuestionSet(newQuestionSet)
     target.closest("li").parent().find("li.selected").removeClass("selected")
     target.closest("li").addClass("selected")
-
+    $("html, body").animate
+        scrollTop: $('#top-menu').offset().top
 
   clientOptions: =>
     theclient=Coconut.clientSummary.client
@@ -37,7 +42,9 @@ class MenuView extends Backbone.View
     clientmenu.toggleClass("visible")
     clientmenu.slideToggle("slow")
 
-
+  shrinkMenu: =>
+    if scrolled_val>0
+      $('.visitOptions').toggleClass('tiny');
 
   leaveVisit: =>
     theclient=Coconut.clientSummary.client
@@ -72,6 +79,8 @@ class MenuView extends Backbone.View
     menu.toggleClass("open")
     menu.slideToggle("slow")
     thisbutton.toggleClass("menuisopen", "slow")
+    $('#constantbuttons').html ""
+
 
   renderForClientInfo: (client) =>
     @$el.html "
@@ -82,17 +91,26 @@ class MenuView extends Backbone.View
     "
 
   renderForClientVisit: (client) =>
-    scrolled_val = $(document).scrollTop().valueOf()
-    console.log scrolled_val
+    #scrolled_val = $(document).scrollTop().valueOf()
+    #console.log scrolled_val
+    #if scrolled_val>0
+    #$(window).on("scroll touchmove" =>
+      #$('.visitOptions').toggleClass('tiny', $(document).scrollTop() > 0);
+      #alert "rskj"
+      #$('.visitOptions').toggleClass('tiny')
+      #alert "shrunk"
+
+
     #<div class='header'>
     #  <button class='endTheVisit' id='clientoptionsmenu'></button>
     #    <div class='visitTitle'><h1>#{client.name()}</h1> <h4> #{utcDate}, Clinician: <span id='cliniciansName'></span></h4></div>
     #</div>
 
+
     @$el.html "
-    <div class='header'>
+    <!--<div class='header'>
       <button class='endTheVisit' id='clientoptionsmenu'></button>
-    </div>
+    </div>-->
 
     <div class='clientmenu hidden'>
         <div class='visitTitle'><h1>#{client.name()}</h1> <h4> CURRENT VISIT:#{utcDate}, Clinician: <span id='cliniciansName'></span></h4></div>
@@ -128,11 +146,12 @@ class MenuView extends Backbone.View
 
     <nav class='visitOptions'>
       <ul>
-      <li class='questionSetName selected' href='#new/result/Vitals/#{client.clientID}'><img src='css/images/vitals.png' alt='vitals' class='visitOptionsIcons'></li>
-      <li class='questionSetName ' href='#new/result/Complaints/#{client.clientID}'><img src='css/images/complaint.png' alt='complaint' class='visitOptionsIcons'></li>
-      <li class='questionSetName ' href='#new/result/Labs/#{client.clientID}'><img src='css/images/labs.png' alt='labs'  class='visitOptionsIcons'></li>
-      <li class='questionSetName ' href='#new/result/Diagnosis/#{client.clientID}'><img src='css/images/diagnose.png' alt='diagnose'  class='visitOptionsIcons'></li>
-      <li class='questionSetName ' href='#new/result/Complete%20Visit/#{client.clientID}'><img src='css/images/complete.png' alt='complete' class='visitOptionsIcons'></li>
+      <li class='' ><img src='css/images/info.png' alt='info' class='visitOptionsIcons' id = 'clientoptionsmenu'></li>
+      <li class='questionSetName selected' title='regVisit-vitalsSection' ><img src='css/images/vitals.png' alt='vitals' class='visitOptionsIcons'></li>
+      <li class='questionSetName' title='regVisit-complaintSection' ><img src='css/images/complaint.png' alt='complaint' class='visitOptionsIcons'></li>
+      <li class='questionSetName' title='regVisit-labsSection' ><img src='css/images/labs.png' alt='labs'  class='visitOptionsIcons'></li>
+      <li class='questionSetName' title='regVisit-diagnosisSection' ><img src='css/images/diagnose.png' alt='diagnose'  class='visitOptionsIcons'></li>
+      <li class='questionSetName' title='regVisit-endVisitSection' ><img src='css/images/complete.png' alt='complete' class='visitOptionsIcons'></li>
 
       </ul>
     </nav>
@@ -149,7 +168,7 @@ class MenuView extends Backbone.View
     @$el.html "
     <div class='header'>
       <button class='menuback' id='backtoclientsearch' ></button>
-        <div class='profileIconDiv'></div>
+        <!--<div class='profileIconDiv'></div>-->
        <div class='clientTitle'> <h1>#{client.name()}</h1> </div>
     </div>
     "
@@ -182,13 +201,17 @@ class MenuView extends Backbone.View
         <nav class='main-nav closed'>
           <a class='menuitem selected' title ='Find or Add Clients' href='#'><span>Find/Add Client</span></a>
 
-          <a class='menuitem' title ='Reports' href='#reports'><span>Reports</span></a>
+          <a class='menuitem' title ='Healthy Schools' href='#healthyschools'><span>Healthy Schools</span></a>
+          <a class='menuitem' title ='Legacy Input' href='#legacyinput'><span>Legacy Input</span></a>
           <a class='menuitem' title ='Feedback' href='#help'><span>Feedback</span></a>
-          <a class='menuitem' title ='System Admin' href='#manage'><span>Manage</span></a>
-          <a class='menuitem' title ='Login logout' href='index.html#logout'><span id='user'>Username / </span><span> logout</span></a>
+          <a class='menuitem admin' title ='Reports' href='#reports'><span>Reports</span></a>
+          <a class='menuitem admin' title ='System Admin' href='#manage'><span>Manage</span></a>
+          <a class='menuitem admin' title ='Login logout' href='index.html#logout'><span id='user'>Username / </span><span> logout</span></a>
 
-          #{syncButton || ''}
-          #{adminButtons || ''}
+
+
+          <!--#{syncButton || ''}
+          #{adminButtons || ''}-->
 
         </nav>
 

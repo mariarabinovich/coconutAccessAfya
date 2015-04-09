@@ -41,7 +41,11 @@ class Client
   firstName: =>
     @["Client Registration"][0].Firstname
 
+#  phoneNumber  : =>
+#    @["Client Registration"][0].Phonenumber
 
+#  gender: =>
+#    @["Client Registration"][0].Gender
 
 
 

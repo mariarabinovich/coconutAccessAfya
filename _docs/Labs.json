@@ -14,59 +14,64 @@
            "action_on_questions_loaded": "",
            "skip_logic": "",
            "action_on_change": "",
-           "safeLabel": "Arelabsorderedforthisclient"
+           "safeLabel": "Arelabsorderedforthisclient",
+           "section":"labs"
        },
        {
            "id": "925",
            "_id": "925",
            "label": "Select first lab",
            "type": "radio",
-           "radio-options": "Lab name 1, lab name 2, Lab name 3, Lab name 4, Lab 5",
+           "radio-options": "ANC Profile - KES:500,   Blood Grouping - KES:100,   Brucellosis - KES:300,   H-PYLORI test - KES:200,   H.B. test - KES:150,   Hepatitis B Rapid Diagnostics Test - KES:,   HIV test - KES:100,   HVS - KES:,   Malaria test - KES:100,   Pregnancy test - KES:100, RBS - KES:100,   Rheumatoid Factor test - KES:300,   Stool Analysis - KES:,   Stool for Ova/Cyst - KES:200,   Syphilis test - KES:200,   Throat Swabs - KES:,   Urethral Swabs- KES:,   Urinalysis - KES:100,   Urine- Microscope - KES:,   Widal test - KES:300",
            "validation": "",
            "required": "true",
            "action_on_questions_loaded": "",
            "skip_logic": "ResultOfQuestion('Arelabsorderedforthisclient') isnt 'Yes'",
            "action_on_change": "",
-           "safeLabel": "Selectfirstlab"
+           "safeLabel": "Selectfirstlab",
+           "section":"labs"
        },
        {
            "id": "36",
            "_id": "36",
            "label": "Select a second lab",
            "type": "radio",
-           "radio-options": "Skip, Lab name 1, lab name 2, Lab name 3, Lab name 4, Lab 5",
+           "radio-options": "Skip, ANC Profile - KES:500,   Blood Grouping - KES:100,   Brucellosis - KES:300,   H-PYLORI test - KES:200,   H.B. test - KES:150,   Hepatitis B Rapid Diagnostics Test - KES:,   HIV test - KES:100,   HVS - KES:,   Malaria test - KES:100,   Pregnancy test - KES:100, RBS - KES:100,   Rheumatoid Factor test - KES:300,   Stool Analysis - KES:,   Stool for Ova/Cyst - KES:200,   Syphilis test - KES:200,   Throat Swabs - KES:,   Urethral Swabs- KES:,   Urinalysis - KES:100,   Urine- Microscope - KES:,   Widal test - KES:300",
            "validation": "",
            "required": "true",
            "action_on_questions_loaded": "",
            "skip_logic": "ResultOfQuestion('Arelabsorderedforthisclient') isnt 'Yes' ",
            "action_on_change": "",
-           "safeLabel": "Selectasecondlab"
+           "safeLabel": "Selectasecondlab",
+           "section":"labs"
        },
        {
            "id": "825",
            "_id": "825",
            "label": "Select a third lab",
            "type": "radio",
-           "radio-options": "Skip, Lab name 1, lab name 2, Lab name 3, Lab name 4, Lab 5",
+           "radio-options": "Skip, ANC Profile - KES:500,   Blood Grouping - KES:100,   Brucellosis - KES:300,   H-PYLORI test - KES:200,   H.B. test - KES:150,   Hepatitis B Rapid Diagnostics Test - KES:,   HIV test - KES:100,   HVS - KES:,   Malaria test - KES:100,   Pregnancy test - KES:100, RBS - KES:100,   Rheumatoid Factor test - KES:300,   Stool Analysis - KES:,   Stool for Ova/Cyst - KES:200,   Syphilis test - KES:200,   Throat Swabs - KES:,   Urethral Swabs- KES:,   Urinalysis - KES:100,   Urine- Microscope - KES:,   Widal test - KES:300",
            "validation": "",
            "required": "true",
            "action_on_questions_loaded": "",
-           "skip_logic": "ResultOfQuestion('Arelabsorderedforthisclient') isnt 'Yes' or ResultOfQuestion('Selectasecondlab') is 'Skip' ",
+           "skip_logic": "ResultOfQuestion('Arelabsorderedforthisclient') isnt 'Yes'",
            "action_on_change": "",
-           "safeLabel": "Selectathirdlab"
+           "safeLabel": "Selectathirdlab",
+           "section":"labs"
        },
        {
            "id": "779",
            "_id": "779",
            "label": "Select a fourth lab",
            "type": "radio",
-           "radio-options": "Skip, Lab name 1, lab name 2, Lab name 3, Lab name 4, Lab 5",
+           "radio-options": "Skip, ANC Profile - KES:500,   Blood Grouping - KES:100,   Brucellosis - KES:300,   H-PYLORI test - KES:200,   H.B. test - KES:150,   Hepatitis B Rapid Diagnostics Test - KES:,   HIV test - KES:100,   HVS - KES:,   Malaria test - KES:100,   Pregnancy test - KES:100, RBS - KES:100,   Rheumatoid Factor test - KES:300,   Stool Analysis - KES:,   Stool for Ova/Cyst - KES:200,   Syphilis test - KES:200,   Throat Swabs - KES:,   Urethral Swabs- KES:,   Urinalysis - KES:100,   Urine- Microscope - KES:,   Widal test - KES:300",
            "validation": "",
            "required": "true",
            "action_on_questions_loaded": "",
-           "skip_logic": "ResultOfQuestion('Arelabsorderedforthisclient') isnt 'Yes' or ResultOfQuestion('Selectasecondlab') is 'Skip' or ResultOfQuestion('Selectathirdlab') is 'Skip' ",
+           "skip_logic": "ResultOfQuestion('Arelabsorderedforthisclient') isnt 'Yes'",
            "action_on_change": "",
-           "safeLabel": "Selectafourthlab"
+           "safeLabel": "Selectafourthlab",
+           "section":"labs"
        }
    ],
    "required": "false",

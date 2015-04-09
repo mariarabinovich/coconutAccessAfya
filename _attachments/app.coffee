@@ -38,6 +38,9 @@ class Router extends Backbone.Router
     "users": "users"
     "messaging": "messaging"
     "help": "help"
+
+    "healthyschools": "healthySchools"
+    "legacyinput": "legacyInput"
     "summary/:client_id": "summary"
     "": "default"
 
@@ -62,6 +65,18 @@ class Router extends Backbone.Router
       success: ->
         Coconut.helpView ?= new HelpView()
         Coconut.helpView.render()
+
+  healthySchools: ->
+    @userLoggedIn
+      success: ->
+        Coconut.healthySchoolsView ?= new HealthySchoolsView()
+        Coconut.healthySchoolsView.render()
+
+  legacyInput: ->
+    @userLoggedIn
+      success: ->
+        Coconut.legacyInputView ?= new LegacyInputView()
+        Coconut.legacyInputView.render()
 
   users: ->
     @adminLoggedIn
@@ -441,6 +456,8 @@ Coconut.router = new Router()
 Coconut.router.startApp()
 
 window.atServer = -> window.location.hostname.indexOf(Coconut.config.get("cloud")) != -1
+
+window.lastSchoolNameUsed = -> 'slkdf'
 
 Coconut.debug = (string) ->
   console.log string

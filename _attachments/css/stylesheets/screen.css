@@ -90,6 +90,11 @@ a:link {
 }
 
 /* line 23, ../sass/screen.scss */
+*:focus {
+  outline: none;
+}
+
+/* line 26, ../sass/screen.scss */
 h1 {
   font-size: 22px;
   color: #222;
@@ -97,7 +102,7 @@ h1 {
   padding: 20px 0 20px 0;
 }
 
-/* line 30, ../sass/screen.scss */
+/* line 33, ../sass/screen.scss */
 h2 {
   font-size: 18px;
   color: #111;
@@ -105,7 +110,7 @@ h2 {
   margin-top: 20px;
 }
 
-/* line 37, ../sass/screen.scss */
+/* line 40, ../sass/screen.scss */
 h3 {
   font-size: 16px;
   color: #000;
@@ -113,7 +118,7 @@ h3 {
   margin: 15px;
 }
 
-/* line 44, ../sass/screen.scss */
+/* line 47, ../sass/screen.scss */
 h4 {
   font-size: 12px;
   color: #222;
@@ -121,14 +126,14 @@ h4 {
   margin: -15px 0px;
 }
 
-/* line 48, ../sass/screen.scss */
+/* line 51, ../sass/screen.scss */
 p {
   font-size: 14px;
   color: #333;
   font-weight: 200;
 }
 
-/* line 55, ../sass/screen.scss */
+/* line 58, ../sass/screen.scss */
 body {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -144,13 +149,30 @@ body {
   background: #eee;
 }
 
-/* line 73, ../sass/screen.scss */
+/* line 76, ../sass/screen.scss */
 ul {
   list-style: none;
 }
 
-/* line 94, ../sass/screen.scss */
+/* line 97, ../sass/screen.scss */
 a.clientresult {
+  display: block;
+  margin: 0 auto;
+  clear: both;
+  width: 90%;
+  height: 50px;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+
+/* line 98, ../sass/screen.scss */
+a.clientresult:first-of-type {
+  border-top: 1px solid #fff;
+}
+
+/* line 100, ../sass/screen.scss */
+div.clientresult {
   display: block;
   margin: 0 auto;
   clear: both;
@@ -158,7 +180,12 @@ a.clientresult {
   height: 50px;
 }
 
-/* line 96, ../sass/screen.scss */
+/* line 101, ../sass/screen.scss */
+div.clientresult:focus {
+  background: #fff;
+}
+
+/* line 103, ../sass/screen.scss */
 .resultblocks {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -167,20 +194,23 @@ a.clientresult {
   width: 25%;
   height: 50px;
   float: left;
-  border: 1px solid #999;
   text-align: left;
-  background: #ccc;
   font-size: 14px;
 }
 
-/* line 109, ../sass/screen.scss */
+/* line 117, ../sass/screen.scss */
 .resultblocks.title {
-  font-size: 14px;
-  font-weight: bold;
-  background: #aaa;
+  border-left: none;
+  border-right: none;
 }
 
-/* line 110, ../sass/screen.scss */
+/* line 118, ../sass/screen.scss */
+.resultblocks.title p {
+  font-size: 14px;
+  color: #fff;
+}
+
+/* line 122, ../sass/screen.scss */
 .resulttext {
   display: table-cell;
   height: 50px;
@@ -190,46 +220,46 @@ a.clientresult {
 }
 
 /*clientSearchView:*/
-/* line 116, ../sass/screen.scss */
+/* line 128, ../sass/screen.scss */
 #feedback {
   color: red;
 }
 
-/* line 120, ../sass/screen.scss */
+/* line 132, ../sass/screen.scss */
 .client {
   text-transform: uppercase;
 }
 
 /*from ResultsView.coffee put here to clean code:*/
-/* line 125, ../sass/screen.scss */
+/* line 137, ../sass/screen.scss */
 table.results th.header, table.results td {
   font-size: 150%;
 }
 
 /*from ScanBarcodeView:*/
-/* line 130, ../sass/screen.scss */
+/* line 142, ../sass/screen.scss */
 #feedback {
   color: red;
 }
 
-/* line 134, ../sass/screen.scss */
+/* line 146, ../sass/screen.scss */
 .client {
   text-transform: uppercase;
 }
 
 /*from ReportView:*/
-/* line 138, ../sass/screen.scss */
+/* line 150, ../sass/screen.scss */
 .dissaggregatedResults {
   display: none;
 }
 
 /*from help:*/
-/* line 143, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 .helpMessage {
   display: block;
 }
 
-/* line 146, ../sass/screen.scss */
+/* line 158, ../sass/screen.scss */
 textarea:focus, input:focus {
   outline: none;
   -webkit-tap-highlight-color: red;
@@ -237,18 +267,22 @@ textarea:focus, input:focus {
   -webkit-user-modify: read-write-plaintext-only;
 }
 
-/* line 153, ../sass/screen.scss */
+/* line 165, ../sass/screen.scss */
 textarea {
   height: 100px;
   font-size: 18px;
   color: #999;
+  font-weight: 200;
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
+  width: 80%;
+  max-width: 480px;
+  resize: none;
 }
 
 /*images on design form page that are icons:*/
-/* line 158, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 #design-view {
   display: block;
 }
@@ -256,7 +290,7 @@ textarea {
 /*.ui-btn-inner.ui-btn-corner-all{background:red;}
 
 label[type=checkbox]{background:red;}*/
-/* line 169, ../sass/screen.scss */
+/* line 182, ../sass/screen.scss */
 .formHeader {
   display: block;
   width: 100%;
@@ -266,26 +300,26 @@ label[type=checkbox]{background:red;}*/
 }
 
 /*buttons for yes/no*/
-/* line 171, ../sass/screen.scss */
+/* line 184, ../sass/screen.scss */
 label {
   display: block;
   clear: both;
   width: 80%;
   max-width: 500px;
   text-align: left;
-  margin: 20px auto 0px auto;
+  margin: 20px auto 18px auto;
   color: #999;
 }
 
 /*questions specifically above the radio buttons:*/
-/* line 176, ../sass/screen.scss */
+/* line 189, ../sass/screen.scss */
 label[type=radio] {
   margin-top: 60px;
 }
 
 /*just thinking through tablet/phone sizes and readability, not sure if this css works*/
 /*yes/no and optional choice selector buttons:*/
-/* line 178, ../sass/screen.scss */
+/* line 191, ../sass/screen.scss */
 label.radio {
   border-radius: 8px;
   display: block;
@@ -297,9 +331,8 @@ label.radio {
   text-align: center;
 }
 
-/* line 188, ../sass/screen.scss */
+/* line 201, ../sass/screen.scss */
 input {
-  margin-top: 20px;
   margin-bottom: 50px;
   border: solid 1px #999;
   color: #999;
@@ -313,48 +346,51 @@ input {
   font-size: 18px;
 }
 
-/* line 202, ../sass/screen.scss */
+/* line 215, ../sass/screen.scss */
 input:focus {
   outline: none;
   border: solid 2px #999;
+  border: 2px solid #0097cf;
 }
 
 /*this just hides the little radio circle on the button/labels:*/
-/* line 207, ../sass/screen.scss */
+/* line 221, ../sass/screen.scss */
 input[type=radio] {
-  display: none;
   visibility: hidden;
+  display: none;
 }
 
 /*selected state color change:*/
-/* line 211, ../sass/screen.scss */
+/* line 226, ../sass/screen.scss */
 input[type=radio]:checked + label.radio {
-  background: #5393c5;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#5393c5), to(#6facd5));
-  background-image: -webkit-linear-gradient(#5393c5, #6facd5);
-  background-image: -moz-linear-gradient(#5393c5, #6facd5);
-  background-image: -ms-linear-gradient(#5393c5, #6facd5);
-  background-image: -o-linear-gradient(#5393c5, #6facd5);
-  background-image: linear-gradient(#5393c5, #6facd5);
+  background: black;
+  color: #ddd;
+  /*background: #5393c5;
+  background-image: -webkit-gradient(linear,left top,left bottom,from(#5393c5),to(#6facd5));
+  background-image: -webkit-linear-gradient(#5393c5,#6facd5);
+  background-image: -moz-linear-gradient(#5393c5,#6facd5);
+  background-image: -ms-linear-gradient(#5393c5,#6facd5);
+  background-image: -o-linear-gradient(#5393c5,#6facd5);
+  background-image: linear-gradient(#5393c5,#6facd5);*/
 }
 
-/* line 221, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 input[type="autocomplete from list"], input[type="autocomplete from previous entries"], input[type="text"] {
   text-align: left;
 }
 
-/* line 224, ../sass/screen.scss */
+/* line 242, ../sass/screen.scss */
 input[type="autocomplete from list"] {
   margin-bottom: 0px;
 }
 
-/* line 226, ../sass/screen.scss */
+/* line 244, ../sass/screen.scss */
 input[type="text"]:focus, input[type="text"].focus, input[type="autocomplete from list"]:focus, input[type="autocomplete from list"].focus,
 input[type="autocomplete from previous entries"]:focus, input[type="autocomplete from previous entries"].focus {
   /*border: solid 2px rgba(200,0,150,.9); box-shadow: 0 0 0px 0px #969696;*/
 }
 
-/* line 231, ../sass/screen.scss */
+/* line 249, ../sass/screen.scss */
 input[type=number] {
   width: 250px;
   font-size: 20px;
@@ -362,7 +398,7 @@ input[type=number] {
 }
 
 /*come back to this: how are numbers selected on tablet?*/
-/* line 235, ../sass/screen.scss */
+/* line 253, ../sass/screen.scss */
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   cursor: pointer;
@@ -372,59 +408,105 @@ input[type=number]::-webkit-inner-spin-button {
   text-align: center;
   position: relative;
   text-align: center;
+  /*removing the up and down for now */
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-/* line 247, ../sass/screen.scss */
+/* line 269, ../sass/screen.scss */
 input[type=number]::-webkit-inner-spin-button:before,
 input[type=number]::-webkit-inner-spin-button:after {
   background: #eee;
+  background-image: url(../images/uparrow.png);
+  background-size: 100%;
   border: solid 1px #999;
-  content: "^";
+  content: "";
   position: absolute;
   right: -11px;
-  font-family: monospace;
   width: 24px;
-  height: 22px;
-  font-size: 32px;
-  font-weight: lighter;
-  color: #999;
+  /*removing the up and down for now */
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-/* line 260, ../sass/screen.scss */
+/* line 288, ../sass/screen.scss */
 input[type=number]::-webkit-inner-spin-button:before {
   top: 2px;
+  height: 21px;
 }
 
-/* line 263, ../sass/screen.scss */
+/* line 292, ../sass/screen.scss */
 input[type=number]::-webkit-inner-spin-button:after {
-  bottom: 2px;
-  right: -10px;
+  bottom: 3px;
+  height: 22px;
+  right: -11px;
   -webkit-transform: rotate(180deg);
 }
 
+/* line 299, ../sass/screen.scss */
+input[type=textarea] {
+  height: 100px;
+}
+
 /*BUTTONS:*/
-/* line 270, ../sass/screen.scss */
-input[type=submit], label[type=checkbox], input[type=button], button {
+/* line 302, ../sass/screen.scss */
+input[type=submit], label[type=checkbox], input[type=button], button, button[type=button], a.buttonLinks {
   display: block;
   width: 200px;
   height: 15px;
-  background: #ccc;
-  color: #333;
+  background: none;
+  color: #999;
   cursor: pointer;
-  border: 1px solid #333;
-  margin: 10px auto;
+  border: 1px solid #999;
+  margin: 40px auto;
   border-radius: 8px;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 200 !important;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
-/* line 274, ../sass/screen.scss */
-input[type=submit]:focus, label[type=checkbox]:focus, input[type=button]:focus, button:focus {
-  background: #aaa;
-  color: #999;
+/* line 323, ../sass/screen.scss */
+button, button[type=button] {
+  padding-bottom: 35px;
+  padding-top: 20px;
+  font-weight: 200 !important;
+}
+
+/* line 324, ../sass/screen.scss */
+input[type=submit] {
+  padding-bottom: 35px;
+  font-weight: 200 !important;
+}
+
+/* line 328, ../sass/screen.scss */
+input[type=submit]:focus, label[type=checkbox]:focus, input[type=button]:focus, button:focus, a.buttonLinks:focus {
+  background: #fff;
+  color: #ccc;
   border: 1px solid #fff;
+  outline: 0;
+}
+
+/* line 335, ../sass/screen.scss */
+input[type=submit]:hover, label[type=checkbox]:hover, input[type=button]:hover, button:hover, a.buttonLinks:hover {
+  background: #fff;
+  color: #ccc;
+  border: 1px solid #ccc;
+}
+
+/* line 342, ../sass/screen.scss */
+a.buttonLinks.sideBySideButtons {
+  display: inline-block;
+  float: left;
 }
 
 /*AUTOCOMPLETE LISTS: Make these less ridiculous, they should have real class names*/
-/* line 282, ../sass/screen.scss */
+/* line 362, ../sass/screen.scss */
 ul.ui-listview {
   background: #ccc;
   list-style: none;
@@ -435,28 +517,18 @@ ul.ui-listview {
   padding: 0px;
 }
 
-/* line 284, ../sass/screen.scss */
+/* line 364, ../sass/screen.scss */
 li.ui-btn {
   border: 1px solid #999;
 }
 
 /*li.ui-btn .ui-btn-inner.ui-btn-inner.ui-li.ui-corner-top {color:red;}*/
 /*li.ui-btn>div>div a{color:red;}*/
-/* line 287, ../sass/screen.scss */
-.ui-btn-text a {
-  display: block;
-  color: #333;
-  padding: 15px 0 15px 0;
-  margin: 0px auto 0 auto;
-  width: 80%;
-}
-
-/* line 290, ../sass/screen.scss */
-span.ui-icon {
-  display: none;
-}
-
-/* line 294, ../sass/screen.scss */
+/*.ui-btn-text a{
+  display:block; color: $button_text_color;
+  padding:15px 0 15px 0; margin:0px auto 0 auto; width:$autocomplete_width; }
+  span.ui-icon{display:none;}*/
+/* line 375, ../sass/screen.scss */
 .message {
   padding: 10px;
   border: 1px yellow dotted;
@@ -465,7 +537,7 @@ span.ui-icon {
 }
 
 /*for example the message that says Saving . .  . over the form after an answer is submitted*/
-/* line 305, ../sass/screen.scss */
+/* line 386, ../sass/screen.scss */
 .hoveringMessage {
   position: fixed;
   top: 0px;
@@ -478,7 +550,7 @@ span.ui-icon {
   margin-top: 0px;
 }
 
-/* line 311, ../sass/screen.scss */
+/* line 392, ../sass/screen.scss */
 .designControls {
   display: block;
   background: #ccc;
@@ -486,7 +558,7 @@ span.ui-icon {
   height: 200px;
 }
 
-/* line 313, ../sass/screen.scss */
+/* line 394, ../sass/screen.scss */
 .aQuestion {
   display: block;
   width: 100%;
@@ -494,7 +566,7 @@ span.ui-icon {
   margin: 50px 0 0 0;
 }
 
-/* line 314, ../sass/screen.scss */
+/* line 395, ../sass/screen.scss */
 .questionInfo {
   display: block;
   height: 30px;
@@ -504,7 +576,7 @@ span.ui-icon {
   background: #ccc;
 }
 
-/* line 315, ../sass/screen.scss */
+/* line 396, ../sass/screen.scss */
 .questionType {
   display: inline-block;
   width: auto;
@@ -512,7 +584,7 @@ span.ui-icon {
   margin: 10px 25px 0 10px;
 }
 
-/* line 316, ../sass/screen.scss */
+/* line 397, ../sass/screen.scss */
 .requiredOrNot {
   display: inline-block;
   width: 50px;
@@ -522,7 +594,7 @@ span.ui-icon {
   margin: 10px 0 0 0;
 }
 
-/* line 317, ../sass/screen.scss */
+/* line 398, ../sass/screen.scss */
 input.requiredOrNot {
   width: 20px;
   height: 5px;
@@ -530,7 +602,7 @@ input.requiredOrNot {
   vertical-align: top;
 }
 
-/* line 318, ../sass/screen.scss */
+/* line 399, ../sass/screen.scss */
 .deleting {
   display: inline-block;
   float: right;
@@ -538,39 +610,43 @@ input.requiredOrNot {
   margin: 10px 10px 0 0;
 }
 
-/* line 319, ../sass/screen.scss */
+/* line 400, ../sass/screen.scss */
 label.deleteButton {
   font-size: 13px;
   float: left;
   display: inline;
   margin: 0px;
   width: 60px;
+  height: 60px;
 }
 
-/* line 320, ../sass/screen.scss */
+/* line 401, ../sass/screen.scss */
 button.deleteButton {
   display: inline;
   width: 20px;
   height: 20px;
   float: left;
   margin: 0px;
+  padding: 0px;
+  margin-top: -5px;
+  font-size: 15px;
 }
 
-/* line 321, ../sass/screen.scss */
+/* line 402, ../sass/screen.scss */
 button.deleteButton img {
   height: 10px;
   width: 10px;
   margin-top: 0px;
 }
 
-/* line 322, ../sass/screen.scss */
+/* line 403, ../sass/screen.scss */
 label.questionText {
   /*display:block;*/
   margin: 0 auto;
   max-width: 700px;
 }
 
-/* line 323, ../sass/screen.scss */
+/* line 404, ../sass/screen.scss */
 input.designFormTextInput {
   width: 700px;
   max-width: 700px;
@@ -578,7 +654,7 @@ input.designFormTextInput {
   margin-top: 5px;
 }
 
-/* line 325, ../sass/screen.scss */
+/* line 406, ../sass/screen.scss */
 .advancedOptions {
   width: 700px;
   height: auto;
@@ -587,23 +663,23 @@ input.designFormTextInput {
   padding: 10px 0 35px 0;
 }
 
-/* line 326, ../sass/screen.scss */
+/* line 407, ../sass/screen.scss */
 .advanced {
   font-size: 13px;
   color: #555;
 }
 
-/* line 327, ../sass/screen.scss */
+/* line 408, ../sass/screen.scss */
 .advanced-hidden {
   display: none;
 }
 
-/* line 328, ../sass/screen.scss */
+/* line 409, ../sass/screen.scss */
 .advanced-visible {
   display: block;
 }
 
-/* line 330, ../sass/screen.scss */
+/* line 411, ../sass/screen.scss */
 label.advanced {
   max-width: 600px;
   width: 600px;
@@ -612,7 +688,7 @@ label.advanced {
   padding: 15px 0px 5px 0px;
 }
 
-/* line 331, ../sass/screen.scss */
+/* line 412, ../sass/screen.scss */
 textarea.advanced {
   height: 20px;
   width: 600px;
@@ -621,38 +697,39 @@ textarea.advanced {
   padding: 0px;
 }
 
-/* line 333, ../sass/screen.scss */
-button {
-  min-height: 40px;
-}
-
-/* line 336, ../sass/screen.scss */
+/* line 417, ../sass/screen.scss */
 button.designActionsButton {
   display: inline-block;
   width: 150px;
   height: 30px;
   border-radius: 8px;
   background: #ccc;
-  color: #333;
-  border: 1px solid #333;
+  color: #999;
+  border: 1px solid #999;
   font-size: 14px;
   margin: 10px 5px;
 }
 
-/* line 339, ../sass/screen.scss */
+/* line 420, ../sass/screen.scss */
 button.designActionsButton.addButton {
   margin-bottom: 50px;
 }
 
-/*select{font-size:20px; padding:30px; background:white; border:solid 1px #666; width:300px;}
-*/
-/* line 343, ../sass/screen.scss */
-select:focus {
-  outline: none;
+/* line 422, ../sass/screen.scss */
+select {
   font-size: 20px;
+  padding: 30px;
+  background: white;
+  border: solid 1px #666;
+  width: 300px;
 }
 
-/* line 348, ../sass/screen.scss */
+/* line 424, ../sass/screen.scss */
+select:focus {
+  outline: none;
+}
+
+/* line 429, ../sass/screen.scss */
 form#render {
   display: block;
   background: white;
@@ -662,23 +739,29 @@ form#render {
   width: 800px;
 }
 
-/* line 350, ../sass/screen.scss */
+/* line 431, ../sass/screen.scss */
 .instructions {
   width: 500px;
   margin: 15px auto;
 }
 
-/* line 358, ../sass/screen.scss */
+/* line 439, ../sass/screen.scss */
 .disabled_skipped {
   display: none;
 }
 
-/* line 363, ../sass/screen.scss */
+/* line 444, ../sass/screen.scss */
 .question {
   margin-bottom: 1em;
   padding-bottom: 2em;
   border-top: 1px dotted #999;
   padding-top: 2em;
+}
+
+/* line 451, ../sass/screen.scss */
+.question:first-of-type {
+  border-top: none;
+  margin-top: 60px;
 }
 
 /*.question.label
@@ -687,22 +770,27 @@ form#render {
   padding-top: 1em;
   font-weight: bold;
 }*/
-/* line 379, ../sass/screen.scss */
+/* line 462, ../sass/screen.scss */
 .question.checkbox {
   border-top: 0;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-/* line 386, ../sass/screen.scss */
+/* line 469, ../sass/screen.scss */
 .question.group {
   margin-bottom: 0 !important;
   border-bottom: 0 !important;
   border-top: 0 !important;
-  margin-top: 0 !important;
+  margin-top: !important;
 }
 
-/* line 422, ../sass/screen.scss */
+/* line 480, ../sass/screen.scss */
+a#startTheVisit.buttonLinks {
+  margin-top: -110px;
+}
+
+/* line 507, ../sass/screen.scss */
 button.menuburger {
   background-color: #ccc;
   background-image: url(../images/burger.png);
@@ -720,13 +808,13 @@ button.menuburger {
   border: none;
 }
 
-/* line 426, ../sass/screen.scss */
+/* line 511, ../sass/screen.scss */
 button.menuburger.menuisopen {
   background-image: url(../images/burger_focus.png);
   border: none;
 }
 
-/* line 427, ../sass/screen.scss */
+/* line 512, ../sass/screen.scss */
 button.menuback {
   background-color: #ccc;
   background-image: url(../images/back.png);
@@ -744,7 +832,7 @@ button.menuback {
   border: none;
 }
 
-/* line 431, ../sass/screen.scss */
+/* line 516, ../sass/screen.scss */
 button.endTheVisit {
   background-color: transparent;
   background-image: url(../images/profile_gray.png);
@@ -762,13 +850,13 @@ button.endTheVisit {
   border: none;
 }
 
-/* line 436, ../sass/screen.scss */
+/* line 521, ../sass/screen.scss */
 button.endTheVisit:focus {
   background-color: transparent;
   background-image: url(../images/profile_white.png);
 }
 
-/* line 440, ../sass/screen.scss */
+/* line 525, ../sass/screen.scss */
 .profileIconDiv {
   background-image: url(../images/profile_gray.png);
   background-size: 100px 100px;
@@ -784,77 +872,128 @@ button.endTheVisit:focus {
   margin: 0px 10px 0 5px;
 }
 
-/* line 444, ../sass/screen.scss */
+/* line 529, ../sass/screen.scss */
 button.menuback.menuisopen {
   background-image: url(../images/back_focus.png);
   border: none;
 }
 
-/* line 445, ../sass/screen.scss */
+/* line 530, ../sass/screen.scss */
 button.menuburger:focus, button.menuburger:active, button.menuback:focus, button.menuback:active {
   border: none;
 }
 
-/* line 447, ../sass/screen.scss */
+/* line 532, ../sass/screen.scss */
+#round-button {
+  display: block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid #f5f5f5;
+  border-radius: 50%;
+  color: #ccc;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 0 3px gray;
+  font-size: 20px;
+  font-weight: lighter;
+  position: fixed;
+  z-index: 1000;
+  bottom: 15px;
+  right: 15px;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+/* line 554, ../sass/screen.scss */
+#round-button:hover {
+  background: white;
+}
+
+/* line 564, ../sass/screen.scss */
 nav {
   color: #eee;
   background: #ccc;
   width: 100%;
-  height: 335px;
+  height: 280px;
 }
 
-/* line 453, ../sass/screen.scss */
+/* line 570, ../sass/screen.scss */
 nav.main-nav > a, nav.main-nav > span {
+  box-sizing: border-box;
   display: block;
   width: inherit;
   height: 35px;
-  border-bottom: 1px solid #aaa;
+  border-top: 1px solid #aaa;
   color: #999;
-  padding-top: 20px;
+  padding: 20px 0 35px 0;
   font-size: 14px;
 }
 
-/* line 463, ../sass/screen.scss */
+/* line 575, ../sass/screen.scss */
+.menuitem.admin {
+  float: left;
+  text-align: center;
+  border-left: 1px solid #bbb;
+  width: 32%;
+  width: calc(100%/ 3);
+  box-sizing: border-box;
+  height: 35px;
+  padding: 20px 0 35px 0;
+}
+
+/* line 577, ../sass/screen.scss */
+.menuitem.admin:first-child {
+  border-left: none;
+}
+
+/* line 578, ../sass/screen.scss */
+.menuitem.admin span {
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* line 588, ../sass/screen.scss */
 nav.main-nav.open {
   display: block;
 }
 
-/* line 464, ../sass/screen.scss */
+/* line 589, ../sass/screen.scss */
 nav.main-nav.closed {
   display: none;
 }
 
-/* line 466, ../sass/screen.scss */
+/* line 591, ../sass/screen.scss */
 .clientmenu {
-  width: 80%;
-  height: auto;
+  width: 100%;
+  height: 100%;
   background-color: rgba(255, 255, 255, 0.9);
-  z-index: 200;
+  z-index: 2000;
   position: fixed;
-  top: 30px;
-  left: 30px;
-  border-radius: 10px;
-  border: 1px solid #999;
+  top: 0px;
+  left: 0px;
 }
 
-/* line 468, ../sass/screen.scss */
+/* line 593, ../sass/screen.scss */
 .clientmenu.visible {
   display: block;
 }
 
-/* line 469, ../sass/screen.scss */
+/* line 594, ../sass/screen.scss */
 .clientmenu.hidden {
   display: none;
 }
 
-/* line 473, ../sass/screen.scss */
+/* line 598, ../sass/screen.scss */
 nav.submenu {
   display: block;
   width: 100%;
   height: 40px;
 }
 
-/* line 475, ../sass/screen.scss */
+/* line 600, ../sass/screen.scss */
 nav.submenu a {
   display: inline-block;
   height: 40px;
@@ -865,12 +1004,12 @@ nav.submenu a {
   padding: 0 10px;
 }
 
-/* line 478, ../sass/screen.scss */
+/* line 603, ../sass/screen.scss */
 nav.submenu a.selected {
   background-color: #eee;
 }
 
-/* line 480, ../sass/screen.scss */
+/* line 605, ../sass/screen.scss */
 nav.visitOptions {
   display: block;
   width: 100%;
@@ -880,15 +1019,21 @@ nav.visitOptions {
   left: 0px;
 }
 
-/* line 481, ../sass/screen.scss */
+/* line 606, ../sass/screen.scss */
+nav.visitOptions.tiny {
+  top: -30px;
+  margin-top: -20px;
+}
+
+/* line 607, ../sass/screen.scss */
 nav.visitOptions ul {
   display: block;
   width: 100%;
   position: absolute;
-  left: 59px;
+  left: 0px;
 }
 
-/* line 482, ../sass/screen.scss */
+/* line 608, ../sass/screen.scss */
 nav.visitOptions ul li {
   display: inline-block;
   height: 90px;
@@ -899,24 +1044,32 @@ nav.visitOptions ul li {
   -webkit-box-sizing: border-box;
   padding: 0;
   margin: 0px;
-  border: 1px solid #999;
-  text-align: center;
   float: left;
+  text-align: center;
+  border-left: 1px solid #bbb;
+  width: 18%;
+  width: calc(100%/6);
+  box-sizing: border-box;
 }
 
-/* line 487, ../sass/screen.scss */
+/* line 614, ../sass/screen.scss */
+nav.visitOptions ul li:first-child {
+  border-left: none;
+}
+
+/* line 616, ../sass/screen.scss */
 nav.visitOptions ul li.selected {
   background-color: #eee;
 }
 
-/* line 488, ../sass/screen.scss */
+/* line 617, ../sass/screen.scss */
 img.visitOptionsIcons {
   min-width: 50px;
   max-width: 70px;
   height: auto;
 }
 
-/* line 489, ../sass/screen.scss */
+/* line 618, ../sass/screen.scss */
 li.questionSetName {
   margin: 0px;
   box-sizing: border-box;
@@ -924,7 +1077,7 @@ li.questionSetName {
   -webkit-box-sizing: border-box;
 }
 
-/* line 500, ../sass/screen.scss */
+/* line 629, ../sass/screen.scss */
 .header {
   display: block;
   height: 70px;
@@ -935,7 +1088,7 @@ li.questionSetName {
   border-top: 1px solid #999;
 }
 
-/* line 507, ../sass/screen.scss */
+/* line 636, ../sass/screen.scss */
 .aSection {
   display: block;
   width: 100%;
@@ -944,7 +1097,7 @@ li.questionSetName {
   text-align: center;
 }
 
-/* line 515, ../sass/screen.scss */
+/* line 644, ../sass/screen.scss */
 .mini-dashboard {
   display: block;
   background: #ccc;
@@ -954,13 +1107,13 @@ li.questionSetName {
   z-index: 200;
 }
 
-/* line 517, ../sass/screen.scss */
+/* line 646, ../sass/screen.scss */
 .mini-dashboard.fixed {
   position: fixed;
   top: 0px;
 }
 
-/* line 524, ../sass/screen.scss */
+/* line 653, ../sass/screen.scss */
 button.fullwidthdropdown {
   width: 100%;
   height: 50px;
@@ -968,41 +1121,14 @@ button.fullwidthdropdown {
   border: none;
 }
 
-/* line 529, ../sass/screen.scss */
+/* line 658, ../sass/screen.scss */
 form.hideText {
   font-size: 0;
   display: block;
   line-height: 0;
 }
 
-/* line 532, ../sass/screen.scss */
-a.buttonLinks {
-  display: block;
-  width: 200px;
-  height: 15px;
-  background-color: #ccc;
-  color: #333;
-  border: 1px solid #333;
-  border-radius: 8px;
-  font-size: 12px;
-  padding: 15px 5px;
-  margin: 10px;
-}
-
-/* line 537, ../sass/screen.scss */
-a.buttonLinks:focus {
-  background-color: #aaa;
-  color: #999;
-  border: 1px solid #fff;
-}
-
-/* line 539, ../sass/screen.scss */
-a.buttonLinks.sideBySideButtons {
-  display: inline-block;
-  float: left;
-}
-
-/* line 543, ../sass/screen.scss */
+/* line 663, ../sass/screen.scss */
 table {
   display: block;
   font-size: 12px;
@@ -1012,493 +1138,767 @@ table {
   margin-right: auto;
 }
 
-/* line 544, ../sass/screen.scss */
-table thead, table tr:nth-child(even) {
-  background-color: #ccc;
+/* line 669, ../sass/screen.scss */
+table tr {
+  border-bottom: 1px solid #ccc;
+  border-top: none;
 }
 
-/* line 549, ../sass/screen.scss */
+/* line 670, ../sass/screen.scss */
+table thead {
+  border-bottom: none;
+}
+
+/* line 673, ../sass/screen.scss */
 table.lastVisitResults {
   width: 90%;
   font-size: 12px;
 }
 
-/* line 552, ../sass/screen.scss */
+/* line 676, ../sass/screen.scss */
 table.patientInfo {
   width: 300px;
   margin-top: 40px;
 }
 
-/* line 553, ../sass/screen.scss */
+/* line 677, ../sass/screen.scss */
 table.patientInfo tr td {
   padding: 0px 20px;
 }
 
-/* line 560, ../sass/screen.scss */
-.visitTitle {
-  display: inline-block;
-  text-align: left;
+/* line 680, ../sass/screen.scss */
+table.patientInfo thead th.noteorhint {
+  color: #aaa;
+  text-align: center;
+  font-weight: lighter;
 }
 
-/* line 561, ../sass/screen.scss */
-.clientTitle {
-  display: inline-block;
-  position: absolute;
-  left: 200px;
-  text-align: left;
+/* line 692, ../sass/screen.scss */
+.regVisit-vitalsSection {
+  display: block;
+}
+
+/* line 693, ../sass/screen.scss */
+.regVisit-complaintSection {
+  display: block;
+}
+
+/* line 694, ../sass/screen.scss */
+.regVisit-labsSection {
+  display: block;
+}
+
+/* line 695, ../sass/screen.scss */
+.regVisit-diagnosisSection {
+  display: block;
+}
+
+/* line 696, ../sass/screen.scss */
+.regVisit-endVisitSection {
+  display: block;
+}
+
+/* line 698, ../sass/screen.scss */
+.hiddenSections {
+  display: none;
 }
 
 /* loading icon */
 /* loading screen */
-/* jQuery Mobile Framework : plugin to provide a date and time picker.
- * Copyright (c) JTSage
- * CC 3.0 Attribution.  May be relicensed without permission/notification.
- * https://github.com/jtsage/jquery-mobile-datebox
- */
-/* Base input element Styles */
-/* line 610, ../sass/screen.scss */
-.ui-input-datebox {
-  width: 97%;
-  background-image: none;
-  padding: .4em;
-  line-height: 1.4;
-  font-size: 16px;
-  display: block;
-  padding-top: 0px;
-  padding-bottom: 0px;
+/* line 783, ../sass/screen.scss */
+input[type=checkbox].largecheckbox {
+  position: absolute;
+  z-index: -1000;
+  left: -1000px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
 }
 
-/* line 611, ../sass/screen.scss */
-.ui-input-datebox {
-  min-height: 38px;
-}
-
-/* line 612, ../sass/screen.scss */
-.ui-input-datebox .ui-btn-icon-notext {
-  margin-top: 5px !important;
-  margin-bottom: 5px !important;
-}
-
-/* line 613, ../sass/screen.scss */
-.ui-input-datebox input {
-  width: 100% !important;
-  padding: 0 !important;
-  margin-top: 5px !important;
-  margin-right: -40px !important;
-  border: 1px solid transparent !important;
+/* line 787, ../sass/screen.scss */
+input[type=checkbox].largecheckbox + label.checkboxLabel {
+  padding-left: 45px;
+  height: 28px;
+  display: inline-block;
+  line-height: 28px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  font-size: 18px;
+  font-weight: lighter;
   vertical-align: middle;
-  display: inline-block !important;
-  background-color: transparent;
-  zoom: 1;
-  *display: inline;
+  cursor: pointer;
+  margin-bottom: 30px;
 }
 
-/* line 614, ../sass/screen.scss */
-.ui-input-datebox input:focus {
-  outline: none;
+/* line 802, ../sass/screen.scss */
+input[type=checkbox].largecheckbox + label.checkboxLabel span {
+  font-size: 11px;
 }
 
-/* line 615, ../sass/screen.scss */
-.ui-input-datebox .ui-btn-text {
+/* line 804, ../sass/screen.scss */
+input[type=checkbox].largecheckbox:checked + label.checkboxLabel {
+  background-position: 0 -28px;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+/* line 810, ../sass/screen.scss */
+input[type=checkbox].largecheckbox + label.checkboxLabel input.labresultsbox, input[type=checkbox].largecheckbox + label.checkboxLabel select.labresultsbox {
   display: none;
 }
 
-@media all and (min-width: 450px) {
-  /* line 618, ../sass/screen.scss */
-  .ui-input-datebox {
-    width: 60%;
-    display: inline-block;
-    zoom: 1;
-    *display: inline;
-  }
-}
-/* Calendar Mode Styles */
-/* line 623, ../sass/screen.scss */
-.ui-datebox-gridheader {
-  text-align: center;
-}
-
-/* line 624, ../sass/screen.scss */
-.ui-datebox-gridheader h4 {
-  text-align: center;
-  display: inline-block;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  zoom: 1;
-  *display: inline;
-}
-
-/* line 625, ../sass/screen.scss */
-.ui-datebox-gridplus {
-  float: right;
-}
-
-/* line 626, ../sass/screen.scss */
-.ui-datebox-gridminus {
-  float: left;
-}
-
-/* line 627, ../sass/screen.scss */
-.ui-datebox-gridplus-rtl {
-  float: left;
-}
-
-/* line 628, ../sass/screen.scss */
-.ui-datebox-gridminus-rtl {
-  float: right;
-}
-
-/* line 629, ../sass/screen.scss */
-.ui-datebox-gridrow {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-/* line 630, ../sass/screen.scss */
-.ui-datebox-grid {
-  clear: both;
-  margin-bottom: 5px;
-}
-
-/* line 631, ../sass/screen.scss */
-.ui-datebox-griddate {
-  width: 70px;
-  height: 58px;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-  line-height: 60px;
-  font-weight: bold;
-  font-size: 24px;
-  zoom: 1;
-  *display: inline;
-}
-
-/* line 632, ../sass/screen.scss */
-.ui-datebox-griddate {
-  width: 63px;
-  height: 58px;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-  line-height: 60px;
-  font-weight: bold;
-  font-size: 24px;
-  zoom: 1;
-  *display: inline;
-}
-
-/* line 633, ../sass/screen.scss */
-.ui-datebox-griddate-empty {
-  border: 1px solid transparent;
-  color: #888;
-}
-
-/* line 634, ../sass/screen.scss */
-.ui-datebox-griddate-label {
-  height: 15px !important;
-  line-height: 15px !important;
-  color: black;
-}
-
-/* line 635, ../sass/screen.scss */
-.ui-datebox-griddate-disable {
-  color: #555;
-}
-
-/* Android Mode Styles */
-/* line 639, ../sass/screen.scss */
-.ui-datebox-header h4 {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  text-align: center;
-}
-
-/* line 640, ../sass/screen.scss */
-.ui-datebox-controls {
-  text-align: center;
-}
-
-/* line 641, ../sass/screen.scss */
-.ui-datebox-controls div {
-  width: 102px;
-  text-align: center;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-}
-
-/* line 642, ../sass/screen.scss */
-.ui-datebox-scontrols {
-  text-align: center;
-}
-
-/* line 643, ../sass/screen.scss */
-.ui-datebox-scontrols div {
-  width: 55px;
-  text-align: center;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-}
-
-/* line 644, ../sass/screen.scss */
-.ui-datebox-scontrols .ui-datebox-sinput {
-  width: 68px;
-}
-
-/* line 645, ../sass/screen.scss */
-.ui-datebox-scontrols .ui-datebox-sinput input {
-  width: 48px;
-  text-align: center;
-  margin-left: 3px;
-}
-
-/* line 646, ../sass/screen.scss */
-.ui-datebox-input {
-  width: 109px !important;
-  margin-left: 1px;
-  margin-right: 1px;
-  text-align: center !important;
-  display: inline-block !important;
-  zoom: 1;
-  *display: inline;
-}
-
-/* Slide Mode Styles */
-/* line 650, ../sass/screen.scss */
-.ui-datebox-slide {
-  width: 562px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* line 651, ../sass/screen.scss */
-.ui-datebox-sliderow-d {
-  margin-bottom: 5px;
-  text-align: center;
+/* line 813, ../sass/screen.scss */
+input[type=checkbox].largecheckbox:checked + label.checkboxLabel input.labresultsbox {
+  width: 200px;
   height: 40px;
-  width: 562px;
-  overflow: hidden;
+  display: inline;
+  margin-left: 40px;
+  float: right;
 }
 
-/* line 652, ../sass/screen.scss */
-.ui-datebox-sliderow-ym {
-  margin-bottom: 5px;
-  text-align: center;
-  height: 32px;
-  width: 562px;
-  overflow: hidden;
+/* line 820, ../sass/screen.scss */
+input[type=checkbox].largecheckbox:checked + label.checkboxLabel select.labresultsbox {
+  width: 200px;
+  height: 40px;
+  display: inline;
+  margin-left: 40px;
+  float: right;
 }
 
-/* line 653, ../sass/screen.scss */
-.ui-datebox-sliderow-hi {
-  text-align: center;
-  height: 32px;
-  width: 562px;
-  overflow: hidden;
+/* line 827, ../sass/screen.scss */
+label.checkboxLabel {
+  background-image: url("../images/bigcheckboxsprite.png");
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-/* line 654, ../sass/screen.scss */
-.ui-datebox-sliderow-int {
+/* line 840, ../sass/screen.scss */
+::-webkit-input-placeholder {
+  font-style: italic;
+  font-size: 13px;
+  font-weight: lighter;
+  color: #bbb;
+}
+
+/* line 842, ../sass/screen.scss */
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-style: italic;
+  font-size: 13px;
+  font-weight: lighter;
+  color: #bbb;
+  opacity: 1;
+}
+
+/* line 844, ../sass/screen.scss */
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-style: italic;
+  font-size: 13px;
+  font-weight: lighter;
+  color: #bbb;
+  opacity: 1;
+}
+
+/* line 846, ../sass/screen.scss */
+:-ms-input-placeholder {
+  font-style: italic;
+  font-size: 13px;
+  font-weight: lighter;
+  color: #bbb;
+}
+
+/*!
+Chosen, a Select Box Enhancer for jQuery and Prototype
+by Patrick Filler for Harvest, http://getharvest.com
+
+Version 1.4.2
+Full source at https://github.com/harvesthq/chosen
+Copyright (c) 2011-2015 Harvest http://getharvest.com
+
+MIT License, https://github.com/harvesthq/chosen/blob/master/LICENSE.md
+This file is generated by `grunt build`, do not edit it by hand.
+*/
+/* @group Base */
+/* line 876, ../sass/screen.scss */
+.chosen-container {
+  position: relative;
   display: inline-block;
+  vertical-align: middle;
+  font-size: 13px;
+  zoom: 1;
+  *display: inline;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* line 887, ../sass/screen.scss */
+.chosen-container * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 893, ../sass/screen.scss */
+.chosen-container .chosen-drop {
+  position: absolute;
+  top: 100%;
+  left: -9999px;
+  z-index: 1010;
+  width: 100%;
+  border: 1px solid #aaa;
+  border-top: 0;
+  background: #fff;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+  text-align: left;
+}
+
+/* line 905, ../sass/screen.scss */
+.chosen-container.chosen-with-drop .chosen-drop {
+  left: 0;
+}
+
+/* line 908, ../sass/screen.scss */
+.chosen-container a {
+  cursor: pointer;
+}
+
+/* line 911, ../sass/screen.scss */
+.chosen-container .search-choice .group-name, .chosen-container .chosen-single .group-name {
+  margin-right: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: normal;
+  color: #999999;
+}
+
+/* line 919, ../sass/screen.scss */
+.chosen-container .search-choice .group-name:after, .chosen-container .chosen-single .group-name:after {
+  content: ":";
+  padding-left: 2px;
+  vertical-align: top;
+}
+
+/* @end */
+/* @group Single Chosen */
+/* line 927, ../sass/screen.scss */
+.chosen-container-single .chosen-single {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 0 0 0 8px;
+  height: 25px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  background-color: #fff;
+  /*  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #ffffff), color-stop(50%, #f6f6f6), color-stop(52%, #eeeeee), color-stop(100%, #f4f4f4));
+    background: -webkit-linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+    background: -moz-linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+    background: -o-linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+    background: linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);*/
+  background-clip: padding-box;
+  box-shadow: 0 0 3px white inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+  color: #444;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 24px;
+}
+
+/* line 948, ../sass/screen.scss */
+.chosen-container-single .chosen-default {
+  color: #999;
+}
+
+/* line 951, ../sass/screen.scss */
+.chosen-container-single .chosen-single span {
+  display: block;
+  overflow: hidden;
+  margin-right: 26px;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-/* line 655, ../sass/screen.scss */
-.ui-datebox-slideyear {
-  text-align: center;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  width: 84px;
-  vertical-align: middle;
-  line-height: 30px;
-  height: 30px;
-  font-size: 14px;
-  font-weight: bold;
+/* line 958, ../sass/screen.scss */
+.chosen-container-single .chosen-single-with-deselect span {
+  margin-right: 38px;
 }
 
-/* line 656, ../sass/screen.scss */
-.ui-datebox-slidemonth {
-  text-align: center;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  width: 51px;
-  vertical-align: middle;
-  line-height: 30px;
-  height: 30px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-/* line 657, ../sass/screen.scss */
-.ui-datebox-slideday {
-  text-align: center;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  width: 32px;
-  vertical-align: middle;
-  line-height: 20px;
-  height: 38px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-/* line 658, ../sass/screen.scss */
-.ui-datebox-slidehour {
-  text-align: center;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  width: 32px;
-  vertical-align: middle;
-  line-height: 22px;
-  height: 24px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-/* line 659, ../sass/screen.scss */
-.ui-datebox-slidemins {
-  text-align: center;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  width: 32px;
-  vertical-align: middle;
-  line-height: 22px;
-  height: 24px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-/* line 660, ../sass/screen.scss */
-.ui-datebox-slidearrow {
-  text-align: center;
-  display: inline-block;
-  zoom: 1;
-  *display: inline;
-  width: 10px;
-  vertical-align: middle;
-  line-height: 38px;
-  height: 38px;
-  font-size: 10px;
-  font-weight: bold;
-}
-
-/* line 661, ../sass/screen.scss */
-.ui-datebox-slidewday {
-  font-size: 10px;
-  font-weight: normal;
-}
-
-/* Flip Mode Styles */
-/* line 665, ../sass/screen.scss */
-.ui-datebox-flipcontent {
-  text-align: center;
-  height: 125px;
-  margin-bottom: -40px;
-}
-
-/* line 666, ../sass/screen.scss */
-.ui-datebox-flipcontent div {
-  margin-left: 3px;
-  margin-right: 3px;
-  width: 77px;
-  height: 120px;
-  display: inline-block;
-  text-align: center;
-  zoom: 1;
-  *display: inline;
-  overflow: hidden;
-}
-
-/* line 667, ../sass/screen.scss */
-.ui-datebox-flipcenter {
-  border: 1px solid #eee;
-  height: 40px;
-  margin-left: 10px;
-  width: 260px;
-  margin-right: auto;
-  margin-left: auto;
-  position: relative;
-  top: -45px;
-}
-
-/* line 668, ../sass/screen.scss */
-.ui-datebox-flipcontent ul {
-  list-style-type: none;
-  display: inline;
-}
-
-/* line 669, ../sass/screen.scss */
-.ui-datebox-flipcontent li {
-  height: 30px;
-}
-
-/* line 670, ../sass/screen.scss */
-.ui-datebox-flipcontent li span {
-  margin-top: 7px;
-  display: block;
-}
-
-/* Shared Styles */
-/* line 674, ../sass/screen.scss */
-.ui-datebox-container {
-  border: 5px solid #111 !important;
-  width: 562px;
-}
-
-/* line 675, ../sass/screen.scss */
-.ui-datebox-screen {
+/* line 961, ../sass/screen.scss */
+.chosen-container-single .chosen-single abbr {
   position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
+  top: 6px;
+  right: 26px;
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: url("../images/chosen-sprite.png") -42px 1px no-repeat;
+  font-size: 1px;
+}
+
+/* line 971, ../sass/screen.scss */
+.chosen-container-single .chosen-single abbr:hover {
+  background-position: -42px -10px;
+}
+
+/* line 974, ../sass/screen.scss */
+.chosen-container-single.chosen-disabled .chosen-single abbr:hover {
+  background-position: -42px -10px;
+}
+
+/* line 977, ../sass/screen.scss */
+.chosen-container-single .chosen-single div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 18px;
   height: 100%;
 }
 
-/* line 676, ../sass/screen.scss */
-.ui-datebox-screen-modal {
-  background-color: black;
-  -moz-opacity: 0.8;
-  opacity: .80;
-  filter: alpha(opacity=80);
+/* line 985, ../sass/screen.scss */
+.chosen-container-single .chosen-single div b {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url("../images/chosen-sprite.png") no-repeat 0px 2px;
 }
 
-/* line 677, ../sass/screen.scss */
-.ui-datebox-hidden {
+/* line 991, ../sass/screen.scss */
+.chosen-container-single .chosen-search {
+  position: relative;
+  z-index: 1010;
+  margin: 0;
+  padding: 3px 4px;
+  white-space: nowrap;
+}
+
+/* line 998, ../sass/screen.scss */
+.chosen-container-single .chosen-search input[type="text"] {
+  margin: 1px 0;
+  padding: 4px 20px 4px 5px;
+  width: 100%;
+  height: auto;
+  outline: 0;
+  border: 1px solid #aaa;
+  background: white url("../images/chosen-sprite.png") no-repeat 100% -20px;
+  background: url("../images/chosen-sprite.png") no-repeat 100% -20px;
+  font-size: 1em;
+  font-family: sans-serif;
+  line-height: normal;
+  border-radius: 0;
+}
+
+/* line 1012, ../sass/screen.scss */
+.chosen-container-single .chosen-drop {
+  margin-top: -1px;
+  border-radius: 0 0 4px 4px;
+  background-clip: padding-box;
+}
+
+/* line 1017, ../sass/screen.scss */
+.chosen-container-single.chosen-container-single-nosearch .chosen-search {
+  position: absolute;
+  left: -9999px;
+}
+
+/* @end */
+/* @group Results */
+/* line 1024, ../sass/screen.scss */
+.chosen-container .chosen-results {
+  color: #444;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0 4px 4px 0;
+  padding: 0 0 0 4px;
+  max-height: 240px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* line 1034, ../sass/screen.scss */
+.chosen-container .chosen-results li {
   display: none;
+  margin: 0;
+  padding: 5px 6px;
+  list-style: none;
+  line-height: 15px;
+  word-wrap: break-word;
+  -webkit-touch-callout: none;
 }
 
-/* line 678, ../sass/screen.scss */
-.ui-dialog .ui-datebox-container {
-  border: none !important;
+/* line 1043, ../sass/screen.scss */
+.chosen-container .chosen-results li.active-result {
+  display: list-item;
+  cursor: pointer;
 }
 
-/* line 679, ../sass/screen.scss */
-.ui-datebox-collapse a {
-  display: inline-block;
-  width: 45%;
+/* line 1047, ../sass/screen.scss */
+.chosen-container .chosen-results li.disabled-result {
+  display: list-item;
+  color: #ccc;
+  cursor: default;
 }
 
-/* line 681, ../sass/screen.scss */
-.ui-datebox-inline {
-  margin-top: 5px;
-  border: 5px solid #111111 !important;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+/* line 1052, ../sass/screen.scss */
+.chosen-container .chosen-results li.highlighted {
+  background-color: #0097cf;
+  /* background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #3875d7), color-stop(90%, #2a62bc));
+    background-image: -webkit-linear-gradient(#3875d7 20%, #2a62bc 90%);
+    background-image: -moz-linear-gradient(#3875d7 20%, #2a62bc 90%);
+    background-image: -o-linear-gradient(#3875d7 20%, #2a62bc 90%);
+    background-image: linear-gradient(#3875d7 20%, #2a62bc 90%);*/
+  border: 2px solid #0097cf;
+  color: #fff;
 }
 
-/* line 682, ../sass/screen.scss */
-.ui-datebox-inlineblind {
-  margin-top: 5px;
-  border: 5px solid #111111 !important;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+/* line 1063, ../sass/screen.scss */
+.chosen-container .chosen-results li.no-results {
+  color: #777;
+  display: list-item;
+  background: #f4f4f4;
 }
+
+/* line 1068, ../sass/screen.scss */
+.chosen-container .chosen-results li.group-result {
+  display: list-item;
+  font-weight: bold;
+  cursor: default;
+}
+
+/* line 1073, ../sass/screen.scss */
+.chosen-container .chosen-results li.group-option {
+  padding-left: 15px;
+}
+
+/* line 1076, ../sass/screen.scss */
+.chosen-container .chosen-results li em {
+  font-style: normal;
+  text-decoration: underline;
+}
+
+/* @end */
+/* @group Multi Chosen */
+/* line 1083, ../sass/screen.scss */
+.chosen-container-multi .chosen-choices {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 5px;
+  width: 100%;
+  min-height: 40px;
+  height: auto !important;
+  height: 1%;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  /*  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(1%, #eeeeee), color-stop(15%, #ffffff));
+   background-image: -webkit-linear-gradient(#eeeeee 1%, #ffffff 15%);
+   background-image: -moz-linear-gradient(#eeeeee 1%, #ffffff 15%);
+   background-image: -o-linear-gradient(#eeeeee 1%, #ffffff 15%);
+   background-image: linear-gradient(#eeeeee 1%, #ffffff 15%); */
+  cursor: text;
+}
+
+/* line 1101, ../sass/screen.scss */
+.chosen-container-multi .chosen-choices:focus {
+  border: 2px solid #0097cf;
+}
+
+/* line 1105, ../sass/screen.scss */
+.chosen-container-multi .chosen-choices li {
+  float: left;
+  list-style: none;
+}
+
+/* line 1109, ../sass/screen.scss */
+.chosen-container-multi .chosen-choices li.search-field {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+/* line 1114, ../sass/screen.scss */
+.chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+  margin: 1px 0;
+  padding: 0;
+  height: 25px;
+  outline: 0;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none;
+  color: #999;
+  font-size: 100%;
+  line-height: normal;
+  border-radius: 0;
+}
+
+/* line 1127, ../sass/screen.scss */
+.chosen-container-multi .chosen-choices li.search-choice {
+  position: relative;
+  margin: 3px 5px 3px 0;
+  padding: 3px 20px 3px 5px;
+  border: 1px solid #aaa;
+  max-width: 100%;
+  border-radius: 3px;
+  background-color: #eeeeee;
+  /* background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), color-stop(100%, #eeeeee));
+    background-image: -webkit-linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+    background-image: -moz-linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+    background-image: -o-linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+    background-image: linear-gradient(#f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+    box-shadow: 0 0 2px white inset, 0 1px 0 rgba(0, 0, 0, 0.05);*/
+  background-size: 100% 19px;
+  background-repeat: repeat-x;
+  background-clip: padding-box;
+  color: #333;
+  line-height: 13px;
+  cursor: default;
+}
+
+/* line 1149, ../sass/screen.scss */
+.chosen-container-multi .chosen-choices li.search-choice span {
+  word-wrap: break-word;
+}
+
+/* line 1152, ../sass/screen.scss */
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
+  position: absolute;
+  top: 4px;
+  right: 3px;
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: url("../images/chosen-sprite.png") -42px 1px no-repeat;
+  font-size: 1px;
+}
+
+/* line 1162, ../sass/screen.scss */
+.chosen-container-multi .chosen-choices li.search-choice .search-choice-close:hover {
+  background-position: -42px -10px;
+}
+
+/* line 1165, ../sass/screen.scss */
+.chosen-container-multi .chosen-choices li.search-choice-disabled {
+  padding-right: 5px;
+  border: 1px solid #ccc;
+  background-color: #e4e4e4;
+  /*  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), color-stop(100%, #eeeeee));
+    background-image: -webkit-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+    background-image: -moz-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+    background-image: -o-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);
+    background-image: linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eeeeee 100%);*/
+  color: #666;
+}
+
+/* line 1176, ../sass/screen.scss */
+.chosen-container-multi .chosen-choices li.search-choice-focus {
+  background: #0097cf;
+}
+
+/* line 1179, ../sass/screen.scss */
+.chosen-container-multi .chosen-choices li.search-choice-focus .search-choice-close {
+  background-position: -42px -10px;
+}
+
+/* line 1182, ../sass/screen.scss */
+.chosen-container-multi .chosen-results {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 1186, ../sass/screen.scss */
+.chosen-container-multi .chosen-drop .result-selected {
+  display: list-item;
+  color: #ccc;
+  cursor: default;
+}
+
+/* @end */
+/* @group Active  */
+/* line 1194, ../sass/screen.scss */
+.chosen-container-active .chosen-single {
+  border: 1px solid #5897fb;
+  border: 2px solid #0097cf;
+}
+
+/* line 1201, ../sass/screen.scss */
+.chosen-container-active.chosen-with-drop .chosen-single {
+  border: 1px solid #aaa;
+  -moz-border-radius-bottomright: 0;
+  border-bottom-right-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  border-bottom-left-radius: 0;
+  /*  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #eeeeee), color-stop(80%, #ffffff));
+    background-image: -webkit-linear-gradient(#eeeeee 20%, #ffffff 80%);
+    background-image: -moz-linear-gradient(#eeeeee 20%, #ffffff 80%);
+    background-image: -o-linear-gradient(#eeeeee 20%, #ffffff 80%);
+    background-image: linear-gradient(#eeeeee 20%, #ffffff 80%);
+    box-shadow: 0 1px 0 #fff inset;*/
+}
+
+/* line 1214, ../sass/screen.scss */
+.chosen-container-active.chosen-with-drop .chosen-single div {
+  border-left: none;
+  background: transparent;
+}
+
+/* line 1218, ../sass/screen.scss */
+.chosen-container-active.chosen-with-drop .chosen-single div b {
+  background-position: -18px 2px;
+}
+
+/* line 1221, ../sass/screen.scss */
+.chosen-container-active .chosen-choices {
+  border: 1px solid #5897fb;
+  border: 2px solid #0097cf;
+}
+
+/* line 1226, ../sass/screen.scss */
+.chosen-container-active .chosen-choices li.search-field input[type="text"] {
+  color: #222 !important;
+}
+
+/* @end */
+/* @group Disabled Support */
+/* line 1232, ../sass/screen.scss */
+.chosen-disabled {
+  opacity: 0.5 !important;
+  cursor: default;
+}
+
+/* line 1236, ../sass/screen.scss */
+.chosen-disabled .chosen-single {
+  cursor: default;
+}
+
+/* line 1239, ../sass/screen.scss */
+.chosen-disabled .chosen-choices .search-choice .search-choice-close {
+  cursor: default;
+}
+
+/* @end */
+/* @group Right to Left */
+/* line 1245, ../sass/screen.scss */
+.chosen-rtl {
+  text-align: right;
+}
+
+/* line 1248, ../sass/screen.scss */
+.chosen-rtl .chosen-single {
+  overflow: visible;
+  padding: 0 8px 0 0;
+}
+
+/* line 1252, ../sass/screen.scss */
+.chosen-rtl .chosen-single span {
+  margin-right: 0;
+  margin-left: 26px;
+  direction: rtl;
+}
+
+/* line 1257, ../sass/screen.scss */
+.chosen-rtl .chosen-single-with-deselect span {
+  margin-left: 38px;
+}
+
+/* line 1260, ../sass/screen.scss */
+.chosen-rtl .chosen-single div {
+  right: auto;
+  left: 3px;
+}
+
+/* line 1264, ../sass/screen.scss */
+.chosen-rtl .chosen-single abbr {
+  right: auto;
+  left: 26px;
+}
+
+/* line 1268, ../sass/screen.scss */
+.chosen-rtl .chosen-choices li {
+  float: right;
+}
+
+/* line 1271, ../sass/screen.scss */
+.chosen-rtl .chosen-choices li.search-field input[type="text"] {
+  direction: rtl;
+}
+
+/* line 1274, ../sass/screen.scss */
+.chosen-rtl .chosen-choices li.search-choice {
+  margin: 3px 5px 3px 0;
+  padding: 3px 5px 3px 19px;
+}
+
+/* line 1278, ../sass/screen.scss */
+.chosen-rtl .chosen-choices li.search-choice .search-choice-close {
+  right: auto;
+  left: 4px;
+}
+
+/* line 1282, ../sass/screen.scss */
+.chosen-rtl.chosen-container-single-nosearch .chosen-search,
+.chosen-rtl .chosen-drop {
+  left: 9999px;
+}
+
+/* line 1286, ../sass/screen.scss */
+.chosen-rtl.chosen-container-single .chosen-results {
+  margin: 0 0 4px 4px;
+  padding: 0 4px 0 0;
+}
+
+/* line 1290, ../sass/screen.scss */
+.chosen-rtl .chosen-results li.group-option {
+  padding-right: 15px;
+  padding-left: 0;
+}
+
+/* line 1294, ../sass/screen.scss */
+.chosen-rtl.chosen-container-active.chosen-with-drop .chosen-single div {
+  border-right: none;
+}
+
+/* line 1297, ../sass/screen.scss */
+.chosen-rtl .chosen-search input[type="text"] {
+  padding: 4px 5px 4px 20px;
+  background: white url("../images/chosen-sprite.png") no-repeat -30px -20px;
+  background: url("../images/chosen-sprite.png") no-repeat -30px -20px;
+  direction: rtl;
+}
+
+/* line 1303, ../sass/screen.scss */
+.chosen-rtl.chosen-container-single .chosen-single div b {
+  background-position: 6px 2px;
+}
+
+/* line 1306, ../sass/screen.scss */
+.chosen-rtl.chosen-container-single.chosen-with-drop .chosen-single div b {
+  background-position: -12px 2px;
+}
+
+/* @end */
+/* @group Retina compatibility */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi), only screen and (min-resolution: 1.5dppx) {
+  /* line 1313, ../sass/screen.scss */
+  .chosen-rtl .chosen-search input[type="text"],
+  .chosen-container-single .chosen-single abbr,
+  .chosen-container-single .chosen-single div b,
+  .chosen-container-single .chosen-search input[type="text"],
+  .chosen-container-multi .chosen-choices .search-choice .search-choice-close,
+  .chosen-container .chosen-results-scroll-down span,
+  .chosen-container .chosen-results-scroll-up span {
+    background-image: url("../images/chosen-sprite@2x.png") !important;
+    background-size: 52px 37px !important;
+    background-repeat: no-repeat !important;
+  }
+}
+/* @end */

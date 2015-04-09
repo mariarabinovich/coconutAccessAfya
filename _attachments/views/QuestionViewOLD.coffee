@@ -21,15 +21,9 @@ class QuestionView extends Backbone.View
   el: '#content'
 
   initialize: ->
+
     Coconut.resultCollection ?= new ResultCollection()
     @autoscrollTimer = 0
-    #Coconut.clientDashboardView = new ClientDashboardView()
-    #Coconut.clientDashboardView.render()
-    #@$el.html "<div id='clientDashboard'>TEST CLIENT DASHBOARD</div>"
-    #@$el.append "
-    #    <div class='formHeader'>
-    #    PATIENTNAME But this will also have the options for the other forms </div>
-    #"
 
 
 
@@ -44,14 +38,19 @@ class QuestionView extends Backbone.View
 
   render: =>
 
-
    #     <form action='index.html'>
    #       <input type='submit' value='Complete'>
    #     </form>
    #     <form action='index.html'>
    #       <input type='submit' value='ANOTHER OPTION'>
    #     </form>
-
+    dialogcontent= "<h1>Notice</h1>
+            <p>
+              Patient's BMI  is ... <br>
+              the normal BMI range is 20 to 24
+            </p>
+            <br>
+            <a class='remodal-cancel' >OK</a>"
 
     @$el.html "
 
@@ -61,7 +60,7 @@ class QuestionView extends Backbone.View
       </div>
 
 
-      <div id='question-view'>
+      <div id='question-view'  class='remodal-bg'>
         <form>
           #{@toHTMLForm(@model)}
         </form>
@@ -69,7 +68,20 @@ class QuestionView extends Backbone.View
 
       </div>
 
+        <div class='remodal' data-remodal-id='modal'>
+           #{dialogcontent}
+        </div>
+
+      <div class='round-button'  >UP</a>
+
+
+
+
     "
+    #if Coconut.isItANewPerson == true
+      #@$el.append "<a class='buttonLinks ' id='startTheVisit'  >
+        # New clinical visit</a>"
+
 
     #change the
     @updateCache()
@@ -142,7 +154,8 @@ class QuestionView extends Backbone.View
     "click #question-view a:contains(Get current location)" : "getLocation"
     "click .next_error"   : "runValidate"
     "click .validate_one" : "onValidateOne"
-    # "click #completeForm" : "completeForm"
+    "click #startTheVisit'" : "startVisit"
+    "click .round-button" : "scrollToTop"
     # "onscroll" : "fixMiniDashboard"
 
   runValidate: -> @validateAll()
@@ -154,19 +167,24 @@ class QuestionView extends Backbone.View
     menu.css('display','none')
     burgerbutton.removeClass("menuisopen", "slow")
 
-  completeForm: ->
-    # alert "hi"
-    # lastName = ($("#client_1").val() || '').toUpperCase()
-    # Coconut.router.navigate("/new/result/Client Registration/#{lastName}",true)
-    # Coconut.router.navigate("/new/result/Vitals/MA",true)
+  startVisit: =>
+    alert "this goes to new visit for the client"
+    #console.log @client.clientID
+    #lastName = ($("#client_1").val() || '').toUpperCase()
+    #Coconut.menuView.renderForClientVisit(@client)
+    #$("html, body").animate
+    #scrollTop: $('#top-menu').offset().top
+    #document.location.href = "#new/result/Vitals/#{@client.clientID}"
+    #Coconut.router.navigate("/new/result/Vitals/#{lastName}",true)
 
-  # fixMiniDashboard: ->
-  #   $('.mini-dashboard').addClass("fixed");
+  scrollToTop: =>
+    $("html, body").animate
+        scrollTop: $('#top-menu').offset().top
 
 
   onChange: (event) ->
 
-    #Coconut.clientDashboardView.update()
+
     $target = $(event.target)
 
     #
@@ -343,7 +361,7 @@ class QuestionView extends Backbone.View
       @autoscrollTimer = setTimeout(
         =>
           $(window).off( "scroll" )
-          @$next.scrollTo().find("input[type=text],input[type=number]").focus()
+          @$next.scrollTo().find("input[type=text],input[type=number]").focus()  #ADD OTHER INPUT TYPES ???
         1000
       )
 
@@ -461,7 +479,7 @@ class QuestionView extends Backbone.View
           #{
             switch question.type()
               when "textarea"
-                "<input name='#{name}' type='text' id='#{question_id}' value='#{_.escape(question.value())}'></input>"
+                "<textarea name='#{name}' type='textarea' id='#{question_id}' value='#{_.escape(question.value())}'></textarea>"
 # Selects look lame - use radio buttons instead or autocomplete if long list
 #              when "select"
 #                "

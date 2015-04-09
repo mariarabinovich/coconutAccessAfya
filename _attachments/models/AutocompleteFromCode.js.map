@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "AutocompleteFromCode.js",
+  "sourceRoot": "../..",
+  "sources": [
+    "_attachments/models/AutocompleteFromCode.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA,IAAA,oBAAA;EAAA;iSAAA;;AAAA;AAKC,yCAAA,CAAA;;;;GAAA;;AAAA,iCAAA,sBAAA,GAAwB,SAAC,SAAD,GAAA;WACvB,OAAO,CAAC,GAAR,CAAY,SAAZ,EADuB;EAAA,CAAxB,CAAA;;AAAA,iCAGA,aAAA,GAAe,SAAA,GAAA;AACd,IAAA,OAAO,CAAC,GAAR,CAAY,4BAAZ,CAAA,CAAA;WACA,KAAA,CAAM,IAAN,EAFc;EAAA,CAHf,CAAA;;8BAAA;;GALkC,QAAQ,CAAC,MAA5C,CAAA"
+}
